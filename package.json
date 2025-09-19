@@ -9,8 +9,7 @@
     "preview": "cd static-site && npm run preview",
     "test": "cd static-site && npm run test",
     "lint": "cd static-site && npm run lint",
-    "deploy": "cd static-site && npm run deploy:production",
-    "install": "cd static-site && npm install"
+    "deploy": "cd static-site && npm run deploy:production"
   },
   "workspaces": [
     "static-site"
