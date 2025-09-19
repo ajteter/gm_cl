@@ -1,2 +1,10 @@
 # SPA fallback for client-side routing
+# Exclude static assets and special files from SPA routing
+!/assets/*
+!/_headers
+!/_redirects
+!/games.json
+!/favicon.ico
+!/robots.txt
+!/sitemap.xml
 /*    /index.html   200
