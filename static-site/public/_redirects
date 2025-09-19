@@ -1,6 +1,5 @@
 # SPA fallback for client-side routing
-# Static assets and API routes should not be redirected
-/assets/*  /assets/:splat  200
+# Static files and special routes (optimized order for performance)
 /_headers  /_headers  200
 /_redirects  /_redirects  200
 /games.json  /games.json  200
@@ -8,5 +7,9 @@
 /robots.txt  /robots.txt  200
 /sitemap.xml  /sitemap.xml  200
 
-# Fallback for all other routes (SPA routing)
-/*    /index.html   200
+# Static assets with splat
+/assets/*  /assets/:splat  200
+
+# SPA fallback - exclude index.html to prevent infinite loop
+/index.html  /index.html  200
+/*  /index.html  200
