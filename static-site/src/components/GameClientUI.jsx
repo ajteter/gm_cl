@@ -67,11 +67,11 @@ export default function GameClientUI({
 
   // Default ad configuration for random game page
   const defaultAdConfig = {
-    key: '50b2164cc3111fadf4f101590a95e8ef',
+    key: 'e689411a7eabfbe7f506351f1a7fc234',
     height: 50,
     width: 320,
     maxHeight: '100px',
-    script: '//www.highperformanceformat.com/50b2164cc3111fadf4f101590a95e8ef/invoke.js',
+    script: '//www.highperformanceformat.com/e689411a7eabfbe7f506351f1a7fc234/invoke.js',
     delay: 1000
   }
 
