@@ -1,0 +1,67 @@
+# Global headers
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: frame-ancestors 'self'; frame-src https: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; connect-src 'self' https:;
+
+# Cache hashed JavaScript files for 1 year (immutable)
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: application/javascript
+
+# Cache hashed CSS files for 1 year (immutable)
+/assets/css/*
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: text/css
+
+# Cache hashed images for 1 year (immutable)
+/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache other hashed assets for 1 year (immutable)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache games.json for 1 hour to allow updates
+/games.json
+  Cache-Control: public, max-age=3600, must-revalidate
+  Content-Type: application/json
+
+# Cache HTML files for 5 minutes with revalidation
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate
+  Content-Type: text/html; charset=utf-8
+
+# Cache root index.html with shorter cache for SPA updates
+/
+  Cache-Control: public, max-age=300, must-revalidate
+  Content-Type: text/html; charset=utf-8
+
+# Preconnect and DNS prefetch headers for performance
+/*
+  Link: <https://gamemonetize.com>; rel=preconnect; crossorigin
+  Link: <https://html5.gamemonetize.com>; rel=preconnect; crossorigin
+  Link: <https://api.gamemonetize.com>; rel=preconnect; crossorigin
+  Link: <https://ads.gamemonetize.com>; rel=preconnect; crossorigin
+  Link: <https://cdn.gamemonetize.com>; rel=preconnect; crossorigin
+  Link: <https://gamemonetize.com>; rel=dns-prefetch
+  Link: <https://html5.gamemonetize.com>; rel=dns-prefetch
+
+# Enable compression for text-based files
+/*.js
+  Content-Encoding: gzip
+  Vary: Accept-Encoding
+
+/*.css
+  Content-Encoding: gzip
+  Vary: Accept-Encoding
+
+/*.html
+  Content-Encoding: gzip
+  Vary: Accept-Encoding
+
+/*.json
+  Content-Encoding: gzip
+  Vary: Accept-Encoding

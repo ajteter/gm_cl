@@ -1,0 +1,337 @@
+/* Loading State Manager Styles */
+.loading-state-manager {
+  position: relative;
+  min-height: 200px;
+  width: 100%;
+}
+
+.loading-overlay,
+.error-overlay,
+.empty-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.loading-overlay {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+}
+
+.error-overlay,
+.empty-overlay {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.content-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Error State Styles */
+.error-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.error-content {
+  max-width: 400px;
+}
+
+.error-content h3 {
+  color: #dc2626;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.error-content p {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Empty State Styles */
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.empty-content {
+  max-width: 400px;
+}
+
+.empty-content h3 {
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.empty-content p {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Retry Button Styles */
+.retry-button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.retry-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.retry-button:active {
+  transform: translateY(0);
+}
+
+.retry-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Loading State Specific Styles */
+.loading-state {
+  padding: 2rem;
+}
+
+/* Skeleton Specific Styles */
+.skeleton-thumb {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.skeleton-title {
+  margin-bottom: 0.75rem;
+}
+
+.skeleton-category {
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-meta {
+  margin-bottom: 0;
+}
+
+.skeleton-game-title {
+  margin-bottom: 1rem;
+}
+
+.skeleton-game-meta {
+  margin-bottom: 2rem;
+}
+
+.skeleton-game-frame {
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.skeleton-game-description {
+  margin-bottom: 0;
+}
+
+.skeleton-logo {
+  margin-right: 2rem;
+}
+
+.nav-items-skeleton {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.skeleton-nav-item {
+  border-radius: 4px;
+}
+
+.skeleton-block-title {
+  margin-bottom: 1rem;
+}
+
+.skeleton-block-content {
+  margin-bottom: 0;
+}
+
+.skeleton-button {
+  border-radius: 6px;
+}
+
+.form-field-skeleton {
+  margin-bottom: 1.5rem;
+}
+
+.skeleton-field-label {
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-field-input {
+  border-radius: 6px;
+  margin-bottom: 0;
+}
+
+.skeleton-submit-button {
+  margin-top: 1rem;
+}
+
+.pagination-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.skeleton-page-btn {
+  border-radius: 6px;
+}
+
+.skeleton-page-info {
+  border-radius: 4px;
+}
+
+/* Transition Effects */
+.loading-overlay,
+.error-overlay,
+.empty-overlay,
+.content-container {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.loading-overlay.fade-in,
+.error-overlay.fade-in,
+.empty-overlay.fade-in,
+.content-container.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.loading-overlay.fade-out,
+.error-overlay.fade-out,
+.empty-overlay.fade-out,
+.content-container.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .loading-state-manager {
+    min-height: 150px;
+  }
+  
+  .error-state,
+  .empty-state {
+    padding: 1.5rem 1rem;
+  }
+  
+  .error-content,
+  .empty-content {
+    max-width: 300px;
+  }
+  
+  .error-content h3,
+  .empty-content h3 {
+    font-size: 1.125rem;
+  }
+  
+  .loading-state {
+    padding: 1.5rem;
+  }
+  
+  .nav-items-skeleton {
+    gap: 1rem;
+  }
+  
+  .pagination-skeleton {
+    gap: 0.75rem;
+    padding: 1.5rem 0;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .loading-overlay {
+    background-color: rgba(17, 24, 39, 0.8);
+  }
+  
+  .error-overlay,
+  .empty-overlay {
+    background-color: rgba(17, 24, 39, 0.95);
+  }
+  
+  .error-content h3 {
+    color: #f87171;
+  }
+  
+  .empty-content h3 {
+    color: #f9fafb;
+  }
+  
+  .error-content p,
+  .empty-content p {
+    color: #9ca3af;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .retry-button {
+    background-color: #1d4ed8;
+    border: 2px solid #1d4ed8;
+  }
+  
+  .retry-button:hover {
+    background-color: #1e40af;
+    border-color: #1e40af;
+  }
+  
+  .error-content h3 {
+    color: #dc2626;
+  }
+  
+  .loading-overlay,
+  .error-overlay,
+  .empty-overlay {
+    background-color: rgba(255, 255, 255, 0.98);
+    border: 1px solid #d1d5db;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .loading-overlay,
+  .error-overlay,
+  .empty-overlay,
+  .content-container,
+  .retry-button {
+    transition: none;
+  }
+  
+  .retry-button:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,82 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'static-site/package-lock.json'
+          
+      - name: Install dependencies
+        working-directory: ./static-site
+        run: npm ci
+        
+      - name: Run linting
+        working-directory: ./static-site
+        run: npm run lint
+        
+      - name: Run tests
+        working-directory: ./static-site
+        run: npm run test -- --run
+        
+      - name: Build project
+        working-directory: ./static-site
+        run: npm run build
+        
+      - name: Verify build
+        working-directory: ./static-site
+        run: npm run verify:build
+        
+      - name: Deploy to Cloudflare Pages (Staging)
+        if: github.ref == 'refs/heads/develop'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: h5-games-static-staging
+          directory: static-site/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Deploy to Cloudflare Pages (Production)
+        if: github.ref == 'refs/heads/main'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: h5-games-static
+          directory: static-site/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Verify deployment (Staging)
+        if: github.ref == 'refs/heads/develop'
+        working-directory: ./static-site
+        run: npm run verify:deployment staging
+        
+      - name: Verify deployment (Production)
+        if: github.ref == 'refs/heads/main'
+        working-directory: ./static-site
+        run: npm run verify:deployment production
+        
+      - name: Run Lighthouse audit
+        if: github.ref == 'refs/heads/main'
+        working-directory: ./static-site
+        run: npm run lighthouse
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

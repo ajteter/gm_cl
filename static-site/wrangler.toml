@@ -1,0 +1,70 @@
+# Cloudflare Pages configuration
+name = "h5-games-static"
+compatibility_date = "2025-01-19"
+
+[build]
+command = "npm run deploy:prepare"
+publish = "dist"
+
+# Environment variables
+[vars]
+NODE_ENV = "production"
+ENVIRONMENT = "production"
+
+# Custom headers for optimization
+[[headers]]
+for = "/*"
+[headers.values]
+X-Frame-Options = "SAMEORIGIN"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+X-Environment = "production"
+
+# Cache static assets with long-term caching
+[[headers]]
+for = "/assets/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+Vary = "Accept-Encoding"
+
+# Cache HTML files with validation
+[[headers]]
+for = "*.html"
+[headers.values]
+Cache-Control = "public, max-age=0, must-revalidate"
+
+# Cache games.json for shorter time to allow updates
+[[headers]]
+for = "/games.json"
+[headers.values]
+Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+# Cache service worker
+[[headers]]
+for = "/sw*.js"
+[headers.values]
+Cache-Control = "public, max-age=0, must-revalidate"
+
+# Security headers for iframe content
+[[headers]]
+for = "/*"
+[headers.values]
+Content-Security-Policy = "frame-ancestors 'self'; frame-src https: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; connect-src 'self' https:;"
+
+# Performance headers
+[[headers]]
+for = "/*"
+[headers.values]
+X-DNS-Prefetch-Control = "on"
+X-Permitted-Cross-Domain-Policies = "none"
+
+# Compression for text files
+[[headers]]
+for = "*.js"
+[headers.values]
+Content-Encoding = "gzip"
+
+[[headers]]
+for = "*.css"
+[headers.values]
+Content-Encoding = "gzip"

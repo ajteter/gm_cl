@@ -1,0 +1,305 @@
+/* Loading Spinner Styles */
+.loading-spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.loading-spinner-container.inline {
+  display: inline-flex;
+}
+
+.loading-spinner-container.block {
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.spinner-circle {
+  border-radius: 50%;
+  animation: loading-bounce 1.4s ease-in-out infinite both;
+}
+
+.spinner-circle:nth-child(1) { animation-delay: -0.32s; }
+.spinner-circle:nth-child(2) { animation-delay: -0.16s; }
+.spinner-circle:nth-child(3) { animation-delay: 0s; }
+
+/* Spinner Sizes */
+.spinner-small .spinner-circle {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.spinner-medium .spinner-circle {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.spinner-large .spinner-circle {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Spinner Colors */
+.spinner-primary .spinner-circle {
+  background-color: #3b82f6;
+}
+
+.spinner-secondary .spinner-circle {
+  background-color: #6b7280;
+}
+
+.spinner-white .spinner-circle {
+  background-color: #ffffff;
+}
+
+.loading-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Loading Dots Styles */
+.loading-dots {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-dot {
+  border-radius: 50%;
+  animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+/* Dots Sizes */
+.dots-small .loading-dot {
+  width: 0.375rem;
+  height: 0.375rem;
+}
+
+.dots-medium .loading-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.dots-large .loading-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* Dots Colors */
+.dots-primary .loading-dot {
+  background-color: #3b82f6;
+}
+
+.dots-secondary .loading-dot {
+  background-color: #6b7280;
+}
+
+.dots-white .loading-dot {
+  background-color: #ffffff;
+}
+
+/* Progress Bar Styles */
+.loading-progress-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.loading-progress {
+  flex: 1;
+  background-color: #f3f4f6;
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Progress Heights */
+.progress-thin {
+  height: 0.25rem;
+}
+
+.progress-medium {
+  height: 0.5rem;
+}
+
+.progress-thick {
+  height: 0.75rem;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+/* Progress Colors */
+.progress-primary .progress-bar {
+  background-color: #3b82f6;
+}
+
+.progress-secondary .progress-bar {
+  background-color: #6b7280;
+}
+
+.progress-success .progress-bar {
+  background-color: #10b981;
+}
+
+/* Indeterminate Progress Animation */
+.loading-progress.indeterminate .progress-bar {
+  width: 30%;
+  animation: loading-progress 2s ease-in-out infinite;
+}
+
+.progress-percentage {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+  min-width: 3rem;
+  text-align: right;
+}
+
+/* Skeleton Loading Styles */
+.loading-skeleton-container {
+  width: 100%;
+}
+
+.loading-skeleton {
+  background-color: #f3f4f6;
+  border-radius: 0.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-skeleton.animated {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 2s infinite;
+}
+
+.loading-skeleton.static {
+  background-color: #f3f4f6;
+}
+
+/* Animations */
+@keyframes loading-bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes loading-pulse {
+  0%, 80%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes loading-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .loading-spinner-container.block {
+    padding: 1rem;
+  }
+  
+  .loading-text {
+    font-size: 0.75rem;
+  }
+  
+  .progress-percentage {
+    font-size: 0.625rem;
+    min-width: 2.5rem;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .loading-skeleton {
+    background-color: #374151;
+  }
+  
+  .loading-skeleton.animated {
+    background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+    background-size: 200% 100%;
+  }
+  
+  .loading-progress {
+    background-color: #374151;
+  }
+  
+  .loading-text,
+  .progress-percentage {
+    color: #9ca3af;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .spinner-primary .spinner-circle {
+    background-color: #1d4ed8;
+  }
+  
+  .dots-primary .loading-dot {
+    background-color: #1d4ed8;
+  }
+  
+  .progress-primary .progress-bar {
+    background-color: #1d4ed8;
+  }
+  
+  .loading-skeleton {
+    border: 1px solid #d1d5db;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .spinner-circle,
+  .loading-dot,
+  .progress-bar,
+  .loading-skeleton.animated {
+    animation: none;
+  }
+  
+  .loading-skeleton.animated {
+    background: #f3f4f6;
+  }
+}

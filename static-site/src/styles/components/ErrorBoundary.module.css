@@ -1,0 +1,222 @@
+/* Generic Error Fallback Styles */
+.error-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 2rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.error-content {
+  text-align: center;
+  max-width: 500px;
+}
+
+.error-content h2 {
+  color: #dc2626;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.error-details {
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.error-details summary {
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-details summary:hover {
+  color: #374151;
+}
+
+.error-message {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 0.75rem;
+  color: #374151;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.error-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.retry-button, .reload-button, .home-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.retry-button {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.retry-button:hover {
+  background-color: #2563eb;
+}
+
+.retry-button.primary {
+  background-color: #059669;
+}
+
+.retry-button.primary:hover {
+  background-color: #047857;
+}
+
+.reload-button {
+  background-color: #6b7280;
+  color: white;
+}
+
+.reload-button:hover {
+  background-color: #4b5563;
+}
+
+.home-button {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.home-button:hover {
+  background-color: #e5e7eb;
+}
+
+/* Game Error Fallback Styles */
+.game-error-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  padding: 2rem;
+  background-color: #fef3c7;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.game-error-content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.game-error-content h3 {
+  color: #d97706;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.game-error-content p {
+  color: #92400e;
+  margin-bottom: 1rem;
+}
+
+/* Data Error Fallback Styles */
+.data-error-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 1.5rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+.data-error-content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.data-error-content h3 {
+  color: #dc2626;
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.data-error-content p {
+  color: #7f1d1d;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+/* Network Error Fallback Styles */
+.network-error-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  padding: 2rem;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.network-error-content {
+  text-align: center;
+  max-width: 450px;
+}
+
+.network-error-content h3 {
+  color: #1d4ed8;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.network-error-content p {
+  color: #1e40af;
+  margin-bottom: 1rem;
+}
+
+.offline-note {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .error-fallback,
+  .game-error-fallback,
+  .data-error-fallback,
+  .network-error-fallback {
+    padding: 1rem;
+    min-height: auto;
+  }
+  
+  .error-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .retry-button, .reload-button, .home-button {
+    width: 100%;
+    max-width: 200px;
+  }
+}

@@ -1,0 +1,319 @@
+/* Global styles migrated from Next.js app/globals.css */
+:root { 
+  color-scheme: light dark; 
+}
+
+* { 
+  box-sizing: border-box; 
+  -webkit-tap-highlight-color: transparent; 
+}
+
+html, body { 
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; 
+}
+
+body {
+  background: #0b0b0c;
+  color: #f3f4f6;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.container { 
+  max-width: 960px; 
+  padding: 12px; 
+  margin: 0 auto; 
+  padding-top: env(safe-area-inset-top, 24px); 
+}
+
+.title { 
+  font-size: 20px; 
+  margin: 8px 0 12px; 
+  font-weight: 700; 
+}
+
+.grid { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  gap: 10px; 
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.grid.onecol { 
+  grid-template-columns: 1fr; 
+}
+
+.card { 
+  background: #16181d; 
+  border: 1px solid #23262d; 
+  border-radius: 10px; 
+  overflow: hidden; 
+}
+
+.media { 
+  position: relative; 
+}
+
+.thumbLink { 
+  display: block; 
+  background: none; 
+  border: none; 
+  padding: 0; 
+  cursor: pointer; 
+}
+
+.thumbLink:active { 
+  opacity: 0.8; 
+}
+
+.thumbLink.loading { 
+  opacity: 0.6; 
+  pointer-events: none; 
+  position: relative; 
+}
+
+.thumbLink.loading::after { 
+  content: ''; 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  width: 24px; 
+  height: 24px; 
+  margin: -12px 0 0 -12px; 
+  border: 2px solid transparent; 
+  border-top: 2px solid #fff; 
+  border-radius: 50%; 
+  animation: spin 1s linear infinite; 
+  z-index: 1; 
+}
+
+.thumb { 
+  width: 100%; 
+  height: auto; 
+  display: block; 
+  aspect-ratio: 4 / 3; 
+  object-fit: cover; 
+  background: #0f1115; 
+  position: relative; 
+}
+
+.thumb.skeleton { 
+  position: relative; 
+  overflow: hidden; 
+}
+
+.thumb.skeleton::before { 
+  content: ""; 
+  position: absolute; 
+  inset: 0; 
+  background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 100%); 
+  animation: shimmer 1.2s infinite; 
+}
+
+@keyframes shimmer { 
+  0% { transform: translateX(-100%); } 
+  100% { transform: translateX(100%); } 
+}
+
+.empty { 
+  padding: 24px; 
+  text-align: center; 
+  color: #c9ced6; 
+}
+
+.emptyIcon { 
+  width: 40px; 
+  height: 40px; 
+  margin: 0 auto 8px; 
+  border-radius: 50%; 
+  border: 3px solid #2b313b; 
+  border-top-color: #566077; 
+  animation: spin 1s linear infinite; 
+}
+
+.emptyText { 
+  font-size: 14px; 
+}
+
+.badge {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f0f0f0;
+  font-size: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.content { 
+  padding: 10px; 
+}
+
+.gameTitle { 
+  font-size: 16px; 
+  margin: 0 0 6px; 
+  line-height: 1.25; 
+}
+
+.desc { 
+  font-size: 12px; 
+  color: #c9ced6; 
+  margin: 0 0 6px; 
+  display: -webkit-box; 
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical; 
+  overflow: hidden; 
+  cursor: pointer; 
+}
+
+.desc.expanded { 
+  display: block; 
+  -webkit-line-clamp: unset; 
+  overflow: visible; 
+}
+
+.actions { 
+  padding-top: 8px; 
+}
+
+.playBtn { 
+  display: block; 
+  width: 100%; 
+  text-align: center; 
+  padding: 14px 18px; 
+  background: #22c55e; 
+  color: #05290f; 
+  border-radius: 10px; 
+  font-weight: 800; 
+  font-size: 18px; 
+  text-decoration: none; 
+  border: 1px solid #16a34a; 
+  box-shadow: 0 6px 0 #0e7a36; 
+  cursor: pointer; 
+}
+
+.playBtn:active { 
+  transform: scale(0.95) translateY(2px); 
+  box-shadow: 0 4px 0 #0e7a36; 
+}
+
+.playBtn.loading { 
+  opacity: 0.6; 
+  pointer-events: none; 
+  position: relative; 
+}
+
+.playBtn.loading::after { 
+  content: ''; 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  width: 20px; 
+  height: 20px; 
+  margin: -10px 0 0 -10px; 
+  border: 2px solid transparent; 
+  border-top: 2px solid #05290f; 
+  border-radius: 50%; 
+  animation: spin 1s linear infinite; 
+}
+
+@keyframes spin { 
+  0% { transform: rotate(0deg); } 
+  100% { transform: rotate(360deg); } 
+}
+
+.pagination { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 12px; 
+  padding: 14px 0 28px; 
+}
+
+.iconBtn { 
+  width: 44%; 
+  height: 48px; 
+  background: #1f2937; 
+  border: 1px solid #374151; 
+  border-radius: 10px; 
+  display: block; 
+  text-decoration: none; 
+  position: relative; 
+}
+
+.iconBtn[aria-disabled="true"] { 
+  opacity: 0.5; 
+  pointer-events: none; 
+}
+
+.iconBtn::before { 
+  content: ''; 
+  position: absolute; 
+  inset: 0; 
+  background: center/24px no-repeat linear-gradient(transparent, transparent); 
+}
+
+.iconBtn[aria-label="上一页"]::before { 
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'); 
+}
+
+.iconBtn[aria-label="下一页"]::before { 
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>'); 
+}
+
+@supports not (aspect-ratio: 4 / 3) {
+  .thumb { 
+    height: 0; 
+    padding-bottom: 75%; 
+    position: relative; 
+  }
+  .thumb img { 
+    position: absolute; 
+    inset: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+  }
+}
+
+.skeleton {
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-text {
+  height: 20px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.skeleton-text:last-child {
+  margin-bottom: 0;
+}
+
+.skeleton-text-sm {
+  height: 12px;
+  width: 70%;
+  border-radius: 4px;
+}

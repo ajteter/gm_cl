@@ -1,0 +1,18 @@
+{
+  "name": "h5-games-portal",
+  "version": "1.0.0",
+  "description": "Static H5 Games Portal for Cloudflare Pages",
+  "private": true,
+  "scripts": {
+    "dev": "cd static-site && npm run dev",
+    "build": "cd static-site && npm run build",
+    "preview": "cd static-site && npm run preview",
+    "test": "cd static-site && npm run test",
+    "lint": "cd static-site && npm run lint",
+    "deploy": "cd static-site && npm run deploy:production",
+    "install": "cd static-site && npm install"
+  },
+  "workspaces": [
+    "static-site"
+  ]
+}
