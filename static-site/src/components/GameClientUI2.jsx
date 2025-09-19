@@ -27,12 +27,8 @@ export default function GameClientUI2({
   const [isIframeLoading, setIsIframeLoading] = useState(true)
   const navigate = useNavigate()
 
-  // Early return if no game provided
-  if (!game || !game.url) {
-    return null
-  }
-
   useEffect(() => {
+    if (!game?.url) return
     // Append current page's query parameters to the game URL for attribution
     const params = new URLSearchParams(window.location.search)
     
@@ -46,7 +42,12 @@ export default function GameClientUI2({
       })
       setGameUrl(newUrl.toString())
     }
-  }, [game.url])
+  }, [game?.url])
+
+  // Early return if no game provided
+  if (!game || !game.url) {
+    return null
+  }
 
   const handleMoreGames = () => {
     if (onMoreGames) {
@@ -54,8 +55,9 @@ export default function GameClientUI2({
     } else {
       navigate('/game2')
     }
-  }  const
- handleIframeLoad = () => {
+  }
+
+  const handleIframeLoad = () => {
     setIsIframeLoading(false)
   }
 
