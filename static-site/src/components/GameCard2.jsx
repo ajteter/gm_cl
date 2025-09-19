@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 
-export default function GameCard({ game }) {
+export default function GameCard2({ game }) {
   const [descExpanded, setDescExpanded] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
@@ -12,13 +12,13 @@ export default function GameCard({ game }) {
   // 直接使用原始链接，通过 referrer 头进行追踪
   const gameUrl = game.url
 
-  // 添加点击处理函数，保持广告归因参数
+  // 添加点击处理函数，保持广告归因参数，但导航到 game2/play
   const handleGameClick = useCallback((url) => {
     setIsLoading(true)
     
     // 获取当前页面的广告归因参数
     const currentParams = new URLSearchParams(location.search)
-    const playUrl = new URL('/game/play', window.location.origin)
+    const playUrl = new URL('/game2/play', window.location.origin)
     playUrl.searchParams.set('url', url)
     
     // 传递广告归因参数

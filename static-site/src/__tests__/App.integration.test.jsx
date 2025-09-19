@@ -130,8 +130,8 @@ describe('App Integration Tests', () => {
       })
     })
 
-    it('renders PlayPage on /play route', async () => {
-      renderWithRouter(['/play'])
+    it('renders PlayPage on /game/play route', async () => {
+      renderWithRouter(['/game/play'])
 
       await waitFor(() => {
         expect(screen.getByText('Play HTML5 Games')).toBeInTheDocument()
@@ -222,7 +222,7 @@ describe('App Integration Tests', () => {
 
       // Simulate navigation to different route
       rerender(
-        <MemoryRouter initialEntries={['/play']}>
+        <MemoryRouter initialEntries={['/game/play']}>
           <App />
         </MemoryRouter>
       )

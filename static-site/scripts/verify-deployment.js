@@ -53,7 +53,10 @@ async function testRoutes(baseUrl) {
   const routes = [
     { path: '/', description: 'Home page' },
     { path: '/game/random', description: 'Random game page' },
-    { path: '/play', description: 'Play page' },
+    { path: '/game/play', description: 'Play page' },
+    { path: '/game2', description: 'Game2 home page' },
+    { path: '/game2/random', description: 'Game2 random page' },
+    { path: '/game2/play', description: 'Game2 play page' },
     { path: '/privacy-policy', description: 'Privacy policy page' },
     { path: '/games.json', description: 'Games data API' }
   ];

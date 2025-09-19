@@ -12,7 +12,7 @@ const GridIcon = () => (
   </svg>
 )
 
-export default function PlayPage() {
+export default function Play2Page() {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const gameUrl = searchParams.get('url')
@@ -43,15 +43,15 @@ export default function PlayPage() {
   }, [gameUrl])
 
   const handleMoreGames = () => {
-    navigate('/game')
+    navigate('/game2')
   }
 
-  if (!gameUrl) {
-    return (
+  if (!gameUrl) {    re
+turn (
       <div className={styles.container}>
         <div className={styles.error}>
           <p>游戏链接无效。</p>
-          <button onClick={() => navigate('/game')} className={styles.actionButton}>
+          <button onClick={() => navigate('/game2')} className={styles.actionButton}>
             返回首页
           </button>
         </div>
@@ -95,31 +95,29 @@ export default function PlayPage() {
             <!DOCTYPE html>
             <html>
             <head>
+                <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
                 <style>
                     body { margin: 0; padding: 0; overflow: hidden; }
-                    * { max-width: 100% !important; max-height: 90px !important; }
+                    * { max-width: 100% !important; max-height: 100px !important; }
                 </style>
             </head>
             <body>
-                <script type="text/javascript">
-                    window.atOptions = {
-                        'key': '9adddfc2b9f962e7595071bcbd5cc4e5',
-                        'format': 'iframe',
-                        'height': 90,
-                        'width': 728,
-                        'params': {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/9adddfc2b9f962e7595071bcbd5cc4e5/invoke.js"></script>
+                <div>
+                    <script type="text/javascript">
+                        aclib.runBanner({
+                            zoneId: '10422246'
+                        });
+                    </script>
+                </div>
             </body>
             </html>
           `}
           sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
           style={{
             width: '100%',
-            height: '90px',
+            height: '100px',
             border: 'none',
-            maxHeight: '90px',
+            maxHeight: '100px',
             overflow: 'hidden'
           }}
           title="Advertisement"

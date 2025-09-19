@@ -22,7 +22,19 @@ function Layout({ children }) {
         title = 'Daily Game | H5 Games'
         description = 'Play today\'s featured HTML5 game on mobile.'
         break
-      case '/play':
+      case '/game/play':
+        title = 'Play Game | H5 Games'
+        description = 'Playing HTML5 game on mobile.'
+        break
+      case '/game2':
+        title = 'All Games | H5 Games'
+        description = 'Browse our collection of free HTML5 games for mobile.'
+        break
+      case '/game2/random':
+        title = 'Daily Game | H5 Games'
+        description = 'Play today\'s featured HTML5 game on mobile.'
+        break
+      case '/game2/play':
         title = 'Play Game | H5 Games'
         description = 'Playing HTML5 game on mobile.'
         break

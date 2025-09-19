@@ -15,6 +15,10 @@ const HomePage = lazy(() => import('./pages/HomePage'))
 const GamePage = lazy(() => import('./pages/GamePage'))
 const RandomGamePage = lazy(() => import('./pages/RandomGamePage'))
 const PlayPage = lazy(() => import('./pages/PlayPage'))
+const HomePage2 = lazy(() => import('./pages/HomePage2'))
+const Game2Page = lazy(() => import('./pages/Game2Page'))
+const RandomGame2Page = lazy(() => import('./pages/RandomGame2Page'))
+const Play2Page = lazy(() => import('./pages/Play2Page'))
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
@@ -62,7 +66,14 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/game" element={<GamePage />} />
                 <Route path="/game/random" element={<RandomGamePage />} />
-                <Route path="/play" element={<PlayPage />} />
+                <Route path="/game/play" element={<PlayPage />} />
+                
+                {/* Game2 routes with different ad configuration */}
+                <Route path="/game2" element={<HomePage2 />} />
+                <Route path="/game2/game" element={<Game2Page />} />
+                <Route path="/game2/random" element={<RandomGame2Page />} />
+                <Route path="/game2/play" element={<Play2Page />} />
+                
                 <Route path="/privacy-policy" element={<PrivacyPage />} />
                 
                 {/* Direct GPV route - redirects to daily game */}

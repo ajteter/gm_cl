@@ -91,7 +91,7 @@ describe('GameCard', () => {
     const playButton = screen.getByRole('button', { name: '开始 Test Game' })
     fireEvent.click(playButton)
 
-    expect(mockNavigate).toHaveBeenCalledWith('/play?url=https%3A%2F%2Fexample.com%2Fgame1')
+    expect(mockNavigate).toHaveBeenCalledWith('/game/play?url=https%3A%2F%2Fexample.com%2Fgame1')
   })
 
   it('should navigate to play page when thumbnail is clicked', () => {
@@ -100,7 +100,7 @@ describe('GameCard', () => {
     const thumbnailButton = screen.getByRole('button', { name: '打开 Test Game' })
     fireEvent.click(thumbnailButton)
 
-    expect(mockNavigate).toHaveBeenCalledWith('/play?url=https%3A%2F%2Fexample.com%2Fgame1')
+    expect(mockNavigate).toHaveBeenCalledWith('/game/play?url=https%3A%2F%2Fexample.com%2Fgame1')
   })
 
   it('should preserve ad attribution parameters when navigating', () => {
@@ -112,7 +112,7 @@ describe('GameCard', () => {
     fireEvent.click(playButton)
 
     // Should include utm parameters but exclude page parameter
-    expect(mockNavigate).toHaveBeenCalledWith('/play?url=https%3A%2F%2Fexample.com%2Fgame1&utm_source=google&utm_campaign=test')
+    expect(mockNavigate).toHaveBeenCalledWith('/game/play?url=https%3A%2F%2Fexample.com%2Fgame1&utm_source=google&utm_campaign=test')
   })
 
   it('should show loading state when button is clicked', async () => {
@@ -189,7 +189,7 @@ describe('GameCard', () => {
     const playButton = screen.getByRole('button', { name: '开始 Test Game' })
     fireEvent.click(playButton)
 
-    expect(mockNavigate).toHaveBeenCalledWith('/play?url=https%3A%2F%2Fexample.com%2Fgame1')
+    expect(mockNavigate).toHaveBeenCalledWith('/game/play?url=https%3A%2F%2Fexample.com%2Fgame1')
   })
 
   it('should handle complex URL parameters correctly', () => {
@@ -201,7 +201,7 @@ describe('GameCard', () => {
     fireEvent.click(playButton)
 
     // Should preserve all utm and gclid parameters but exclude page
-    const expectedUrl = '/play?url=https%3A%2F%2Fexample.com%2Fgame1&utm_source=facebook&utm_medium=cpc&utm_campaign=summer2024&gclid=abc123'
+    const expectedUrl = '/game/play?url=https%3A%2F%2Fexample.com%2Fgame1&utm_source=facebook&utm_medium=cpc&utm_campaign=summer2024&gclid=abc123'
     expect(mockNavigate).toHaveBeenCalledWith(expectedUrl)
   })
 })

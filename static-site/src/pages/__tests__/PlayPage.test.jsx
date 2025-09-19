@@ -8,7 +8,7 @@ vi.mock('../../hooks/useSEO', () => ({
   usePlaySEO: vi.fn()
 }))
 
-const renderWithRouter = (component, initialEntries = ['/play']) => {
+const renderWithRouter = (component, initialEntries = ['/game/play']) => {
   return render(
     <MemoryRouter initialEntries={initialEntries}>
       {component}
@@ -29,7 +29,7 @@ describe('PlayPage', () => {
   })
 
   it('renders game iframe when valid URL is provided', () => {
-    renderWithRouter(<PlayPage />, ['/play?url=https://example.com/game'])
+    renderWithRouter(<PlayPage />, ['/game/play?url=https://example.com/game'])
 
     expect(screen.getByTitle('Game')).toBeInTheDocument()
     expect(screen.getByText('More Games')).toBeInTheDocument()
@@ -43,14 +43,14 @@ describe('PlayPage', () => {
   })
 
   it('shows loading overlay initially when game is provided', () => {
-    renderWithRouter(<PlayPage />, ['/play?url=https://example.com/game'])
+    renderWithRouter(<PlayPage />, ['/game/play?url=https://example.com/game'])
 
     // The loading overlay should be present initially
     expect(screen.getByTitle('Game')).toBeInTheDocument()
   })
 
   it('renders ad container when game is loaded', () => {
-    renderWithRouter(<PlayPage />, ['/play?url=https://example.com/game'])
+    renderWithRouter(<PlayPage />, ['/game/play?url=https://example.com/game'])
 
     expect(screen.getByTitle('Advertisement')).toBeInTheDocument()
   })

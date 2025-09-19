@@ -12,10 +12,10 @@ const GridIcon = () => (
 )
 
 /**
- * GameClientUI component for displaying games in fullscreen mode
+ * GameClientUI2 component for displaying games in fullscreen mode with Game2 specific ad configuration
  * Handles URL parameter forwarding for ad attribution and provides game embedding
  */
-export default function GameClientUI({ 
+export default function GameClientUI2({ 
   game, 
   title = "1 DAY 1 GAME", 
   showTitle = true,
@@ -52,11 +52,10 @@ export default function GameClientUI({
     if (onMoreGames) {
       onMoreGames()
     } else {
-      navigate('/game')
+      navigate('/game2')
     }
-  }
-
-  const handleIframeLoad = () => {
+  }  const
+ handleIframeLoad = () => {
     setIsIframeLoading(false)
   }
 
@@ -65,17 +64,8 @@ export default function GameClientUI({
     console.error('Failed to load game iframe:', gameUrl)
   }
 
-  // Default ad configuration for random game page
-  const defaultAdConfig = {
-    key: 'e689411a7eabfbe7f506351f1a7fc234',
-    height: 50,
-    width: 320,
-    maxHeight: '100px',
-    script: '//www.highperformanceformat.com/e689411a7eabfbe7f506351f1a7fc234/invoke.js',
-    delay: 1000
-  }
-
-  const finalAdConfig = adConfig === null ? null : (adConfig || defaultAdConfig)
+  // Use Adcash for Game2 - completely different from Game1
+  const useAdcash = adConfig !== null
 
   return (
     <div className={styles.container}>
@@ -113,46 +103,36 @@ export default function GameClientUI({
         />
       </div>
 
-      {finalAdConfig && (
+      {useAdcash && (
         <div className={styles.adContainer}>
           <iframe 
             srcDoc={`
               <!DOCTYPE html>
               <html>
               <head>
+                  <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
                   <style>
                       body { margin: 0; padding: 0; overflow: hidden; }
-                      * { max-width: 100% !important; max-height: ${finalAdConfig.maxHeight} !important; }
+                      * { max-width: 100% !important; max-height: 100px !important; }
                   </style>
               </head>
               <body>
-                  <script>
-                      // 延迟加载广告脚本
-                      setTimeout(() => {
-                          const script = document.createElement('script');
-                          script.type = 'text/javascript';
-                          script.src = '${finalAdConfig.script}';
-                          
-                          window.atOptions = {
-                              'key': '${finalAdConfig.key}',
-                              'format': 'iframe',
-                              'height': ${finalAdConfig.height},
-                              'width': ${finalAdConfig.width},
-                              'params': {}
-                          };
-                          
-                          document.body.appendChild(script);
-                      }, ${finalAdConfig.delay});
-                  </script>
+                  <div>
+                      <script type="text/javascript">
+                          aclib.runBanner({
+                              zoneId: '10422246'
+                          });
+                      </script>
+                  </div>
               </body>
               </html>
             `}
             sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
             style={{
               width: '100%',
-              height: `${finalAdConfig.height}px`,
+              height: '100px',
               border: 'none',
-              maxHeight: finalAdConfig.maxHeight,
+              maxHeight: '100px',
               overflow: 'hidden'
             }}
             title="Advertisement"
@@ -163,7 +143,7 @@ export default function GameClientUI({
   )
 }
 
-GameClientUI.propTypes = {
+GameClientUI2.propTypes = {
   game: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

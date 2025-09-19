@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import useRandomGame from '../hooks/useRandomGame'
 import { useRandomGameSEO } from '../hooks/useSEO'
-import GameClientUI from '../components/GameClientUI'
+import GameClientUI2 from '../components/GameClientUI2'
 import LoadingStateManager from '../components/LoadingStateManager'
 import { SkeletonGamePage } from '../components/LoadingSkeletons'
 import LoadingSpinner from '../components/LoadingSpinner'
@@ -16,7 +16,7 @@ const GridIcon = () => (
   </svg>
 )
 
-export default function RandomGamePage() {
+export default function RandomGame2Page() {
   const { game, loading, error, refetch } = useRandomGame()
   const navigate = useNavigate()
 
@@ -28,7 +28,7 @@ export default function RandomGamePage() {
   }
 
   const handleMoreGames = () => {
-    navigate('/game')
+    navigate('/game2')
   }
 
   // Custom loading component for random game page
@@ -106,7 +106,7 @@ export default function RandomGamePage() {
       showLoadingDelay={100}
       minLoadingTime={300}
     >
-      <GameClientUI 
+      <GameClientUI2 
         game={game} 
         title="1 DAY 1 GAME"
         showTitle={true}
