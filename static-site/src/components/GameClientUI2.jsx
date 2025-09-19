@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import AdcashAd from './AdcashAd'
 
 const GridIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -107,38 +108,7 @@ export default function GameClientUI2({
 
       {useAdcash && (
         <div className={styles.adContainer}>
-          <iframe 
-            srcDoc={`
-              <!DOCTYPE html>
-              <html>
-              <head>
-                  <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
-                  <style>
-                      body { margin: 0; padding: 0; overflow: hidden; }
-                      * { max-width: 100% !important; max-height: 100px !important; }
-                  </style>
-              </head>
-              <body>
-                  <div>
-                      <script type="text/javascript">
-                          aclib.runBanner({
-                              zoneId: '10422246'
-                          });
-                      </script>
-                  </div>
-              </body>
-              </html>
-            `}
-            sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
-            style={{
-              width: '100%',
-              height: '100px',
-              border: 'none',
-              maxHeight: '100px',
-              overflow: 'hidden'
-            }}
-            title="Advertisement"
-          />
+          <AdcashAd zoneId="10422246" />
         </div>
       )}
     </div>

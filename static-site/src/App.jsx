@@ -19,6 +19,7 @@ const HomePage2 = lazy(() => import('./pages/HomePage2'))
 const Game2Page = lazy(() => import('./pages/Game2Page'))
 const RandomGame2Page = lazy(() => import('./pages/RandomGame2Page'))
 const Play2Page = lazy(() => import('./pages/Play2Page'))
+const AdTestPage = lazy(() => import('./pages/AdTestPage'))
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
@@ -73,6 +74,9 @@ function App() {
                 <Route path="/game2/game" element={<Game2Page />} />
                 <Route path="/game2/random" element={<RandomGame2Page />} />
                 <Route path="/game2/play" element={<Play2Page />} />
+                
+                {/* Ad test page for debugging */}
+                <Route path="/ad-test" element={<AdTestPage />} />
                 
                 <Route path="/privacy-policy" element={<PrivacyPage />} />
                 

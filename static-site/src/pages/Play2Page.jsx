@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { usePlaySEO } from '../hooks/useSEO'
+import AdcashAd from '../components/AdcashAd'
 import styles from '../styles/components/Play.module.css'
 
 const GridIcon = () => (
@@ -90,38 +91,7 @@ turn (
       </div>
 
       <div className={styles.adContainer}>
-        <iframe 
-          srcDoc={`
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
-                <style>
-                    body { margin: 0; padding: 0; overflow: hidden; }
-                    * { max-width: 100% !important; max-height: 100px !important; }
-                </style>
-            </head>
-            <body>
-                <div>
-                    <script type="text/javascript">
-                        aclib.runBanner({
-                            zoneId: '10422246'
-                        });
-                    </script>
-                </div>
-            </body>
-            </html>
-          `}
-          sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
-          style={{
-            width: '100%',
-            height: '100px',
-            border: 'none',
-            maxHeight: '100px',
-            overflow: 'hidden'
-          }}
-          title="Advertisement"
-        />
+        <AdcashAd zoneId="10422246" />
       </div>
     </div>
   )
