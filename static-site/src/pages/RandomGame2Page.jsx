@@ -110,7 +110,12 @@ export default function RandomGame2Page() {
         game={game} 
         title="1 DAY 1 GAME"
         showTitle={true}
-        adConfig={{ type: 'magsrv', zoneId: '5728338' }}
+        adConfig={{ 
+          type: 'magsrv', 
+          zoneId: '5728338',
+          width: 300,
+          height: 50
+        }}
         styles={styles}
       />
     </LoadingStateManager>

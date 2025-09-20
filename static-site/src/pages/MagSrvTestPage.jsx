@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import MagSrvAd from '../components/MagSrvAd'
+import MagSrvIframeAd from '../components/MagSrvIframeAd'
 
 export default function MagSrvTestPage() {
   const [debugInfo, setDebugInfo] = useState({
@@ -51,7 +52,7 @@ export default function MagSrvTestPage() {
         borderRadius: '8px',
         backgroundColor: '#f9f9f9'
       }}>
-        <h3>MagSrv Ad Zone 5728338:</h3>
+        <h3>MagSrv Ad Zone 5728338 (Script Version):</h3>
         <div style={{ 
           border: '1px dashed #999', 
           minHeight: '120px',
@@ -60,6 +61,29 @@ export default function MagSrvTestPage() {
         }}>
           <MagSrvAd zoneId="5728338" />
         </div>
+      </div>
+
+      <div style={{ 
+        border: '2px solid #28a745', 
+        padding: '20px', 
+        margin: '20px 0',
+        borderRadius: '8px',
+        backgroundColor: '#f8fff8'
+      }}>
+        <h3>MagSrv Ad Zone 5728338 (Iframe Version - Used in /game2/random):</h3>
+        <div style={{ 
+          border: '1px dashed #999', 
+          padding: '10px',
+          backgroundColor: 'white',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <MagSrvIframeAd zoneId="5728338" width={300} height={50} />
+        </div>
+        <p style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>
+          This iframe version is now used in /game2/random for better compatibility and fewer DOM errors.
+        </p>
       </div>
 
       <div style={{ 

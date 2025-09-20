@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function MagSrvAd({ zoneId = '5728338', className = '' }) {
+  const containerRef = useRef(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(false)
   const [debugInfo, setDebugInfo] = useState('')
-  const [adHtml, setAdHtml] = useState('')
+  const [scriptLoaded, setScriptLoaded] = useState(false)
 
   useEffect(() => {
     let mounted = true
+    let adInitialized = false
 
     const initializeAd = async () => {
-      if (!mounted) return
+      if (!mounted || !containerRef.current) return
 
       try {
         console.log(`[MagSrvAd] Initializing ad for zone ${zoneId}`)
@@ -37,6 +39,7 @@ export default function MagSrvAd({ zoneId = '5728338', className = '' }) {
             scriptElement.onload = () => {
               console.log('[MagSrvAd] Script loaded successfully')
               setDebugInfo(prev => prev + '\nScript loaded successfully')
+              setScriptLoaded(true)
               resolve()
             }
             scriptElement.onerror = (err) => {
@@ -48,36 +51,42 @@ export default function MagSrvAd({ zoneId = '5728338', className = '' }) {
           })
         } else {
           setDebugInfo(prev => prev + '\nScript already loaded')
+          setScriptLoaded(true)
         }
 
-        // Wait a bit for AdProvider to be ready
-        await new Promise(resolve => setTimeout(resolve, 500))
+        // Wait for AdProvider to be available
+        let attempts = 0
+        while (!window.AdProvider && attempts < 20) {
+          await new Promise(resolve => setTimeout(resolve, 100))
+          attempts++
+        }
 
-        if (!mounted) return
+        if (!mounted || !containerRef.current || adInitialized) return
 
-        // Create the ad HTML structure
-        const adStructure = `<ins class="eas6a97888e10" data-zoneid="${zoneId}"></ins>`
-        setAdHtml(adStructure)
-        setDebugInfo(prev => prev + '\nINS element HTML created')
+        // Clear container safely
+        containerRef.current.innerHTML = ''
         
-        // Initialize AdProvider after a short delay to ensure DOM is ready
-        setTimeout(() => {
-          if (mounted) {
-            try {
-              window.AdProvider = window.AdProvider || []
-              window.AdProvider.push({"serve": {}})
-              console.log(`[MagSrvAd] Ad initialized for zone ${zoneId}`)
-              setDebugInfo(prev => prev + '\nAdProvider initialized')
-              setIsLoading(false)
-              setError(false)
-            } catch (providerError) {
-              console.error('[MagSrvAd] AdProvider error:', providerError)
-              setDebugInfo(prev => prev + '\nAdProvider error: ' + providerError.message)
-              setError(true)
-              setIsLoading(false)
-            }
-          }
-        }, 100)
+        // Create ins element
+        const insElement = document.createElement('ins')
+        insElement.className = 'eas6a97888e10'
+        insElement.setAttribute('data-zoneid', zoneId)
+        
+        // Append to container
+        containerRef.current.appendChild(insElement)
+        setDebugInfo(prev => prev + '\nINS element created and appended')
+        
+        // Initialize AdProvider
+        window.AdProvider = window.AdProvider || []
+        window.AdProvider.push({"serve": {}})
+        adInitialized = true
+        
+        console.log(`[MagSrvAd] Ad initialized for zone ${zoneId}`)
+        setDebugInfo(prev => prev + '\nAdProvider initialized')
+        
+        if (mounted) {
+          setIsLoading(false)
+          setError(false)
+        }
 
       } catch (err) {
         console.error('[MagSrvAd] Error:', err)
@@ -95,6 +104,13 @@ export default function MagSrvAd({ zoneId = '5728338', className = '' }) {
     // Cleanup
     return () => {
       mounted = false
+      if (containerRef.current) {
+        try {
+          containerRef.current.innerHTML = ''
+        } catch (cleanupError) {
+          console.warn('[MagSrvAd] Cleanup warning:', cleanupError)
+        }
+      }
     }
   }, [zoneId])
 
@@ -135,30 +151,36 @@ export default function MagSrvAd({ zoneId = '5728338', className = '' }) {
       style={{
         width: '100%',
         minHeight: '100px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
+        position: 'relative',
         backgroundColor: isLoading ? '#f5f5f5' : 'transparent',
         border: process.env.NODE_ENV === 'development' ? '1px dashed #ccc' : 'none'
       }}
     >
       {isLoading && (
-        <div style={{ color: '#666', fontSize: '14px' }}>
+        <div style={{ 
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          color: '#666', 
+          fontSize: '14px' 
+        }}>
           Loading MagSrv advertisement...
         </div>
       )}
       
-      {!isLoading && !error && adHtml && (
-        <div 
-          dangerouslySetInnerHTML={{ __html: adHtml }}
-          style={{ width: '100%', textAlign: 'center' }}
-        />
-      )}
+      <div 
+        ref={containerRef}
+        style={{ 
+          width: '100%', 
+          minHeight: '100px',
+          textAlign: 'center'
+        }}
+      />
       
       {process.env.NODE_ENV === 'development' && (
         <details style={{ marginTop: '10px', fontSize: '10px', width: '100%' }}>
-          <summary>Debug Info (Zone: {zoneId})</summary>
+          <summary>Debug Info (Zone: {zoneId}) - Script: {scriptLoaded ? '✅' : '❌'}</summary>
           <pre style={{ whiteSpace: 'pre-wrap', maxHeight: '100px', overflow: 'auto', fontSize: '9px' }}>
             {debugInfo}
           </pre>
