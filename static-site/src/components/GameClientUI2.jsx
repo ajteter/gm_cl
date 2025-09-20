@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import AdcashAd from './AdcashAd'
+import MagSrvAd from './MagSrvAd'
 
 const GridIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -67,8 +68,9 @@ export default function GameClientUI2({
     console.error('Failed to load game iframe:', gameUrl)
   }
 
-  // Use Adcash for Game2 - completely different from Game1
-  const useAdcash = adConfig !== null
+  // Determine ad type based on adConfig
+  const useAds = adConfig !== null
+  const adType = adConfig?.type || 'adcash' // default to adcash
 
   return (
     <div className={styles.container}>
@@ -106,9 +108,13 @@ export default function GameClientUI2({
         />
       </div>
 
-      {useAdcash && (
+      {useAds && (
         <div className={styles.adContainer}>
-          <AdcashAd zoneId="10422246" />
+          {adType === 'magsrv' ? (
+            <MagSrvAd zoneId={adConfig.zoneId || '5728338'} />
+          ) : (
+            <AdcashAd zoneId="10422246" />
+          )}
         </div>
       )}
     </div>
@@ -124,11 +130,13 @@ GameClientUI2.propTypes = {
   title: PropTypes.string,
   showTitle: PropTypes.bool,
   adConfig: PropTypes.shape({
-    key: PropTypes.string.isRequired,
-    height: PropTypes.number.isRequired,
-    width: PropTypes.number.isRequired,
-    maxHeight: PropTypes.string.isRequired,
-    script: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(['adcash', 'magsrv']),
+    zoneId: PropTypes.string,
+    key: PropTypes.string,
+    height: PropTypes.number,
+    width: PropTypes.number,
+    maxHeight: PropTypes.string,
+    script: PropTypes.string,
     delay: PropTypes.number
   }),
   styles: PropTypes.object.isRequired,
