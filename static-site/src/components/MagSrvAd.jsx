@@ -1,127 +1,100 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function MagSrvAd({ zoneId = '5728338', className = '' }) {
-  const adRef = useRef(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(false)
   const [debugInfo, setDebugInfo] = useState('')
+  const [adHtml, setAdHtml] = useState('')
 
   useEffect(() => {
-    let timeoutId
-    let retryCount = 0
-    const maxRetries = 3
+    let mounted = true
 
-    const addDebugInfo = (info) => {
-      console.log(`[MagSrvAd] ${info}`)
-      setDebugInfo(prev => prev + `\n${new Date().toLocaleTimeString()}: ${info}`)
-    }
+    const initializeAd = async () => {
+      if (!mounted) return
 
-    const loadMagSrvScript = () => {
-      addDebugInfo(`Loading MagSrv script for zone ${zoneId}`)
-      
-      // Add preconnect for MagSrv if not already present
-      if (!document.querySelector('link[href*="magsrv.com"]')) {
-        const preconnect = document.createElement('link')
-        preconnect.rel = 'preconnect'
-        preconnect.href = 'https://a.magsrv.com'
-        document.head.appendChild(preconnect)
-        addDebugInfo('Added preconnect for magsrv.com')
-      }
+      try {
+        console.log(`[MagSrvAd] Initializing ad for zone ${zoneId}`)
+        setDebugInfo(`Initializing ad for zone ${zoneId}...`)
 
-      // Check if script already exists
-      const existingScript = document.querySelector('script[src*="magsrv.com/ad-provider.js"]')
-      if (existingScript) {
-        addDebugInfo('MagSrv script already exists, initializing ad')
-        // Wait a bit for script to be ready
-        timeoutId = setTimeout(() => {
-          initializeAd()
-        }, 500)
-        return
-      }
+        // Add preconnect for performance
+        if (!document.querySelector('link[href*="magsrv.com"]')) {
+          const preconnect = document.createElement('link')
+          preconnect.rel = 'preconnect'
+          preconnect.href = 'https://a.magsrv.com'
+          document.head.appendChild(preconnect)
+          setDebugInfo(prev => prev + '\nPreconnect added')
+        }
 
-      // Create and load script
-      const script = document.createElement('script')
-      script.async = true
-      script.type = 'application/javascript'
-      script.src = 'https://a.magsrv.com/ad-provider.js'
-      
-      script.onload = () => {
-        addDebugInfo('MagSrv script loaded successfully')
-        // Wait a bit for AdProvider to be ready
-        timeoutId = setTimeout(() => {
-          initializeAd()
-        }, 1000)
-      }
-      
-      script.onerror = () => {
-        addDebugInfo('Failed to load MagSrv script')
-        if (retryCount < maxRetries) {
-          retryCount++
-          addDebugInfo(`Retrying... (${retryCount}/${maxRetries})`)
-          timeoutId = setTimeout(loadMagSrvScript, 2000)
+        // Load script if not already loaded
+        if (!document.querySelector('script[src*="magsrv.com/ad-provider.js"]')) {
+          const scriptElement = document.createElement('script')
+          scriptElement.async = true
+          scriptElement.type = 'application/javascript'
+          scriptElement.src = 'https://a.magsrv.com/ad-provider.js'
+          
+          // Wait for script to load
+          await new Promise((resolve, reject) => {
+            scriptElement.onload = () => {
+              console.log('[MagSrvAd] Script loaded successfully')
+              setDebugInfo(prev => prev + '\nScript loaded successfully')
+              resolve()
+            }
+            scriptElement.onerror = (err) => {
+              console.error('[MagSrvAd] Script load error:', err)
+              setDebugInfo(prev => prev + '\nScript load error: ' + err.message)
+              reject(err)
+            }
+            document.head.appendChild(scriptElement)
+          })
         } else {
+          setDebugInfo(prev => prev + '\nScript already loaded')
+        }
+
+        // Wait a bit for AdProvider to be ready
+        await new Promise(resolve => setTimeout(resolve, 500))
+
+        if (!mounted) return
+
+        // Create the ad HTML structure
+        const adStructure = `<ins class="eas6a97888e10" data-zoneid="${zoneId}"></ins>`
+        setAdHtml(adStructure)
+        setDebugInfo(prev => prev + '\nINS element HTML created')
+        
+        // Initialize AdProvider after a short delay to ensure DOM is ready
+        setTimeout(() => {
+          if (mounted) {
+            try {
+              window.AdProvider = window.AdProvider || []
+              window.AdProvider.push({"serve": {}})
+              console.log(`[MagSrvAd] Ad initialized for zone ${zoneId}`)
+              setDebugInfo(prev => prev + '\nAdProvider initialized')
+              setIsLoading(false)
+              setError(false)
+            } catch (providerError) {
+              console.error('[MagSrvAd] AdProvider error:', providerError)
+              setDebugInfo(prev => prev + '\nAdProvider error: ' + providerError.message)
+              setError(true)
+              setIsLoading(false)
+            }
+          }
+        }, 100)
+
+      } catch (err) {
+        console.error('[MagSrvAd] Error:', err)
+        setDebugInfo(prev => prev + '\nError: ' + err.message)
+        if (mounted) {
           setError(true)
           setIsLoading(false)
         }
       }
-      
-      document.head.appendChild(script)
-      addDebugInfo('MagSrv script element added to head')
     }
 
-    const initializeAd = () => {
-      if (!adRef.current) {
-        addDebugInfo('Ad container ref not available')
-        return
-      }
+    // Start initialization
+    initializeAd()
 
-      try {
-        addDebugInfo('Initializing MagSrv ad')
-        
-        // Create the ins element for the ad
-        const insElement = document.createElement('ins')
-        insElement.className = 'eas6a97888e10'
-        insElement.setAttribute('data-zoneid', zoneId)
-        
-        // Clear any existing content and add the ins element
-        adRef.current.innerHTML = ''
-        adRef.current.appendChild(insElement)
-        
-        addDebugInfo(`Created ins element with zone ID: ${zoneId}`)
-        
-        // Initialize AdProvider
-        window.AdProvider = window.AdProvider || []
-        
-        // Push the serve command
-        window.AdProvider.push({"serve": {}})
-        
-        addDebugInfo(`AdProvider initialized. Queue length: ${window.AdProvider.length}`)
-        
-        setIsLoading(false)
-        setError(false)
-        
-        // Check if ad loaded after a delay
-        timeoutId = setTimeout(() => {
-          const hasAdContent = adRef.current && adRef.current.children.length > 1
-          addDebugInfo(`Ad content check: ${hasAdContent ? 'Content found' : 'No content yet'}`)
-        }, 3000)
-        
-      } catch (err) {
-        addDebugInfo(`Error initializing MagSrv ad: ${err.message}`)
-        setError(true)
-        setIsLoading(false)
-      }
-    }
-
-    // Start loading process
-    addDebugInfo('Starting MagSrv ad loading process')
-    loadMagSrvScript()
-
-    // Cleanup timeout on unmount
+    // Cleanup
     return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId)
-      }
+      mounted = false
     }
   }, [zoneId])
 
@@ -158,7 +131,6 @@ export default function MagSrvAd({ zoneId = '5728338', className = '' }) {
 
   return (
     <div 
-      ref={adRef} 
       className={className}
       style={{
         width: '100%',
@@ -176,6 +148,14 @@ export default function MagSrvAd({ zoneId = '5728338', className = '' }) {
           Loading MagSrv advertisement...
         </div>
       )}
+      
+      {!isLoading && !error && adHtml && (
+        <div 
+          dangerouslySetInnerHTML={{ __html: adHtml }}
+          style={{ width: '100%', textAlign: 'center' }}
+        />
+      )}
+      
       {process.env.NODE_ENV === 'development' && (
         <details style={{ marginTop: '10px', fontSize: '10px', width: '100%' }}>
           <summary>Debug Info (Zone: {zoneId})</summary>
