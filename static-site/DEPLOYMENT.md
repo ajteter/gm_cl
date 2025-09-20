@@ -49,6 +49,26 @@ npm run deploy:production
 
 ### 4. Verify Deployment
 
+After deployment, verify both game systems are working correctly:
+
+#### Game1 System Testing
+```bash
+# Test Game1 system routes
+curl -I https://your-domain.com/game
+curl -I https://your-domain.com/game/random  
+curl -I https://your-domain.com/game/play
+```
+
+#### Game2 System Testing
+```bash
+# Test Game2 system routes
+curl -I https://your-domain.com/game2
+curl -I https://your-domain.com/game2/random
+curl -I https://your-domain.com/game2/play
+```
+
+#### Automated Verification
+
 ```bash
 # Verify staging deployment
 npm run verify:deployment staging

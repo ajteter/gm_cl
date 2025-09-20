@@ -23,6 +23,7 @@
     "test:local": "node scripts/test-local-deployment.js",
     "validate:deployment": "node scripts/validate-deployment.js",
     "verify:build": "node scripts/verify-build.js",
+    "check:systems": "node scripts/check-systems.js",
     "verify:deployment": "node scripts/verify-deployment.js",
     "lighthouse": "npm run build && lhci autorun",
     "lighthouse:desktop": "npm run build && lhci autorun --config=lighthouserc.desktop.json",

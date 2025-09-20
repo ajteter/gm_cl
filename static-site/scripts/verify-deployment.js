@@ -57,8 +57,13 @@ async function testRoutes(baseUrl) {
     { path: '/game2', description: 'Game2 home page' },
     { path: '/game2/random', description: 'Game2 random page' },
     { path: '/game2/play', description: 'Game2 play page' },
+    { path: '/game3', description: 'Game3 home page' },
+    { path: '/game3/random', description: 'Game3 random page' },
+    { path: '/game3/play', description: 'Game3 play page' },
     { path: '/privacy-policy', description: 'Privacy policy page' },
-    { path: '/games.json', description: 'Games data API' }
+    { path: '/games.json', description: 'Games data API' },
+    { path: '/39b8e53b91af37385ca6196b0cac1194.html', description: 'Verification file 1' },
+    { path: '/acecb4390b7130bd0f23691a293133e9.html', description: 'Verification file 2' }
   ];
   
   const results = [];

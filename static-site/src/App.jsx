@@ -19,6 +19,10 @@ const HomePage2 = lazy(() => import('./pages/HomePage2'))
 const Game2Page = lazy(() => import('./pages/Game2Page'))
 const RandomGame2Page = lazy(() => import('./pages/RandomGame2Page'))
 const Play2Page = lazy(() => import('./pages/Play2Page'))
+const HomePage3 = lazy(() => import('./pages/HomePage3'))
+const Game3Page = lazy(() => import('./pages/Game3Page'))
+const RandomGame3Page = lazy(() => import('./pages/RandomGame3Page'))
+const Play3Page = lazy(() => import('./pages/Play3Page'))
 const AdTestPage = lazy(() => import('./pages/AdTestPage'))
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
@@ -74,6 +78,12 @@ function App() {
                 <Route path="/game2/game" element={<Game2Page />} />
                 <Route path="/game2/random" element={<RandomGame2Page />} />
                 <Route path="/game2/play" element={<Play2Page />} />
+                
+                {/* Game3 routes with Game1-based ad configuration */}
+                <Route path="/game3" element={<HomePage3 />} />
+                <Route path="/game3/game" element={<Game3Page />} />
+                <Route path="/game3/random" element={<RandomGame3Page />} />
+                <Route path="/game3/play" element={<Play3Page />} />
                 
                 {/* Ad test page for debugging */}
                 <Route path="/ad-test" element={<AdTestPage />} />

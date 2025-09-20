@@ -6,6 +6,7 @@ A static HTML5 games portal built with React and Vite, deployed on Cloudflare Pa
 
 - **Purely Static**: No server-side rendering or functions - just HTML, CSS, and JavaScript
 - **Fast Performance**: Built with Vite for optimal build times and bundle sizes
+- **Dual Game Systems**: Independent Game1 and Game2 systems with different ad networks
 - **Game Portal**: Browse and play HTML5 games from GameMonetize
 - **Daily Random Games**: Deterministic daily game selection
 - **Responsive Design**: Works on desktop and mobile devices
@@ -27,16 +28,33 @@ A static HTML5 games portal built with React and Vite, deployed on Cloudflare Pa
 ```
 ├── static-site/                 # Main application directory
 │   ├── src/
-│   │   ├── components/         # React components
-│   │   ├── pages/             # Page components
+│   │   ├── components/         # React components (Game1 & Game2 systems)
+│   │   ├── pages/             # Page components (Game1 & Game2 systems)
 │   │   ├── hooks/             # Custom React hooks
 │   │   ├── utils/             # Utility functions
 │   │   └── styles/            # CSS modules and global styles
 │   ├── public/                # Static assets
 │   ├── scripts/               # Build and deployment scripts
+│   ├── GAME_SYSTEMS_ARCHITECTURE.md  # Dual system architecture documentation
 │   └── dist/                  # Build output (generated)
 └── .kiro/specs/               # Project specifications and documentation
 ```
+
+## 🎮 Game Systems
+
+This project implements two independent game systems:
+
+### Game1 System (`/game` routes)
+- **Routes**: `/game`, `/game/random`, `/game/play`
+- **Ad Network**: Original ad network (iframe-based)
+- **Components**: `GameClientUI`, `GameList`, `GameCard`, etc.
+
+### Game2 System (`/game2` routes)  
+- **Routes**: `/game2`, `/game2/random`, `/game2/play`
+- **Ad Network**: Adcash (direct page rendering)
+- **Components**: `GameClientUI2`, `GameList2`, `GameCard2`, etc.
+
+For detailed architecture documentation, see `static-site/GAME_SYSTEMS_ARCHITECTURE.md`.
 
 ## 🛠️ Development
 
