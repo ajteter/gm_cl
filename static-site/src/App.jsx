@@ -24,6 +24,7 @@ const Game3Page = lazy(() => import('./pages/Game3Page'))
 const RandomGame3Page = lazy(() => import('./pages/RandomGame3Page'))
 const Play3Page = lazy(() => import('./pages/Play3Page'))
 const AdTestPage = lazy(() => import('./pages/AdTestPage'))
+const MagSrvTestPage = lazy(() => import('./pages/MagSrvTestPage'))
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
@@ -85,8 +86,9 @@ function App() {
                 <Route path="/game3/random" element={<RandomGame3Page />} />
                 <Route path="/game3/play" element={<Play3Page />} />
                 
-                {/* Ad test page for debugging */}
+                {/* Ad test pages for debugging */}
                 <Route path="/ad-test" element={<AdTestPage />} />
+                <Route path="/magsrv-test" element={<MagSrvTestPage />} />
                 
                 <Route path="/privacy-policy" element={<PrivacyPage />} />
                 
