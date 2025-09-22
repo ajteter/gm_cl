@@ -112,7 +112,7 @@ export default function RandomGame2Page() {
         showTitle={true}
         adConfig={{ 
           type: 'magsrv', 
-          zoneId: '5728338',
+          zoneId: '5729198',
           width: 300,
           height: 50
         }}

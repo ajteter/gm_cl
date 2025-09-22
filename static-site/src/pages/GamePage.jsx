@@ -108,13 +108,13 @@ export default function GamePage() {
     )
   }
 
-  // Ad configuration for game page (different from random game page)
+  // Ad configuration for game page (same as list page)
   const gamePageAdConfig = {
-    key: '9adddfc2b9f962e7595071bcbd5cc4e5',
-    height: 50,
-    width: 320,
-    maxHeight: '50px',
-    script: '//www.highperformanceformat.com/9adddfc2b9f962e7595071bcbd5cc4e5/invoke.js',
+    key: '268fd9be7cb5acbc21f157c5611ba04f',
+    height: 250,
+    width: 300,
+    maxHeight: '250px',
+    script: '//www.highperformanceformat.com/268fd9be7cb5acbc21f157c5611ba04f/invoke.js',
     delay: 0 // No delay for game page ads
   }
 

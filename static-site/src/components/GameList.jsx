@@ -17,29 +17,29 @@ export default function GameList({ items }) {
                     <head>
                       <style>
                         body { margin: 0; padding: 0; overflow: hidden; }
-                        * { max-width: 100% !important; max-height: 50px !important; }
+                        * { max-width: 100% !important; max-height: 250px !important; }
                       </style>
                     </head>
                     <body>
                       <script type="text/javascript">
                         window.atOptions = {
-                          'key': '9adddfc2b9f962e7595071bcbd5cc4e5',
+                          'key': '268fd9be7cb5acbc21f157c5611ba04f',
                           'format': 'iframe',
-                          'height': 50,
-                          'width': 320,
+                          'height': 250,
+                          'width': 300,
                           'params': {}
                         };
                       </script>
-                      <script type="text/javascript" src="//www.highperformanceformat.com/9adddfc2b9f962e7595071bcbd5cc4e5/invoke.js"></script>
+                      <script type="text/javascript" src="//www.highperformanceformat.com/268fd9be7cb5acbc21f157c5611ba04f/invoke.js"></script>
                     </body>
                     </html>
                   `}
                   sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
                   style={{
                     width: '100%',
-                    height: '50px',
+                    height: '250px',
                     border: 0,
-                    maxHeight: '50px',
+                    maxHeight: '250px',
                     overflow: 'hidden'
                   }}
                   title="Advertisement"

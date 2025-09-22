@@ -97,29 +97,29 @@ export default function PlayPage() {
             <head>
                 <style>
                     body { margin: 0; padding: 0; overflow: hidden; }
-                    * { max-width: 100% !important; max-height: 250px !important; }
+                    * { max-width: 100% !important; max-height: 50px !important; }
                 </style>
             </head>
             <body>
                 <script type="text/javascript">
                     window.atOptions = {
-                        'key': '268fd9be7cb5acbc21f157c5611ba04f',
+                        'key': '9adddfc2b9f962e7595071bcbd5cc4e5',
                         'format': 'iframe',
-                        'height': 250,
-                        'width': 300,
+                        'height': 50,
+                        'width': 320,
                         'params': {}
                     };
                 </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/268fd9be7cb5acbc21f157c5611ba04f/invoke.js"></script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/9adddfc2b9f962e7595071bcbd5cc4e5/invoke.js"></script>
             </body>
             </html>
           `}
           sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
           style={{
             width: '100%',
-            height: '250px',
+            height: '50px',
             border: 'none',
-            maxHeight: '250px',
+            maxHeight: '50px',
             overflow: 'hidden'
           }}
           title="Advertisement"

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { usePlaySEO } from '../hooks/useSEO'
-import AdcashAd from '../components/AdcashAd'
+import MagSrvIframeAd from '../components/MagSrvIframeAd'
 import styles from '../styles/components/Play.module.css'
 
 const GridIcon = () => (
@@ -91,7 +91,7 @@ turn (
       </div>
 
       <div className={styles.adContainer}>
-        <AdcashAd zoneId="10422246" />
+        <MagSrvIframeAd zoneId="5729198" width={300} height={50} />
       </div>
     </div>
   )

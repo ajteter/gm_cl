@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import AdcashAd from './AdcashAd'
 import MagSrvIframeAd from './MagSrvIframeAd'
 
 const GridIcon = () => (
@@ -70,7 +69,6 @@ export default function GameClientUI2({
 
   // Determine ad type based on adConfig
   const useAds = adConfig !== null
-  const adType = adConfig?.type || 'adcash' // default to adcash
 
   return (
     <div className={styles.container}>
@@ -110,15 +108,11 @@ export default function GameClientUI2({
 
       {useAds && (
         <div className={styles.adContainer}>
-          {adType === 'magsrv' ? (
-            <MagSrvIframeAd 
-              zoneId={adConfig.zoneId || '5728338'} 
-              width={adConfig.width || 300}
-              height={adConfig.height || 50}
-            />
-          ) : (
-            <AdcashAd zoneId="10422246" />
-          )}
+          <MagSrvIframeAd 
+            zoneId={adConfig.zoneId || '5729198'} 
+            width={adConfig.width || 300}
+            height={adConfig.height || 50}
+          />
         </div>
       )}
     </div>
@@ -134,14 +128,9 @@ GameClientUI2.propTypes = {
   title: PropTypes.string,
   showTitle: PropTypes.bool,
   adConfig: PropTypes.shape({
-    type: PropTypes.oneOf(['adcash', 'magsrv']),
     zoneId: PropTypes.string,
-    key: PropTypes.string,
     height: PropTypes.number,
-    width: PropTypes.number,
-    maxHeight: PropTypes.string,
-    script: PropTypes.string,
-    delay: PropTypes.number
+    width: PropTypes.number
   }),
   styles: PropTypes.object.isRequired,
   onMoreGames: PropTypes.func

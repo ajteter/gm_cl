@@ -113,6 +113,12 @@ export default function Game2Page() {
       game={selectedGame} 
       title={selectedGame.title}
       showTitle={true}
+      adConfig={{ 
+        type: 'magsrv', 
+        zoneId: '5729202',
+        width: 300,
+        height: 250
+      }}
       styles={styles}
       onMoreGames={handleMoreGames}
     />
