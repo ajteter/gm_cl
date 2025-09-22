@@ -1,25 +1,51 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function MagSrvIframeAd({ 
   zoneId = '5728338', 
   width = 300, 
   height = 50, 
-  className = '' 
+  className = '',
+  timeout = 10000 // 10 seconds timeout for WebView
 }) {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(false)
+  const timeoutRef = useRef(null)
+  const iframeRef = useRef(null)
 
   const handleLoad = () => {
     console.log(`[MagSrvIframeAd] Iframe loaded for zone ${zoneId}`)
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
     setIsLoading(false)
     setError(false)
   }
 
   const handleError = () => {
     console.error(`[MagSrvIframeAd] Iframe failed to load for zone ${zoneId}`)
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
     setIsLoading(false)
     setError(true)
   }
+
+  // WebView-specific timeout handling
+  useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+      if (isLoading) {
+        console.warn(`[MagSrvIframeAd] Timeout loading ad for zone ${zoneId}`)
+        setIsLoading(false)
+        setError(true)
+      }
+    }, timeout)
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [zoneId, timeout, isLoading])
 
   if (error) {
     return (
@@ -71,6 +97,7 @@ export default function MagSrvIframeAd({
       )}
       
       <iframe 
+        ref={iframeRef}
         src={`//a.magsrv.com/iframe.php?idzone=${zoneId}&size=${width}x${height}`}
         width={width}
         height={height}
@@ -87,6 +114,10 @@ export default function MagSrvIframeAd({
           height: '100%'
         }}
         title={`MagSrv Advertisement Zone ${zoneId}`}
+        // WebView optimizations
+        sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
       />
       
       {process.env.NODE_ENV === 'development' && (

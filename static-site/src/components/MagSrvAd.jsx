@@ -64,12 +64,16 @@ export default function MagSrvAd({ zoneId = '5728338', className = '' }) {
         if (!mounted || !containerRef.current || adInitialized) return
 
         // Clear container safely
-        containerRef.current.innerHTML = ''
+        while (containerRef.current.firstChild) {
+          containerRef.current.removeChild(containerRef.current.firstChild)
+        }
         
-        // Create ins element
+        // Create ins element with safe attribute setting
         const insElement = document.createElement('ins')
         insElement.className = 'eas6a97888e10'
-        insElement.setAttribute('data-zoneid', zoneId)
+        // Validate zoneId to prevent XSS
+        const safeZoneId = String(zoneId).replace(/[^a-zA-Z0-9]/g, '')
+        insElement.setAttribute('data-zoneid', safeZoneId)
         
         // Append to container
         containerRef.current.appendChild(insElement)
@@ -106,7 +110,9 @@ export default function MagSrvAd({ zoneId = '5728338', className = '' }) {
       mounted = false
       if (containerRef.current) {
         try {
-          containerRef.current.innerHTML = ''
+          while (containerRef.current.firstChild) {
+            containerRef.current.removeChild(containerRef.current.firstChild)
+          }
         } catch (cleanupError) {
           console.warn('[MagSrvAd] Cleanup warning:', cleanupError)
         }
