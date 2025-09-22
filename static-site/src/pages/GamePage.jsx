@@ -111,9 +111,9 @@ export default function GamePage() {
   // Ad configuration for game page (different from random game page)
   const gamePageAdConfig = {
     key: '9adddfc2b9f962e7595071bcbd5cc4e5',
-    height: 90,
-    width: 728,
-    maxHeight: '90px',
+    height: 50,
+    width: 320,
+    maxHeight: '50px',
     script: '//www.highperformanceformat.com/9adddfc2b9f962e7595071bcbd5cc4e5/invoke.js',
     delay: 0 // No delay for game page ads
   }
