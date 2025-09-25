@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import HdbkomeAd from './HdbkomeAd'
 
 const GridIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -114,52 +115,9 @@ export default function GameClientUI3({
         />
       </div>
 
-      {finalAdConfig && (
-        <div className={styles.adContainer}>
-          <iframe 
-            srcDoc={`
-              <!DOCTYPE html>
-              <html>
-              <head>
-                  <style>
-                      body { margin: 0; padding: 0; overflow: hidden; }
-                      * { max-width: 100% !important; max-height: ${finalAdConfig.maxHeight} !important; }
-                  </style>
-              </head>
-              <body>
-                  <script>
-                      // Game3 specific ad loading with delay
-                      setTimeout(() => {
-                          const script = document.createElement('script');
-                          script.type = 'text/javascript';
-                          script.src = '${finalAdConfig.script}';
-                          
-                          window.atOptions = {
-                              'key': '${finalAdConfig.key}',
-                              'format': 'iframe',
-                              'height': ${finalAdConfig.height},
-                              'width': ${finalAdConfig.width},
-                              'params': {}
-                          };
-                          
-                          document.body.appendChild(script);
-                      }, ${finalAdConfig.delay});
-                  </script>
-              </body>
-              </html>
-            `}
-            sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
-            style={{
-              width: '100%',
-              height: `${finalAdConfig.height}px`,
-              border: 'none',
-              maxHeight: finalAdConfig.maxHeight,
-              overflow: 'hidden'
-            }}
-            title="Advertisement"
-          />
-        </div>
-      )}
+      <div className={styles.adContainer}>
+        <HdbkomeAd />
+      </div>
     </div>
   )
 }

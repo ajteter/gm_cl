@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { usePlaySEO } from '../hooks/useSEO'
+import HdbkomeAd from '../components/HdbkomeAd'
 import styles from '../styles/components/Play.module.css'
 
 const GridIcon = () => (
@@ -90,40 +91,7 @@ export default function Play3Page() {
       </div>
 
       <div className={styles.adContainer}>
-        <iframe 
-          srcDoc={`
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <style>
-                    body { margin: 0; padding: 0; overflow: hidden; }
-                    * { max-width: 100% !important; max-height: 90px !important; }
-                </style>
-            </head>
-            <body>
-                <script type="text/javascript">
-                    window.atOptions = {
-                        'key': 'GAME3_PLAY_AD_KEY_PLACEHOLDER',
-                        'format': 'iframe',
-                        'height': 90,
-                        'width': 728,
-                        'params': {}
-                    };
-                </script>
-                <script type="text/javascript" src="//GAME3_PLAY_AD_SCRIPT_URL_PLACEHOLDER/invoke.js"></script>
-            </body>
-            </html>
-          `}
-          sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
-          style={{
-            width: '100%',
-            height: '90px',
-            border: 'none',
-            maxHeight: '90px',
-            overflow: 'hidden'
-          }}
-          title="Advertisement"
-        />
+        <HdbkomeAd />
       </div>
     </div>
   )
