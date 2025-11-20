@@ -27,27 +27,19 @@
 
 在实施过程中，我们遇到并解决了一连串的构建错误，这个过程体现了逐步深入的问题排查：
 
-1.  **错误: `Module not found: @cloudflare/next-on-pages/getContext`**
-    *   **原因**: 缺少访问 Cloudflare 原生功能的依赖包。
-    *   **解决**: 安装了 `@cloudflare/next-on-pages`。
-
-2.  **警告: `Package no longer supported`**
-    *   **原因**: 发现刚刚安装的包已被弃用，这揭示了最初的技术选型错误。
-    *   **解决**: 卸载了废弃的包，并通过查阅文档找到了在 OpenNext 环境下访问绑定的正确方式 (`process.env`)，并相应地修改了代码。
-
-3.  **错误: `react/no-unescaped-entities`**
+1.  **错误: `react/no-unescaped-entities`**
     *   **原因**: ESLint 的严格规则导致构建失败，原因是隐私政策页面中存在一个未转义的单引号。
     *   **解决**: 根据您的要求，我们直接删除了包含该单引号的相关段落，一并解决了内容和格式问题。
 
-4.  **错误: `Interface 'CloudflareEnv' incorrectly extends interface 'Env'`**
+2.  **错误: `Interface 'CloudflareEnv' incorrectly extends interface 'Env'`**
     *   **原因**: TypeScript 类型冲突，由一个意外复制产生的 `env.d 2.ts` 文件导致。
     *   **解决**: 删除了这个多余的类型定义文件。
 
-5.  **错误: `OpenNext requires edge runtime function...`**
+3.  **错误: `OpenNext requires edge runtime function...`**
     *   **原因**: OpenNext 部署工具与 Next.js 的标准 `export const runtime = 'edge';` 用法存在冲突。
     *   **解决**: 考虑到整个应用都运行在边缘环境，我们删除了这个多余且导致冲突的声明。
 
-6.  **错误: `'CONFIG' is defined but never used`**
+4.  **错误: `'CONFIG' is defined but never used`**
     *   **原因**: 在根据您的要求更新了一个广告位脚本后，原有的 `CONFIG` 变量导入不再被使用。
     *   **解决**: 删除了这个无用的 import 语句。
 

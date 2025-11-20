@@ -52,7 +52,7 @@ export default function GameClientUI({
     if (onMoreGames) {
       onMoreGames()
     } else {
-      navigate('/game')
+      navigate('/')
     }
   }
 

@@ -28,7 +28,7 @@ export default function RandomGamePage() {
   }
 
   const handleMoreGames = () => {
-    navigate('/game')
+    navigate('/')
   }
 
   // Custom loading component for random game page
