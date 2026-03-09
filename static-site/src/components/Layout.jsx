@@ -11,7 +11,7 @@ function Layout({ children }) {
     // Set default title
     let title = 'H5 Games - Free Mobile Games'
     let description = 'Play free HTML5 games on mobile. Fast loading games optimized for mobile webview.'
-    
+
     // Customize based on route
     switch (location.pathname) {
       case '/game':

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import performanceMonitor from '../utils/performanceMonitoring';
-import styles from '../styles/components/PerformanceDashboard.module.css';
 
 /**
  * Performance Dashboard Component
@@ -48,89 +47,89 @@ const PerformanceDashboard = () => {
   };
 
   return (
-    <div className={styles.dashboard}>
-      <button 
-        className={styles.toggle}
+    <div className="fixed bottom-4 right-4 z-50">
+      <button
+        className="w-10 h-10 rounded-full bg-slate-800 border border-white/20 text-xl shadow-lg cursor-pointer flex items-center justify-center hover:bg-slate-700 hover:scale-105 transition-all text-white"
         onClick={() => setIsVisible(!isVisible)}
         title="Toggle Performance Dashboard"
       >
         📊
       </button>
-      
+
       {isVisible && (
-        <div className={styles.panel}>
-          <div className={styles.header}>
-            <h3>Performance Metrics</h3>
-            <button 
-              className={styles.close}
+        <div className="absolute bottom-14 right-0 w-80 bg-slate-900 border border-white/20 rounded-xl shadow-2xl p-4 text-white font-sans text-sm animate-fade-in">
+          <div className="flex justify-between items-center mb-4 pb-2 border-b border-white/10">
+            <h3 className="m-0 font-medium text-white/90">Performance Metrics</h3>
+            <button
+              className="bg-transparent border-none text-white/50 text-xl cursor-pointer hover:text-white"
               onClick={() => setIsVisible(false)}
             >
               ×
             </button>
           </div>
-          
-          <div className={styles.metrics}>
-            <div className={styles.section}>
-              <h4>Core Web Vitals</h4>
-              <div className={styles.metric}>
-                <span className={styles.label}>LCP:</span>
-                <span 
-                  className={styles.value}
+
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <h4 className="m-0 text-white/50 text-xs uppercase tracking-wider mb-1">Core Web Vitals</h4>
+              <div className="flex items-center justify-between py-1 border-b border-white/5 last:border-0">
+                <span className="text-white/70 w-24">LCP:</span>
+                <span
+                  className="font-mono text-right flex-1"
                   style={{ color: getScoreColor(scores.lcp) }}
                 >
                   {formatValue(metrics.lcp)}
                 </span>
-                <span className={styles.score}>{scores.lcp || 'pending'}</span>
+                <span className="ml-2 text-xs px-2 py-0.5 rounded-sm bg-white/10 uppercase">{scores.lcp || 'pending'}</span>
               </div>
-              
-              <div className={styles.metric}>
-                <span className={styles.label}>FID:</span>
-                <span 
-                  className={styles.value}
+
+              <div className="flex items-center justify-between py-1 border-b border-white/5 last:border-0">
+                <span className="text-white/70 w-24">FID:</span>
+                <span
+                  className="font-mono text-right flex-1"
                   style={{ color: getScoreColor(scores.fid) }}
                 >
                   {formatValue(metrics.fid)}
                 </span>
-                <span className={styles.score}>{scores.fid || 'pending'}</span>
+                <span className="ml-2 text-xs px-2 py-0.5 rounded-sm bg-white/10 uppercase">{scores.fid || 'pending'}</span>
               </div>
-              
-              <div className={styles.metric}>
-                <span className={styles.label}>CLS:</span>
-                <span 
-                  className={styles.value}
+
+              <div className="flex items-center justify-between py-1 border-b border-white/5 last:border-0">
+                <span className="text-white/70 w-24">CLS:</span>
+                <span
+                  className="font-mono text-right flex-1"
                   style={{ color: getScoreColor(scores.cls) }}
                 >
                   {formatValue(metrics.cls, '')}
                 </span>
-                <span className={styles.score}>{scores.cls || 'pending'}</span>
+                <span className="ml-2 text-xs px-2 py-0.5 rounded-sm bg-white/10 uppercase">{scores.cls || 'pending'}</span>
               </div>
             </div>
-            
-            <div className={styles.section}>
-              <h4>Other Metrics</h4>
-              <div className={styles.metric}>
-                <span className={styles.label}>FCP:</span>
-                <span className={styles.value}>{formatValue(metrics.fcp)}</span>
+
+            <div className="flex flex-col gap-2">
+              <h4 className="m-0 text-white/50 text-xs uppercase tracking-wider mb-1">Other Metrics</h4>
+              <div className="flex items-center justify-between py-1 border-b border-white/5 last:border-0">
+                <span className="text-white/70 w-24">FCP:</span>
+                <span className="font-mono text-right flex-1">{formatValue(metrics.fcp)}</span>
               </div>
-              
-              <div className={styles.metric}>
-                <span className={styles.label}>TTFB:</span>
-                <span className={styles.value}>{formatValue(metrics.ttfb)}</span>
+
+              <div className="flex items-center justify-between py-1 border-b border-white/5 last:border-0">
+                <span className="text-white/70 w-24">TTFB:</span>
+                <span className="font-mono text-right flex-1">{formatValue(metrics.ttfb)}</span>
               </div>
-              
-              <div className={styles.metric}>
-                <span className={styles.label}>DOM Ready:</span>
-                <span className={styles.value}>{formatValue(metrics.domContentLoaded)}</span>
+
+              <div className="flex items-center justify-between py-1 border-b border-white/5 last:border-0">
+                <span className="text-white/70 w-24">DOM Ready:</span>
+                <span className="font-mono text-right flex-1">{formatValue(metrics.domContentLoaded)}</span>
               </div>
-              
-              <div className={styles.metric}>
-                <span className={styles.label}>Load Complete:</span>
-                <span className={styles.value}>{formatValue(metrics.loadComplete)}</span>
+
+              <div className="flex items-center justify-between py-1 border-b border-white/5 last:border-0">
+                <span className="text-white/70 w-24">Load Complete:</span>
+                <span className="font-mono text-right flex-1">{formatValue(metrics.loadComplete)}</span>
               </div>
             </div>
           </div>
-          
-          <div className={styles.footer}>
+
+          <div className="mt-4 pt-2 border-t border-white/10 text-center text-white/40 text-[10px]">
             <small>Development only - Core Web Vitals monitoring</small>
           </div>
         </div>

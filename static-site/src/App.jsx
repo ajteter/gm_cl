@@ -15,14 +15,6 @@ const HomePage = lazy(() => import('./pages/HomePage'))
 const GamePage = lazy(() => import('./pages/GamePage'))
 const RandomGamePage = lazy(() => import('./pages/RandomGamePage'))
 const PlayPage = lazy(() => import('./pages/PlayPage'))
-const HomePage2 = lazy(() => import('./pages/HomePage2'))
-const Game2Page = lazy(() => import('./pages/Game2Page'))
-const RandomGame2Page = lazy(() => import('./pages/RandomGame2Page'))
-const Play2Page = lazy(() => import('./pages/Play2Page'))
-const HomePage3 = lazy(() => import('./pages/HomePage3'))
-const Game3Page = lazy(() => import('./pages/Game3Page'))
-const RandomGame3Page = lazy(() => import('./pages/RandomGame3Page'))
-const Play3Page = lazy(() => import('./pages/Play3Page'))
 const AdTestPage = lazy(() => import('./pages/AdTestPage'))
 const MagSrvTestPage = lazy(() => import('./pages/MagSrvTestPage'))
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
@@ -46,7 +38,7 @@ function App() {
       console.error('App Error:', error)
       console.error('Error Info:', errorInfo)
     }
-    
+
     // In production, you might want to send to error tracking service
     // Example: logErrorToService(error, errorInfo)
   }
@@ -58,12 +50,12 @@ function App() {
   }
 
   return (
-    <ErrorBoundary 
+    <ErrorBoundary
       FallbackComponent={ErrorFallback}
       onError={handleError}
       onReset={handleReset}
     >
-      <div className="app">
+      <div className="min-h-screen bg-background text-text-main font-sans antialiased text-white selection:bg-primary/30">
         <Router>
           <Layout>
             <Suspense fallback={<LoadingSpinner />}>
@@ -73,42 +65,34 @@ function App() {
                 <Route path="/game" element={<GamePage />} />
                 <Route path="/game/random" element={<RandomGamePage />} />
                 <Route path="/game/play" element={<PlayPage />} />
-                
-                {/* Game2 routes with different ad configuration */}
-                <Route path="/game2" element={<HomePage2 />} />
-                <Route path="/game2/game" element={<Game2Page />} />
-                <Route path="/game2/random" element={<RandomGame2Page />} />
-                <Route path="/game2/play" element={<Play2Page />} />
-                
-                {/* Game3 routes with Game1-based ad configuration */}
-                <Route path="/game3" element={<HomePage3 />} />
-                <Route path="/game3/game" element={<Game3Page />} />
-                <Route path="/game3/random" element={<RandomGame3Page />} />
-                <Route path="/game3/play" element={<Play3Page />} />
-                
+
                 {/* Ad test pages for debugging */}
                 <Route path="/ad-test" element={<AdTestPage />} />
                 <Route path="/magsrv-test" element={<MagSrvTestPage />} />
-                
+
                 <Route path="/privacy-policy" element={<PrivacyPage />} />
-                
+
                 {/* Direct GPV route - redirects to daily game */}
                 <Route path="/game/direct/gpv" element={<DirectGpvRedirect />} />
-                
+
                 {/* Legacy redirects for old source-based routes */}
                 <Route path="/source/:sourceName" element={<Navigate to="/game" replace />} />
                 <Route path="/source/:sourceName/random" element={<Navigate to="/game/random" replace />} />
-                
+
+                {/* Redirect removed game2/game3 routes to main routes */}
+                <Route path="/game2/*" element={<Navigate to="/game" replace />} />
+                <Route path="/game3/*" element={<Navigate to="/game" replace />} />
+
                 {/* Additional legacy route patterns that might exist */}
                 <Route path="/game/direct" element={<Navigate to="/game" replace />} />
-                
+
                 {/* 404 page - must be last */}
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </Suspense>
           </Layout>
         </Router>
-        
+
         {/* Performance monitoring dashboard (development only) */}
         <PerformanceDashboard />
       </div>

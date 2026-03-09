@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -26,13 +27,13 @@ export default defineConfig({
             // Other vendor libraries
             return 'vendor';
           }
-          
+
           // Component chunks for lazy loading
           if (id.includes('/pages/')) {
             const pageName = id.split('/pages/')[1].split('.')[0];
             return `page-${pageName.toLowerCase()}`;
           }
-          
+
           // Utility chunks
           if (id.includes('/hooks/') || id.includes('/utils/')) {
             return 'utils';
