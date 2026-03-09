@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import LoadingSpinner, { LoadingDots, LoadingProgressBar } from './LoadingSpinner'
-import { 
-  SkeletonGameList, 
-  SkeletonGamePage, 
-  SkeletonTextBlock 
+import {
+  SkeletonGameList,
+  SkeletonGamePage,
+  SkeletonTextBlock
 } from './LoadingSkeletons'
 
 /**
@@ -36,7 +36,7 @@ function LoadingStateManager({
 
     if (loading) {
       loadingStartTime.current = Date.now()
-      
+
       // Show loading after delay
       if (showLoadingDelay > 0) {
         delayTimer = setTimeout(() => {
@@ -68,7 +68,7 @@ function LoadingStateManager({
           return
         }
       }
-      
+
       // Reset immediately if no minimum time or time has elapsed
       setShowLoading(false)
       setMinTimeElapsed(false)
@@ -120,7 +120,7 @@ function LoadingStateManager({
           <h3>Something went wrong</h3>
           <p>{error}</p>
           {retryFunction && (
-            <button 
+            <button
               onClick={retryFunction}
               className="retry-button"
             >
@@ -144,7 +144,7 @@ function LoadingStateManager({
           <h3>No data available</h3>
           <p>There's nothing to show right now.</p>
           {retryFunction && (
-            <button 
+            <button
               onClick={retryFunction}
               className="retry-button"
             >
@@ -158,32 +158,32 @@ function LoadingStateManager({
 
   // Main render logic
   const containerClasses = [
-    'loading-state-manager',
+    'relative w-full',
     className
   ].filter(Boolean).join(' ')
 
   return (
     <div className={containerClasses}>
       {shouldShowLoading && (
-        <div className="loading-overlay">
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-background/50 backdrop-blur-sm rounded-xl">
           {renderLoading()}
         </div>
       )}
-      
+
       {error && !loading && (
-        <div className="error-overlay">
+        <div className="py-12 px-6 text-center">
           {renderError()}
         </div>
       )}
-      
+
       {!loading && !error && (!data || (Array.isArray(data) && data.length === 0)) && (
-        <div className="empty-overlay">
+        <div className="py-12 px-6 text-center">
           {renderEmpty()}
         </div>
       )}
-      
-      {!loading && !error && data && (
-        <div className="content-container">
+
+      {(!loading || !shouldShowLoading) && !error && data && (
+        <div className="w-full">
           {children}
         </div>
       )}
@@ -196,11 +196,11 @@ LoadingStateManager.propTypes = {
   error: PropTypes.string,
   data: PropTypes.any,
   loadingType: PropTypes.oneOf([
-    'spinner', 
-    'dots', 
-    'progress', 
-    'skeleton-games', 
-    'skeleton-game', 
+    'spinner',
+    'dots',
+    'progress',
+    'skeleton-games',
+    'skeleton-game',
     'skeleton-text'
   ]),
   loadingText: PropTypes.string,

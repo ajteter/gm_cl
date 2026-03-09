@@ -8,7 +8,7 @@ import LoadingSpinner from './components/LoadingSpinner'
 import PerformanceDashboard from './components/PerformanceDashboard'
 import { initializePerformanceOptimizations } from './utils/performanceUtils'
 import performanceMonitor from './utils/performanceMonitoring'
-import './App.css'
+
 
 // Lazy load page components for code splitting
 const HomePage = lazy(() => import('./pages/HomePage'))

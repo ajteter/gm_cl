@@ -1,5 +1,5 @@
 import GameCard from './GameCard'
-import styles from '../styles/components/GameList.module.css'
+
 
 export default function GameList({ items }) {
   return (

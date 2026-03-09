@@ -7,30 +7,16 @@ import { LoadingSkeleton } from './LoadingSpinner'
  */
 function SkeletonGameCard({ className = '' }) {
   return (
-    <li className={`card ${className}`}>
-      <div className="media">
-        <LoadingSkeleton 
-          width="100%" 
-          height="200px" 
-          className="skeleton-thumb"
-        />
+    <li className={`flex flex-col bg-card border border-card-border rounded-xl overflow-hidden w-full ${className}`}>
+      <div className="relative w-full aspect-video sm:aspect-[4/3] bg-background/50 overflow-hidden">
+        <LoadingSkeleton width="100%" height="100%" />
       </div>
-      <div className="content">
-        <LoadingSkeleton 
-          width="80%" 
-          height="1.25rem" 
-          className="skeleton-title"
-        />
-        <LoadingSkeleton 
-          width="60%" 
-          height="1rem" 
-          className="skeleton-category"
-        />
-        <LoadingSkeleton 
-          width="40%" 
-          height="0.875rem" 
-          className="skeleton-meta"
-        />
+      <div className="p-4 flex flex-col flex-1 gap-3">
+        <LoadingSkeleton width="80%" height="1.25rem" />
+        <LoadingSkeleton width="100%" height="3rem" />
+        <div className="mt-auto pt-2">
+          <LoadingSkeleton width="100%" height="3rem" className="rounded-xl" />
+        </div>
       </div>
     </li>
   )
@@ -45,7 +31,7 @@ SkeletonGameCard.propTypes = {
  */
 function SkeletonGameList({ count = 10, className = '' }) {
   return (
-    <ul className={`grid onecol ${className}`}>
+    <ul className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-0 m-0 list-none w-full ${className}`}>
       {Array.from({ length: count }, (_, index) => (
         <SkeletonGameCard key={index} />
       ))}
@@ -63,33 +49,26 @@ SkeletonGameList.propTypes = {
  */
 function SkeletonGamePage({ className = '' }) {
   return (
-    <div className={`game-page-skeleton ${className}`}>
-      <div className="game-header-skeleton">
-        <LoadingSkeleton 
-          width="60%" 
-          height="2rem" 
-          className="skeleton-game-title"
-        />
-        <LoadingSkeleton 
-          width="40%" 
-          height="1rem" 
-          className="skeleton-game-meta"
-        />
+    <div className={`flex flex-col h-[100dvh] w-full bg-black overflow-hidden relative ${className}`}>
+      {/* Fake Header */}
+      <div className="flex-shrink-0 flex items-center justify-between px-4 py-3 bg-black/80 backdrop-blur-md border-b border-white/10 z-50 absolute top-0 left-0 w-full">
+        <div className="flex items-center justify-between w-full max-w-6xl mx-auto">
+          <LoadingSkeleton width="120px" height="2.5rem" className="rounded-full" />
+        </div>
       </div>
-      
-      <div className="game-content-skeleton">
-        <LoadingSkeleton 
-          width="100%" 
-          height="400px" 
-          className="skeleton-game-frame"
-        />
+
+      {/* Game Content Area */}
+      <div className="flex-1 w-full relative mt-[60px] bg-black">
+        <div className="absolute inset-0 flex items-center justify-center bg-black z-10">
+          <div className="flex flex-col items-center gap-4 w-full h-full max-w-4xl max-h-[600px] p-4">
+            <LoadingSkeleton width="100%" height="100%" />
+          </div>
+        </div>
       </div>
-      
-      <div className="game-info-skeleton">
-        <LoadingSkeleton 
-          lines={3}
-          className="skeleton-game-description"
-        />
+
+      {/* Bottom Ad Area */}
+      <div className="w-full h-[50px] bg-black border-t border-white/10 flex items-center justify-center">
+        <LoadingSkeleton width="320px" height="32px" />
       </div>
     </div>
   )
@@ -104,19 +83,17 @@ SkeletonGamePage.propTypes = {
  */
 function SkeletonNavigation({ className = '' }) {
   return (
-    <nav className={`navigation-skeleton ${className}`}>
-      <LoadingSkeleton 
-        width="120px" 
-        height="2rem" 
-        className="skeleton-logo"
+    <nav className={`flex items-center justify-between p-4 bg-card border-b border-card-border ${className}`}>
+      <LoadingSkeleton
+        width="120px"
+        height="2rem"
       />
-      <div className="nav-items-skeleton">
+      <div className="flex gap-4">
         {Array.from({ length: 4 }, (_, index) => (
-          <LoadingSkeleton 
+          <LoadingSkeleton
             key={index}
-            width="80px" 
-            height="1.5rem" 
-            className="skeleton-nav-item"
+            width="60px"
+            height="1.25rem"
           />
         ))}
       </div>
@@ -131,23 +108,21 @@ SkeletonNavigation.propTypes = {
 /**
  * Skeleton Text Block Component
  */
-function SkeletonTextBlock({ 
-  lines = 3, 
-  title = true, 
-  className = '' 
+function SkeletonTextBlock({
+  lines = 3,
+  title = true,
+  className = ''
 }) {
   return (
-    <div className={`text-block-skeleton ${className}`}>
+    <div className={`flex flex-col gap-3 ${className}`}>
       {title && (
-        <LoadingSkeleton 
-          width="50%" 
-          height="1.5rem" 
-          className="skeleton-block-title"
+        <LoadingSkeleton
+          width="50%"
+          height="1.5rem"
         />
       )}
-      <LoadingSkeleton 
+      <LoadingSkeleton
         lines={lines}
-        className="skeleton-block-content"
       />
     </div>
   )
@@ -162,16 +137,16 @@ SkeletonTextBlock.propTypes = {
 /**
  * Skeleton Button Component
  */
-function SkeletonButton({ 
-  width = '100px', 
+function SkeletonButton({
+  width = '100px',
   height = '2.5rem',
-  className = '' 
+  className = ''
 }) {
   return (
-    <LoadingSkeleton 
+    <LoadingSkeleton
       width={width}
       height={height}
-      className={`skeleton-button ${className}`}
+      className={`rounded-xl ${className}`}
     />
   )
 }
@@ -185,31 +160,30 @@ SkeletonButton.propTypes = {
 /**
  * Skeleton Form Component
  */
-function SkeletonForm({ 
-  fields = 3, 
+function SkeletonForm({
+  fields = 3,
   hasSubmitButton = true,
-  className = '' 
+  className = ''
 }) {
   return (
-    <div className={`form-skeleton ${className}`}>
+    <div className={`flex flex-col gap-4 ${className}`}>
       {Array.from({ length: fields }, (_, index) => (
-        <div key={index} className="form-field-skeleton">
-          <LoadingSkeleton 
-            width="30%" 
-            height="1rem" 
-            className="skeleton-field-label"
+        <div key={index} className="flex flex-col gap-2">
+          <LoadingSkeleton
+            width="30%"
+            height="1rem"
           />
-          <LoadingSkeleton 
-            width="100%" 
-            height="2.5rem" 
-            className="skeleton-field-input"
+          <LoadingSkeleton
+            width="100%"
+            height="3rem"
+            className="rounded-lg"
           />
         </div>
       ))}
       {hasSubmitButton && (
-        <SkeletonButton 
-          width="120px" 
-          className="skeleton-submit-button"
+        <SkeletonButton
+          width="120px"
+          className="mt-2"
         />
       )}
     </div>
@@ -227,10 +201,10 @@ SkeletonForm.propTypes = {
  */
 function SkeletonPagination({ className = '' }) {
   return (
-    <div className={`pagination-skeleton ${className}`}>
-      <SkeletonButton width="40px" height="40px" className="skeleton-page-btn" />
-      <LoadingSkeleton width="120px" height="1rem" className="skeleton-page-info" />
-      <SkeletonButton width="40px" height="40px" className="skeleton-page-btn" />
+    <div className={`flex items-center justify-between gap-3 py-6 mt-4 ${className}`}>
+      <SkeletonButton width="48px" height="48px" className="rounded-xl" />
+      <LoadingSkeleton width="160px" height="2.5rem" className="rounded-full" />
+      <SkeletonButton width="48px" height="48px" className="rounded-xl" />
     </div>
   )
 }
