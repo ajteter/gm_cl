@@ -130,11 +130,11 @@ export default function GamePage() {
 
     // Ad configuration for game page - use compact 50px banner to avoid bottom whitespace
     const gamePageAdConfig = {
-      key: '268fd9be7cb5acbc21f157c5611ba04f',
+      key: '866f788a538c789345f3c99981b528db',
       height: 50,
       width: 320,
       maxHeight: '50px',
-      script: '//www.highperformanceformat.com/268fd9be7cb5acbc21f157c5611ba04f/invoke.js',
+      script: '//www.highperformanceformat.com/866f788a538c789345f3c99981b528db/invoke.js',
       delay: 0
     }
 

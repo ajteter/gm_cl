@@ -102,14 +102,14 @@ export default function PlayPage() {
             <body>
                 <script type="text/javascript">
                     window.atOptions = {
-                        'key': '9adddfc2b9f962e7595071bcbd5cc4e5',
+                        'key': '866f788a538c789345f3c99981b528db',
                         'format': 'iframe',
                         'height': 50,
                         'width': 320,
                         'params': {}
                     };
                 </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/9adddfc2b9f962e7595071bcbd5cc4e5/invoke.js"></script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/866f788a538c789345f3c99981b528db/invoke.js"></script>
             </body>
             </html>
           `}
