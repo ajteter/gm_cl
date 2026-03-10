@@ -123,24 +123,50 @@ export default function GameClientUI({
 
   return (
     <div className="flex flex-col h-[100dvh] w-full bg-black overflow-hidden relative">
-      <div className="flex-shrink-0 flex items-center justify-between px-4 py-3 bg-black/80 backdrop-blur-md border-b border-white/10 z-50 absolute top-0 left-0 w-full">
-        <div className="flex items-center justify-between w-full max-w-6xl mx-auto">
-          {showTitle && (
-            <div className="text-white font-bold text-lg truncate pr-4">
-              <span>{title}</span>
-            </div>
-          )}
-          <button
-            onClick={handleMoreGames}
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-medium transition-colors border border-white/10 min-h-[44px]"
-          >
-            <GridIcon />
-            <span>More Games</span>
-          </button>
-        </div>
+      <div className="w-full flex justify-center items-center bg-black border-b border-white/10 z-20 shrink-0 h-[50px]">
+        <iframe
+          srcDoc={`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body { margin: 0; padding: 0; overflow: hidden; background: transparent; display: flex; justify-content: center; align-items: center; height: 100vh; }
+                </style>
+            </head>
+            <body>
+                <script>
+                    const script = document.createElement('script');
+                    script.type = 'text/javascript';
+                    script.src = 'https://www.highperformanceformat.com/866f788a538c789345f3c99981b528db/invoke.js';
+                    
+                    window.atOptions = {
+                        'key': '866f788a538c789345f3c99981b528db',
+                        'format': 'iframe',
+                        'height': 50,
+                        'width': 320,
+                        'params': {}
+                    };
+                    
+                    document.body.appendChild(script);
+                </script>
+            </body>
+            </html>
+          `}
+          sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
+          style={{ width: '320px', height: '50px', border: 'none', overflow: 'hidden' }}
+          title="Top Advertisement"
+        />
       </div>
 
-      <div className="flex-1 w-full relative mt-[60px] bg-black">
+      {showTitle && (
+        <div className="flex-shrink-0 flex items-center justify-center px-4 py-3 bg-black/80 backdrop-blur-md border-b border-white/10 z-50 w-full relative">
+          <div className="text-white font-bold text-lg truncate">
+            <span>{title}</span>
+          </div>
+        </div>
+      )}
+
+      <div className="flex-1 w-full relative bg-black">
         {isIframeLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-black z-10">
             <div className="flex flex-col items-center gap-4">
@@ -162,6 +188,16 @@ export default function GameClientUI({
           onLoad={handleIframeLoad}
           onError={handleIframeError}
         />
+      </div>
+
+      <div className="w-full flex justify-center items-center bg-black border-t border-white/10 z-20 shrink-0 p-3">
+        <button
+          onClick={handleMoreGames}
+          className="w-full max-w-sm flex items-center justify-center gap-2 px-6 py-3 bg-white text-black hover:bg-gray-200 rounded-xl text-base font-bold transition-colors cursor-pointer"
+        >
+          <GridIcon />
+          <span>More Games</span>
+        </button>
       </div>
 
       {finalAdConfig && (
