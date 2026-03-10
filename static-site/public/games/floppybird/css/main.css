@@ -372,3 +372,14 @@ Screen - Game
    text-decoration: none;
    color: #fff;
 }
+
+/* Invincibility blink after revive */
+@keyframes invincibleBlink {
+   0%, 100% { opacity: 1; }
+   50% { opacity: 0.3; }
+}
+
+.invincible {
+   animation: invincibleBlink 200ms linear infinite !important;
+   filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
+}

@@ -69,7 +69,7 @@ export default function PlayPage() {
         </div>
       </div>
 
-      <div className="flex-1 w-full relative mt-[60px] bg-black">
+      <div className="flex-1 w-full relative pt-[60px] bg-black">
         {isIframeLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-black z-10">
             <div className="w-10 h-10 rounded-full border-4 border-white/20 border-t-primary animate-spin-fast"></div>

@@ -93,7 +93,7 @@ export default function GamePage() {
               </button>
             </div>
           </div>
-          <div className="flex-1 w-full relative mt-[60px] bg-black">
+          <div className="flex-1 w-full relative pt-[60px] bg-black">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'white' }}>
               Loading game...
             </div>
@@ -113,7 +113,7 @@ export default function GamePage() {
               </button>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center p-6 text-center text-white/50 h-full mt-[60px]">
+          <div className="flex flex-col items-center justify-center p-6 text-center text-white/50 h-full pt-[60px]">
             <p>{gameError || error || 'Game not available'}</p>
             <div style={{ marginTop: '1rem', display: 'flex', gap: '10px' }}>
               <button onClick={handleRetry} className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-medium transition-colors border border-white/10 min-h-[44px]">
@@ -128,12 +128,12 @@ export default function GamePage() {
       )
     }
 
-    // Ad configuration for game page
+    // Ad configuration for game page - use compact 50px banner to avoid bottom whitespace
     const gamePageAdConfig = {
       key: '268fd9be7cb5acbc21f157c5611ba04f',
-      height: 250,
-      width: 300,
-      maxHeight: '250px',
+      height: 50,
+      width: 320,
+      maxHeight: '50px',
       script: '//www.highperformanceformat.com/268fd9be7cb5acbc21f157c5611ba04f/invoke.js',
       delay: 0
     }

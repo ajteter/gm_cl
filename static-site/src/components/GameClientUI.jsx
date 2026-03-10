@@ -91,11 +91,11 @@ export default function GameClientUI({
 
   const handleWatchAd = () => {
     setIsReviveModalOpen(false);
-    
+
     if (!document.querySelector('script[src="https://gizokraijaw.net/vignette.min.js"]')) {
-      (function(s){
-          s.dataset.zone='10706176';
-          s.src='https://gizokraijaw.net/vignette.min.js';
+      (function (s) {
+        s.dataset.zone = '10706176';
+        s.src = 'https://gizokraijaw.net/vignette.min.js';
       })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
     }
 
@@ -247,7 +247,7 @@ export default function GameClientUI({
         </div>
       )}
 
-      <ReviveAdModal 
+      <ReviveAdModal
         isOpen={isReviveModalOpen}
         onAccept={handleWatchAd}
         onDecline={handleDeclineRevive}

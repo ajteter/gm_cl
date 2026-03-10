@@ -1,5 +1,7 @@
 var debugmode = false;
 var hasRevivedThisRound = false;
+var isInvincible = false;
+var invincibleTimer = null;
 
 var states = Object.freeze({
    SplashScreen: 0,
@@ -53,13 +55,24 @@ $(document).ready(function() {
          rotation = 0;
          $("#player").css({ y: 0, x: 0 });
          updatePlayer($("#player"));
-         pipes.splice(0, 1);
-         $(".pipe").first().remove();
+         // Remove nearest pipes to give breathing room
+         if (pipes.length > 0) { pipes.splice(0, 1); $(".pipe").first().remove(); }
+         if (pipes.length > 0) { pipes.splice(0, 1); $(".pipe").first().remove(); }
          currentstate = states.GameScreen;
          loopGameloop = setInterval(gameloop, 1000.0 / 60.0);
          loopPipeloop = setInterval(updatePipes, 1400);
          $(".animated").css('animation-play-state', 'running');
          $(".animated").css('-webkit-animation-play-state', 'running');
+
+         // Activate 3-second invincibility
+         isInvincible = true;
+         $("#player").addClass("invincible");
+         if (invincibleTimer) clearTimeout(invincibleTimer);
+         invincibleTimer = setTimeout(function() {
+            isInvincible = false;
+            $("#player").removeClass("invincible");
+            invincibleTimer = null;
+         }, 3000);
       } else if (e.data.type === 'SKIP_REVIVE') {
          showScore();
       }
@@ -104,6 +117,9 @@ function showSplash()
    rotation = 0;
    score = 0;
    hasRevivedThisRound = false;
+   isInvincible = false;
+   if (invincibleTimer) { clearTimeout(invincibleTimer); invincibleTimer = null; }
+   $("#player").removeClass("invincible");
 
    //update the player in preparation for the next game
    $("#player").css({ y: 0, x: 0 });
@@ -235,9 +251,9 @@ function gameloop() {
          //yeah! we're within bounds
 
       }
-      else
+      else if(!isInvincible)
       {
-         //no! we touched the pipe
+         //no! we touched the pipe (skip if invincible after revive)
          playerDead();
          return;
       }

@@ -43,7 +43,7 @@ export default function RandomGamePage() {
           </button>
         </div>
       </div>
-      <div className="flex-1 w-full relative mt-[60px] bg-black">
+      <div className="flex-1 w-full relative pt-[60px] bg-black">
         <div style={{
           display: 'flex',
           flexDirection: 'column',
@@ -74,7 +74,7 @@ export default function RandomGamePage() {
           </button>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center p-6 text-center text-white/50 h-[calc(100dvh-60px)] mt-[60px]">
+      <div className="flex flex-col items-center justify-center p-6 text-center text-white/50 h-[calc(100dvh-60px)] pt-[60px]">
         <p>Could not load today's game.</p>
         {error && <p>Error: {error}</p>}
         <div className="flex items-center justify-center gap-4 mt-6">
