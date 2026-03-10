@@ -37,8 +37,9 @@ function App() {
           <Layout>
             <Suspense fallback={<LoadingSpinner />}>
               <Routes>
-                {/* Main routes */}
+                {/* Main Game Portal Routes */}
                 <Route path="/" element={<HomePage />} />
+                <Route path="/floppybird" element={<HomePage />} />
                 <Route path="/game" element={<GamePage />} />
                 <Route path="/game/random" element={<RandomGamePage />} />
                 <Route path="/game/play" element={<PlayPage />} />
