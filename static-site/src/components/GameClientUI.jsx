@@ -42,7 +42,7 @@ export default function GameClientUI({
     params.delete('id')
 
     if (params.toString()) {
-      const newUrl = new URL(game.url)
+      const newUrl = new URL(game.url, window.location.origin)
       params.forEach((value, key) => {
         newUrl.searchParams.set(key, value)
       })
