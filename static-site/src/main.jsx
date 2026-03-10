@@ -3,14 +3,20 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-// Register Monetag Service Worker
+// Register Monetag Service Worker (delayed to avoid blocking page render in WebView)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').then((registration) => {
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, (err) => {
-      console.log('ServiceWorker registration failed: ', err);
-    });
+    setTimeout(() => {
+      try {
+        navigator.serviceWorker.register('/sw.js').then((registration) => {
+          console.log('SW registered:', registration.scope);
+        }).catch((err) => {
+          console.warn('SW registration failed:', err);
+        });
+      } catch (e) {
+        console.warn('SW registration error:', e);
+      }
+    }, 3000);
   });
 }
 
