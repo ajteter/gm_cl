@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import ReviveAdModal from './ReviveAdModal'
 
 const GridIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -24,6 +25,8 @@ export default function GameClientUI({
 }) {
   const [gameUrl, setGameUrl] = useState(game?.url || '')
   const [isIframeLoading, setIsIframeLoading] = useState(true)
+  const [isReviveModalOpen, setIsReviveModalOpen] = useState(false)
+  const iframeRef = useRef(null)
   const navigate = useNavigate()
 
   // Early return if no game provided
@@ -76,6 +79,48 @@ export default function GameClientUI({
 
   const finalAdConfig = adConfig === null ? null : (adConfig || defaultAdConfig)
 
+  useEffect(() => {
+    const handleMessage = (e) => {
+      if (e.data && e.data.type === 'PLAYER_DEAD_ASK_REVIVE') {
+        setIsReviveModalOpen(true);
+      }
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
+  const handleWatchAd = () => {
+    setIsReviveModalOpen(false);
+    
+    if (!document.querySelector('script[src="https://gizokraijaw.net/vignette.min.js"]')) {
+      (function(s){
+          s.dataset.zone='10701530';
+          s.src='https://gizokraijaw.net/vignette.min.js';
+      })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+    }
+
+    if (iframeRef.current && iframeRef.current.contentWindow && gameUrl) {
+      try {
+        const targetOrigin = new URL(gameUrl, window.location.origin).origin;
+        iframeRef.current.contentWindow.postMessage({ type: 'EXECUTE_REVIVE' }, targetOrigin);
+      } catch (e) {
+        iframeRef.current.contentWindow.postMessage({ type: 'EXECUTE_REVIVE' }, '*');
+      }
+    }
+  };
+
+  const handleDeclineRevive = () => {
+    setIsReviveModalOpen(false);
+    if (iframeRef.current && iframeRef.current.contentWindow && gameUrl) {
+      try {
+        const targetOrigin = new URL(gameUrl, window.location.origin).origin;
+        iframeRef.current.contentWindow.postMessage({ type: 'SKIP_REVIVE' }, targetOrigin);
+      } catch (e) {
+        iframeRef.current.contentWindow.postMessage({ type: 'SKIP_REVIVE' }, '*');
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col h-[100dvh] w-full bg-black overflow-hidden relative">
       <div className="flex-shrink-0 flex items-center justify-between px-4 py-3 bg-black/80 backdrop-blur-md border-b border-white/10 z-50 absolute top-0 left-0 w-full">
@@ -105,6 +150,7 @@ export default function GameClientUI({
           </div>
         )}
         <iframe
+          ref={iframeRef}
           src={gameUrl}
           className="w-full h-full border-none m-0 p-0 block"
           title={game.title}
@@ -164,6 +210,12 @@ export default function GameClientUI({
           />
         </div>
       )}
+
+      <ReviveAdModal 
+        isOpen={isReviveModalOpen}
+        onAccept={handleWatchAd}
+        onDecline={handleDeclineRevive}
+      />
     </div>
   )
 }
