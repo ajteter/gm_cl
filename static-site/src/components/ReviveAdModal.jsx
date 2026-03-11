@@ -3,10 +3,12 @@ import { cn } from '../utils/cn';
 
 export default function ReviveAdModal({ isOpen, onAccept, onDecline }) {
   const [countdown, setCountdown] = useState(5);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!isOpen) {
       setCountdown(5);
+      setIsLoading(false);
       return;
     }
 
@@ -24,6 +26,12 @@ export default function ReviveAdModal({ isOpen, onAccept, onDecline }) {
     return () => clearInterval(timer);
   }, [isOpen, onDecline]);
 
+  const handleAcceptClick = () => {
+    if (isLoading) return;
+    setIsLoading(true);
+    onAccept();
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -33,15 +41,30 @@ export default function ReviveAdModal({ isOpen, onAccept, onDecline }) {
         <p className="text-gray-400 text-center text-sm mb-2">Watch a short ad to continue from where you left off.</p>
         
         <button
-          onClick={onAccept}
-          className="w-full py-3 mt-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 cursor-pointer"
+          onClick={handleAcceptClick}
+          disabled={isLoading}
+          className={cn(
+            "w-full py-3 mt-4 bg-white text-black font-bold rounded-xl transition-colors flex items-center justify-center gap-2",
+            isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200 cursor-pointer"
+          )}
         >
-          Watch Ad to Revive
+          {isLoading ? (
+            <div className="flex items-center justify-center gap-2">
+              <div className="w-4 h-4 border-2 border-black/20 border-t-black rounded-full animate-spin"></div>
+              <span>Loading...</span>
+            </div>
+          ) : (
+            "Watch Ad to Revive"
+          )}
         </button>
         
         <button
           onClick={onDecline}
-          className="mt-3 text-sm text-white/50 hover:text-white/80 transition-colors cursor-pointer"
+          disabled={isLoading}
+          className={cn(
+            "mt-3 text-sm text-white/50 transition-colors",
+            isLoading ? "opacity-50 cursor-not-allowed" : "hover:text-white/80 cursor-pointer"
+          )}
         >
           Skip ({countdown}s)
         </button>

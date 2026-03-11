@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ReviveAdModal from './ReviveAdModal'
@@ -15,6 +15,13 @@ const GridIcon = () => (
 /**
  * GameClientUI component for displaying games in fullscreen mode
  * Handles URL parameter forwarding for ad attribution and provides game embedding
+ *
+ * Monetag Vignette Ad Flow (focus-detection architecture):
+ * 1. Game sends PLAYER_DEAD_ASK_REVIVE → preload vignette.min.js + show ReviveAdModal
+ * 2. User clicks "Watch Ad" → close modal, set waiting state (do NOT revive yet)
+ * 3. Vignette intercepts the click → fullscreen ad appears → window blurs
+ * 4. User closes ad → window regains focus → execute revive
+ * Fallbacks: 3s short timeout (no blur = ad didn't show), 10s long timeout (force revive)
  */
 export default function GameClientUI({
   game,
@@ -26,7 +33,12 @@ export default function GameClientUI({
   const [gameUrl, setGameUrl] = useState(game?.url || '')
   const [isIframeLoading, setIsIframeLoading] = useState(true)
   const [isReviveModalOpen, setIsReviveModalOpen] = useState(false)
+  const [isWaitingForAd, setIsWaitingForAd] = useState(false)
   const iframeRef = useRef(null)
+  const isWaitingRef = useRef(false)
+  const hasBlurredRef = useRef(false)
+  const shortTimeoutRef = useRef(null)
+  const longTimeoutRef = useRef(null)
   const navigate = useNavigate()
 
   // Early return if no game provided
@@ -34,11 +46,9 @@ export default function GameClientUI({
     return null
   }
 
+  // Append current page's query parameters to the game URL for attribution
   useEffect(() => {
-    // Append current page's query parameters to the game URL for attribution
     const params = new URLSearchParams(window.location.search)
-
-    // Remove navigation parameters that shouldn't be passed to the game
     params.delete('id')
 
     if (params.toString()) {
@@ -67,37 +77,31 @@ export default function GameClientUI({
     console.error('Failed to load game iframe:', gameUrl)
   }
 
-  // Default ad configuration for random game page
-  const defaultAdConfig = {
-    key: '866f788a538c789345f3c99981b528db',
-    height: 50,
-    width: 320,
-    maxHeight: '50px',
-    script: '//www.highperformanceformat.com/866f788a538c789345f3c99981b528db/invoke.js',
-    delay: 1000
-  }
+  // Bottom ad config (disabled by default to avoid duplicate zones with top banner)
+  const finalAdConfig = adConfig || null;
 
-  const finalAdConfig = adConfig === null ? null : (adConfig || defaultAdConfig)
+  // ---------------------------------------------------------------------------
+  // Monetag Vignette: Preload, Execute, Focus/Blur Detection
+  // ---------------------------------------------------------------------------
 
-  useEffect(() => {
-    const handleMessage = (e) => {
-      if (e.data && e.data.type === 'PLAYER_DEAD_ASK_REVIVE') {
-        setIsReviveModalOpen(true);
-      }
-    };
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
+  // Preload vignette script (called when death modal appears, giving it time to load)
+  const preloadVignette = useCallback(() => {
+    if (!document.querySelector('script[src="https://gizokraijaw.net/vignette.min.js"]')) {
+      const s = document.createElement('script');
+      s.dataset.zone = '10706176';
+      s.src = 'https://gizokraijaw.net/vignette.min.js';
+      document.body.appendChild(s);
+    }
   }, []);
 
-  const handleWatchAd = () => {
-    setIsReviveModalOpen(false);
-
-    if (!document.querySelector('script[src="https://gizokraijaw.net/vignette.min.js"]')) {
-      (function (s) {
-        s.dataset.zone = '10706176';
-        s.src = 'https://gizokraijaw.net/vignette.min.js';
-      })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-    }
+  // Unified revive executor — cleans up all ad-waiting state
+  const executeRevive = useCallback(() => {
+    if (!isWaitingRef.current) return; // Prevent double-fire
+    setIsWaitingForAd(false);
+    isWaitingRef.current = false;
+    hasBlurredRef.current = false;
+    if (shortTimeoutRef.current) { clearTimeout(shortTimeoutRef.current); shortTimeoutRef.current = null; }
+    if (longTimeoutRef.current) { clearTimeout(longTimeoutRef.current); longTimeoutRef.current = null; }
 
     if (iframeRef.current && iframeRef.current.contentWindow && gameUrl) {
       try {
@@ -107,9 +111,86 @@ export default function GameClientUI({
         iframeRef.current.contentWindow.postMessage({ type: 'EXECUTE_REVIVE' }, '*');
       }
     }
+  }, [gameUrl]);
+
+  // Listen for game death message and preload vignette while user reads the modal
+  useEffect(() => {
+    const handleMessage = (e) => {
+      if (e.data && e.data.type === 'PLAYER_DEAD_ASK_REVIVE') {
+        setIsReviveModalOpen(true);
+        preloadVignette();
+      }
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [preloadVignette]);
+
+  // Focus/blur detection — the only reliable signal for "ad closed"
+  useEffect(() => {
+    const handleBlur = () => {
+      if (isWaitingRef.current) {
+        hasBlurredRef.current = true;
+        // Ad appeared → cancel the short "no ad" timeout
+        if (shortTimeoutRef.current) {
+          clearTimeout(shortTimeoutRef.current);
+          shortTimeoutRef.current = null;
+        }
+      }
+    };
+
+    const handleFocus = () => {
+      if (isWaitingRef.current && hasBlurredRef.current) {
+        // User closed the ad and came back
+        executeRevive();
+      }
+    };
+
+    window.addEventListener('blur', handleBlur);
+    window.addEventListener('focus', handleFocus);
+    return () => {
+      window.removeEventListener('blur', handleBlur);
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, [executeRevive]);
+
+  // Cleanup timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (shortTimeoutRef.current) clearTimeout(shortTimeoutRef.current);
+      if (longTimeoutRef.current) clearTimeout(longTimeoutRef.current);
+    };
+  }, []);
+
+  // ---------------------------------------------------------------------------
+  // Handlers
+  // ---------------------------------------------------------------------------
+
+  // User clicked "Watch Ad" — close modal, enter waiting state, let Vignette intercept
+  const handleWatchAd = () => {
+    setIsReviveModalOpen(false);
+    setIsWaitingForAd(true);
+    isWaitingRef.current = true;
+    hasBlurredRef.current = false;
+
+    // Short timeout (3s): if window never blurred, ad didn't show → grant free revive
+    shortTimeoutRef.current = setTimeout(() => {
+      if (isWaitingRef.current && !hasBlurredRef.current) {
+        console.log('[Revive] Ad did not appear within 3s, granting free revive');
+        executeRevive();
+      }
+    }, 3000);
+
+    // Long timeout (10s): if blur happened but focus never returned → force revive
+    longTimeoutRef.current = setTimeout(() => {
+      if (isWaitingRef.current) {
+        console.log('[Revive] 10s timeout, forcing revive');
+        executeRevive();
+      }
+    }, 10000);
   };
 
-  const handleDeclineRevive = () => {
+  // User declined revive
+  const handleDeclineRevive = useCallback(() => {
     setIsReviveModalOpen(false);
     if (iframeRef.current && iframeRef.current.contentWindow && gameUrl) {
       try {
@@ -119,8 +200,11 @@ export default function GameClientUI({
         iframeRef.current.contentWindow.postMessage({ type: 'SKIP_REVIVE' }, '*');
       }
     }
-  };
+  }, [gameUrl]);
 
+  // ---------------------------------------------------------------------------
+  // Render
+  // ---------------------------------------------------------------------------
   return (
     <div className="flex flex-col h-[100dvh] w-full bg-black overflow-hidden relative">
       <div className="w-full flex justify-center items-center bg-black border-b border-white/10 z-20 shrink-0 h-[50px]">
@@ -214,7 +298,7 @@ export default function GameClientUI({
               </head>
               <body>
                   <script>
-                      // 延迟加载广告脚本
+                      // Delayed ad script loading
                       setTimeout(() => {
                           const script = document.createElement('script');
                           script.type = 'text/javascript';
@@ -244,6 +328,16 @@ export default function GameClientUI({
             }}
             title="Advertisement"
           />
+        </div>
+      )}
+
+      {/* Transition overlay: shown between "Watch Ad" click and revive execution */}
+      {isWaitingForAd && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-[100]">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-10 h-10 rounded-full border-4 border-white/20 border-t-primary animate-spin-fast"></div>
+            <div className="text-white/80 text-sm font-medium">Loading Ad...</div>
+          </div>
         </div>
       )}
 

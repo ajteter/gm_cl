@@ -34,7 +34,7 @@ export default function HomePage() {
       game={floppyGame}
       title={floppyGame.title}
       showTitle={false} // Hidden for a cleaner fullscreen look like a real app
-      adConfig={homeAdConfig}
+      adConfig={null}
       onMoreGames={handleMoreGames}
     />
   )

@@ -143,7 +143,7 @@ export default function GamePage() {
         game={selectedGame}
         title={selectedGame.title}
         showTitle={true}
-        adConfig={gamePageAdConfig}
+        adConfig={null}
         onMoreGames={handleMoreGames}
       />
     )
