@@ -172,13 +172,13 @@ export default function GameClientUI({
     isWaitingRef.current = true;
     hasBlurredRef.current = false;
 
-    // Short timeout (3s): if window never blurred, ad didn't show → grant free revive
+    // Short timeout (6s): if window never blurred, ad didn't show → grant free revive
     shortTimeoutRef.current = setTimeout(() => {
       if (isWaitingRef.current && !hasBlurredRef.current) {
-        console.log('[Revive] Ad did not appear within 3s, granting free revive');
+        console.log('[Revive] Ad did not appear within 6s, granting free revive');
         executeRevive();
       }
-    }, 3000);
+    }, 6000);
 
     // Long timeout (10s): if blur happened but focus never returned → force revive
     longTimeoutRef.current = setTimeout(() => {

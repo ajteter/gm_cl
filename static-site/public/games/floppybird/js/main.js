@@ -58,21 +58,10 @@ $(document).ready(function() {
          // Remove nearest pipes to give breathing room
          if (pipes.length > 0) { pipes.splice(0, 1); $(".pipe").first().remove(); }
          if (pipes.length > 0) { pipes.splice(0, 1); $(".pipe").first().remove(); }
-         currentstate = states.GameScreen;
-         loopGameloop = setInterval(gameloop, 1000.0 / 60.0);
-         loopPipeloop = setInterval(updatePipes, 1400);
-         $(".animated").css('animation-play-state', 'running');
-         $(".animated").css('-webkit-animation-play-state', 'running');
-
-         // Activate 3-second invincibility
-         isInvincible = true;
-         $("#player").addClass("invincible");
-         if (invincibleTimer) clearTimeout(invincibleTimer);
-         invincibleTimer = setTimeout(function() {
-            isInvincible = false;
-            $("#player").removeClass("invincible");
-            invincibleTimer = null;
-         }, 3000);
+         
+         // Transition to ReviveScreen and show splash
+         currentstate = states.ReviveScreen;
+         $("#splash").transition({ opacity: 1 }, 200, 'ease');
       } else if (e.data.type === 'SKIP_REVIVE') {
          showScore();
       }
@@ -314,10 +303,24 @@ function resumeGame()
    $("#splash").stop();
    $("#splash").transition({ opacity: 0 }, 500, 'ease');
 
+   //make everything animated again
+   $(".animated").css('animation-play-state', 'running');
+   $(".animated").css('-webkit-animation-play-state', 'running');
+
    //start up our loops
    var updaterate = 1000.0 / 60.0 ; //60 times a second
    loopGameloop = setInterval(gameloop, updaterate);
    loopPipeloop = setInterval(updatePipes, 1400);
+
+   // Activate 5-second invincibility
+   isInvincible = true;
+   $("#player").addClass("invincible");
+   if (invincibleTimer) clearTimeout(invincibleTimer);
+   invincibleTimer = setTimeout(function() {
+      isInvincible = false;
+      $("#player").removeClass("invincible");
+      invincibleTimer = null;
+   }, 5000);
 
    //jump from the start!
    playerJump();
