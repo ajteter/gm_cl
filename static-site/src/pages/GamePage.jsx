@@ -5,6 +5,7 @@ import { useGameSEO } from '../hooks/useSEO'
 import GameClientUI from '../components/GameClientUI'
 import GameList from '../components/GameList'
 import LoadingStateManager from '../components/LoadingStateManager'
+import { useI18n } from '../i18n'
 
 const PAGE_SIZE = 50
 
@@ -21,6 +22,7 @@ export default function GamePage() {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const { games, loading, error, refetch } = useGames()
+  const { t } = useI18n()
 
   const gameId = searchParams.get('id')
   const [selectedGame, setSelectedGame] = useState(null)
@@ -89,13 +91,13 @@ export default function GamePage() {
             <div className="flex items-center justify-between w-full max-w-6xl mx-auto">
               <button onClick={handleMoreGames} className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-medium transition-colors border border-white/10 min-h-[44px]">
                 <GridIcon />
-                <span>More Games</span>
+                <span>{t('gamePage.moreGames')}</span>
               </button>
             </div>
           </div>
           <div className="flex-1 w-full relative pt-[60px] bg-black">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'white' }}>
-              Loading game...
+              {t('gamePage.loadingGame')}
             </div>
           </div>
         </div>
@@ -109,18 +111,18 @@ export default function GamePage() {
             <div className="flex items-center justify-between w-full max-w-6xl mx-auto">
               <button onClick={handleMoreGames} className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-medium transition-colors border border-white/10 min-h-[44px]">
                 <GridIcon />
-                <span>More Games</span>
+                <span>{t('gamePage.moreGames')}</span>
               </button>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center p-6 text-center text-white/50 h-full pt-[60px]">
-            <p>{gameError || error || 'Game not available'}</p>
+            <p>{gameError || error || t('gamePage.notAvailable')}</p>
             <div style={{ marginTop: '1rem', display: 'flex', gap: '10px' }}>
               <button onClick={handleRetry} className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-medium transition-colors border border-white/10 min-h-[44px]">
-                Retry
+                {t('gamePage.retry')}
               </button>
               <button onClick={handleMoreGames} className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-medium transition-colors border border-white/10 min-h-[44px]">
-                More Games
+                {t('gamePage.moreGamesButton')}
               </button>
             </div>
           </div>
@@ -153,13 +155,13 @@ export default function GamePage() {
   const EmptyGamesComponent = () => (
     <div className="py-12 px-6 text-center text-text-muted">
       <div className="w-10 h-10 mx-auto mb-2 rounded-full border-4 border-card border-t-text-muted animate-spin-fast" aria-hidden="true" />
-      <p className="text-sm">暂时无法加载，请稍后重试</p>
+      <p className="text-sm">{t('home.loadError')}</p>
       <button
         onClick={handleRetry}
         className="mt-4 px-6 py-2 bg-card hover:bg-card-border text-text-main rounded-md transition-colors"
         type="button"
       >
-        重试
+        {t('home.retry')}
       </button>
     </div>
   )
@@ -185,21 +187,21 @@ export default function GamePage() {
               onClick={() => handlePageChange(currentPage - 1)}
               className="w-12 h-12 flex items-center justify-center bg-card border border-card-border rounded-xl hover:bg-card-border transition-colors disabled:opacity-50 disabled:pointer-events-none"
               disabled={currentPage <= 1}
-              aria-label="上一页"
+              aria-label={t('home.prevPage')}
               type="button"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
             </button>
 
             <span className="text-sm text-text-muted px-4 py-2 bg-card/50 rounded-full border border-card-border/50" aria-hidden="true">
-              第 {currentPage} 页 / 共 {totalPages} 页
+              {currentPage} / {totalPages}
             </span>
 
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               className="w-12 h-12 flex items-center justify-center bg-card border border-card-border rounded-xl hover:bg-card-border transition-colors disabled:opacity-50 disabled:pointer-events-none"
               disabled={currentPage >= totalPages}
-              aria-label="下一页"
+              aria-label={t('home.nextPage')}
               type="button"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>

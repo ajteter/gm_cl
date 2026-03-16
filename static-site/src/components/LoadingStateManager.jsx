@@ -6,6 +6,7 @@ import {
   SkeletonGamePage,
   SkeletonTextBlock
 } from './LoadingSkeletons'
+import { useI18n } from '../i18n'
 
 /**
  * Loading State Manager Component
@@ -27,6 +28,7 @@ function LoadingStateManager({
 }) {
   const [showLoading, setShowLoading] = React.useState(false)
   const [minTimeElapsed, setMinTimeElapsed] = React.useState(false)
+  const { t } = useI18n()
   const loadingStartTime = React.useRef(null)
 
   // Handle loading delay and minimum loading time
@@ -117,14 +119,14 @@ function LoadingStateManager({
     return (
       <div className="error-state">
         <div className="error-content">
-          <h3>Something went wrong</h3>
+          <h3>{t('loading.errorTitle')}</h3>
           <p>{error}</p>
           {retryFunction && (
             <button
               onClick={retryFunction}
               className="retry-button"
             >
-              Try again
+              {t('loading.tryAgain')}
             </button>
           )}
         </div>
@@ -141,14 +143,14 @@ function LoadingStateManager({
     return (
       <div className="empty-state">
         <div className="empty-content">
-          <h3>No data available</h3>
-          <p>There's nothing to show right now.</p>
+          <h3>{t('loading.emptyTitle')}</h3>
+          <p>{t('loading.emptyMessage')}</p>
           {retryFunction && (
             <button
               onClick={retryFunction}
               className="retry-button"
             >
-              Refresh
+              {t('loading.refresh')}
             </button>
           )}
         </div>

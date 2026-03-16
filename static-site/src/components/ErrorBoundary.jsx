@@ -1,16 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useI18n } from '../i18n'
 
 /**
  * Generic Error Fallback Component
  */
-function ErrorFallback({ error, resetErrorBoundary, title = "Something went wrong" }) {
+function ErrorFallback({ error, resetErrorBoundary, title }) {
+  const { t } = useI18n()
+  const displayTitle = title || t('error.defaultTitle')
   return (
     <div className="error-fallback">
       <div className="error-content">
-        <h2>{title}</h2>
+        <h2>{displayTitle}</h2>
         <details className="error-details">
-          <summary>Error details</summary>
+          <summary>{t('error.details')}</summary>
           <pre className="error-message">{error.message}</pre>
         </details>
         <div className="error-actions">
@@ -18,13 +21,13 @@ function ErrorFallback({ error, resetErrorBoundary, title = "Something went wron
             onClick={resetErrorBoundary}
             className="retry-button"
           >
-            Try again
+            {t('error.tryAgain')}
           </button>
           <button 
             onClick={() => window.location.reload()}
             className="reload-button"
           >
-            Reload page
+            {t('error.reload')}
           </button>
         </div>
       </div>
@@ -42,13 +45,14 @@ ErrorFallback.propTypes = {
  * Game Loading Error Fallback Component
  */
 function GameErrorFallback({ error, resetErrorBoundary }) {
+  const { t } = useI18n()
   return (
     <div className="game-error-fallback">
       <div className="game-error-content">
-        <h3>Unable to load game</h3>
-        <p>We're having trouble loading the game right now.</p>
+        <h3>{t('error.gameTitle')}</h3>
+        <p>{t('error.gameMessage')}</p>
         <details className="error-details">
-          <summary>Technical details</summary>
+          <summary>{t('error.technical')}</summary>
           <pre className="error-message">{error.message}</pre>
         </details>
         <div className="error-actions">
@@ -56,13 +60,13 @@ function GameErrorFallback({ error, resetErrorBoundary }) {
             onClick={resetErrorBoundary}
             className="retry-button primary"
           >
-            Try again
+            {t('error.tryAgain')}
           </button>
           <button 
             onClick={() => window.location.href = '/'}
             className="home-button"
           >
-            Go to home
+            {t('error.goHome')}
           </button>
         </div>
       </div>
@@ -79,13 +83,14 @@ GameErrorFallback.propTypes = {
  * Data Loading Error Fallback Component
  */
 function DataErrorFallback({ error, resetErrorBoundary, dataType = "data" }) {
+  const { t } = useI18n()
   return (
     <div className="data-error-fallback">
       <div className="data-error-content">
         <h3>Unable to load {dataType}</h3>
         <p>We're having trouble loading the {dataType}. Please try again.</p>
         <details className="error-details">
-          <summary>What happened?</summary>
+          <summary>{t('error.whatHappened')}</summary>
           <pre className="error-message">{error.message}</pre>
         </details>
         <div className="error-actions">
@@ -93,7 +98,7 @@ function DataErrorFallback({ error, resetErrorBoundary, dataType = "data" }) {
             onClick={resetErrorBoundary}
             className="retry-button primary"
           >
-            Retry
+            {t('error.retry')}
           </button>
         </div>
       </div>
@@ -112,19 +117,20 @@ DataErrorFallback.propTypes = {
  */
 function NetworkErrorFallback({ error, resetErrorBoundary }) {
   const isOffline = !navigator.onLine
+  const { t } = useI18n()
   
   return (
     <div className="network-error-fallback">
       <div className="network-error-content">
-        <h3>{isOffline ? "You're offline" : "Connection problem"}</h3>
+        <h3>{isOffline ? t('error.offline') : t('error.connectionProblem')}</h3>
         <p>
           {isOffline 
-            ? "Please check your internet connection and try again."
-            : "We're having trouble connecting to our servers."
+            ? t('error.offlineMessage')
+            : t('error.serverMessage')
           }
         </p>
         <details className="error-details">
-          <summary>Technical details</summary>
+          <summary>{t('error.technical')}</summary>
           <pre className="error-message">{error.message}</pre>
         </details>
         <div className="error-actions">
@@ -132,11 +138,11 @@ function NetworkErrorFallback({ error, resetErrorBoundary }) {
             onClick={resetErrorBoundary}
             className="retry-button primary"
           >
-            Try again
+            {t('error.tryAgain')}
           </button>
           {isOffline && (
             <p className="offline-note">
-              This page will automatically retry when you're back online.
+              {t('error.autoRetry')}
             </p>
           )}
         </div>

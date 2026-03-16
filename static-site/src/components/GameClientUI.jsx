@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ReviveAdModal from './ReviveAdModal'
 import { AdService } from '../services/AdService'
+import { useI18n } from '../i18n'
 
 const GridIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -36,6 +37,7 @@ export default function GameClientUI({
   const [adCountdown, setAdCountdown] = useState(null) // null = not watching, >0 = countdown, 0 = done
   const iframeRef = useRef(null)
   const navigate = useNavigate()
+  const { t } = useI18n()
 
   // Early return if no game provided
   if (!game || !game.url) {
@@ -216,7 +218,7 @@ export default function GameClientUI({
           className="w-full max-w-sm flex items-center justify-center gap-2 px-6 py-3 bg-white text-black hover:bg-gray-200 rounded-xl text-base font-bold transition-colors cursor-pointer"
         >
           <GridIcon />
-          <span>More Games</span>
+          <span>{t('game.moreGames')}</span>
         </button>
       </div>
 
@@ -247,7 +249,7 @@ export default function GameClientUI({
           `}
           sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
           style={{ width: '300px', height: '250px', border: 'none', overflow: 'hidden' }}
-          title="Bottom Advertisement"
+          title={t('game.adTitle.bottom')}
         />
       </div>
 
@@ -294,7 +296,7 @@ export default function GameClientUI({
               maxHeight: finalAdConfig.maxHeight,
               overflow: 'hidden'
             }}
-            title="Advertisement"
+            title={t('game.adTitle.bottom')}
           />
         </div>
       )}

@@ -1,11 +1,13 @@
 import { useState, useCallback } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useI18n } from '../i18n'
 
 export default function GameCard({ game }) {
   const [descExpanded, setDescExpanded] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
+  const { t } = useI18n()
 
   const onToggleDesc = useCallback(() => setDescExpanded((v) => !v), [])
 
@@ -79,7 +81,7 @@ export default function GameCard({ game }) {
             {isLoading ? (
               <div className="w-5 h-5 rounded-full border-2 border-transparent border-t-green-950 animate-spin-fast"></div>
             ) : (
-              'PLAY'
+              t('card.playButton')
             )}
           </button>
         </div>
