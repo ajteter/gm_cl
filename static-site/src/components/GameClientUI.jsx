@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ReviveAdModal from './ReviveAdModal'
+import { AdService } from '../services/AdService'
 
 const GridIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -16,12 +17,11 @@ const GridIcon = () => (
  * GameClientUI component for displaying games in fullscreen mode
  * Handles URL parameter forwarding for ad attribution and provides game embedding
  *
- * Monetag Vignette Ad Flow (focus-detection architecture):
- * 1. Game sends PLAYER_DEAD_ASK_REVIVE → preload vignette.min.js + show ReviveAdModal
- * 2. User clicks "Watch Ad" → close modal, set waiting state (do NOT revive yet)
- * 3. Vignette intercepts the click → fullscreen ad appears → window blurs
- * 4. User closes ad → window regains focus → execute revive
- * Fallbacks: 3s short timeout (no blur = ad didn't show), 10s long timeout (force revive)
+ * Adsterra Social Bar Revive Flow:
+ * 1. Game sends PLAYER_DEAD_ASK_REVIVE → show ReviveAdModal
+ * 2. User clicks "Watch Ad" → close modal, call AdService.showRewardedAd()
+ * 3. AdService injects Social Bar + starts 6s countdown, reporting progress via onProgress
+ * 4. After 6s → AdService resolves → executeRevive() sends EXECUTE_REVIVE to iframe
  */
 export default function GameClientUI({
   game,
@@ -33,12 +33,8 @@ export default function GameClientUI({
   const [gameUrl, setGameUrl] = useState(game?.url || '')
   const [isIframeLoading, setIsIframeLoading] = useState(true)
   const [isReviveModalOpen, setIsReviveModalOpen] = useState(false)
-  const [isWaitingForAd, setIsWaitingForAd] = useState(false)
+  const [adCountdown, setAdCountdown] = useState(null) // null = not watching, >0 = countdown, 0 = done
   const iframeRef = useRef(null)
-  const isWaitingRef = useRef(false)
-  const hasBlurredRef = useRef(false)
-  const shortTimeoutRef = useRef(null)
-  const longTimeoutRef = useRef(null)
   const navigate = useNavigate()
 
   // Early return if no game provided
@@ -81,28 +77,12 @@ export default function GameClientUI({
   const finalAdConfig = adConfig || null;
 
   // ---------------------------------------------------------------------------
-  // Monetag Vignette: Preload, Execute, Focus/Blur Detection
+  // Adsterra Social Bar: Revive Ad Flow
   // ---------------------------------------------------------------------------
 
-  // Preload vignette script (called when death modal appears, giving it time to load)
-  const preloadVignette = useCallback(() => {
-    if (!document.querySelector('script[src="https://gizokraijaw.net/vignette.min.js"]')) {
-      const s = document.createElement('script');
-      s.dataset.zone = '10706176';
-      s.src = 'https://gizokraijaw.net/vignette.min.js';
-      document.body.appendChild(s);
-    }
-  }, []);
-
-  // Unified revive executor — cleans up all ad-waiting state
+  // Unified revive executor — sends EXECUTE_REVIVE to the game iframe
   const executeRevive = useCallback(() => {
-    if (!isWaitingRef.current) return; // Prevent double-fire
-    setIsWaitingForAd(false);
-    isWaitingRef.current = false;
-    hasBlurredRef.current = false;
-    if (shortTimeoutRef.current) { clearTimeout(shortTimeoutRef.current); shortTimeoutRef.current = null; }
-    if (longTimeoutRef.current) { clearTimeout(longTimeoutRef.current); longTimeoutRef.current = null; }
-
+    setAdCountdown(null);
     if (iframeRef.current && iframeRef.current.contentWindow && gameUrl) {
       try {
         const targetOrigin = new URL(gameUrl, window.location.origin).origin;
@@ -113,80 +93,35 @@ export default function GameClientUI({
     }
   }, [gameUrl]);
 
-  // Listen for game death message and preload vignette while user reads the modal
+  // Listen for game death message
   useEffect(() => {
     const handleMessage = (e) => {
       if (e.data && e.data.type === 'PLAYER_DEAD_ASK_REVIVE') {
         setIsReviveModalOpen(true);
-        preloadVignette();
       }
     };
     window.addEventListener('message', handleMessage);
     return () => window.removeEventListener('message', handleMessage);
-  }, [preloadVignette]);
-
-  // Focus/blur detection — the only reliable signal for "ad closed"
-  useEffect(() => {
-    const handleBlur = () => {
-      if (isWaitingRef.current) {
-        hasBlurredRef.current = true;
-        // Ad appeared → cancel the short "no ad" timeout
-        if (shortTimeoutRef.current) {
-          clearTimeout(shortTimeoutRef.current);
-          shortTimeoutRef.current = null;
-        }
-      }
-    };
-
-    const handleFocus = () => {
-      if (isWaitingRef.current && hasBlurredRef.current) {
-        // User closed the ad and came back
-        executeRevive();
-      }
-    };
-
-    window.addEventListener('blur', handleBlur);
-    window.addEventListener('focus', handleFocus);
-    return () => {
-      window.removeEventListener('blur', handleBlur);
-      window.removeEventListener('focus', handleFocus);
-    };
-  }, [executeRevive]);
-
-  // Cleanup timeouts on unmount
-  useEffect(() => {
-    return () => {
-      if (shortTimeoutRef.current) clearTimeout(shortTimeoutRef.current);
-      if (longTimeoutRef.current) clearTimeout(longTimeoutRef.current);
-    };
   }, []);
 
   // ---------------------------------------------------------------------------
   // Handlers
   // ---------------------------------------------------------------------------
 
-  // User clicked "Watch Ad" — close modal, enter waiting state, let Vignette intercept
-  const handleWatchAd = () => {
+  // User clicked "Watch Ad" — inject Adsterra Social Bar via AdService, show countdown
+  const handleWatchAd = async () => {
     setIsReviveModalOpen(false);
-    setIsWaitingForAd(true);
-    isWaitingRef.current = true;
-    hasBlurredRef.current = false;
+    setAdCountdown(6); // Init countdown display immediately
 
-    // Short timeout (6s): if window never blurred, ad didn't show → grant free revive
-    shortTimeoutRef.current = setTimeout(() => {
-      if (isWaitingRef.current && !hasBlurredRef.current) {
-        console.log('[Revive] Ad did not appear within 6s, granting free revive');
-        executeRevive();
-      }
-    }, 6000);
+    try {
+      await AdService.showRewardedAd((remaining) => {
+        setAdCountdown(remaining);
+      });
+    } catch (err) {
+      console.warn('[GameClientUI] AdService failed, granting free revive:', err);
+    }
 
-    // Long timeout (10s): if blur happened but focus never returned → force revive
-    longTimeoutRef.current = setTimeout(() => {
-      if (isWaitingRef.current) {
-        console.log('[Revive] 10s timeout, forcing revive');
-        executeRevive();
-      }
-    }, 10000);
+    executeRevive();
   };
 
   // User declined revive
@@ -220,6 +155,7 @@ export default function GameClientUI({
             <body>
                 <script>
                     const script = document.createElement('script');
+                    script.setAttribute('data-cfasync', 'false');
                     script.type = 'text/javascript';
                     script.src = 'https://www.highperformanceformat.com/866f788a538c789345f3c99981b528db/invoke.js';
                     
@@ -284,6 +220,37 @@ export default function GameClientUI({
         </button>
       </div>
 
+      {/* Adsterra 300x250 Banner */}
+      <div className="w-full flex justify-center items-center bg-black border-t border-white/10 z-20 shrink-0 py-4">
+        <iframe
+          srcDoc={`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body { margin: 0; padding: 0; overflow: hidden; background: transparent; display: flex; justify-content: center; align-items: center; }
+                </style>
+            </head>
+            <body>
+                <script data-cfasync="false">
+                  var atOptions = {
+                    'key' : '426ed0dc77438ac628229fa31600fcee',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                <\/script>
+                <script data-cfasync="false" type="text/javascript" src="//www.highperformanceformat.com/426ed0dc77438ac628229fa31600fcee/invoke.js"><\/script>
+            </body>
+            </html>
+          `}
+          sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
+          style={{ width: '300px', height: '250px', border: 'none', overflow: 'hidden' }}
+          title="Bottom Advertisement"
+        />
+      </div>
+
       {finalAdConfig && (
         <div className="w-full flex justify-center items-center bg-black border-t border-white/10 z-20 shrink-0">
           <iframe
@@ -301,6 +268,7 @@ export default function GameClientUI({
                       // Delayed ad script loading
                       setTimeout(() => {
                           const script = document.createElement('script');
+                          script.setAttribute('data-cfasync', 'false');
                           script.type = 'text/javascript';
                           script.src = '${finalAdConfig.script}';
                           
@@ -331,20 +299,11 @@ export default function GameClientUI({
         </div>
       )}
 
-      {/* Transition overlay: shown between "Watch Ad" click and revive execution */}
-      {isWaitingForAd && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-[100]">
-          <div className="flex flex-col items-center gap-4">
-            <div className="w-10 h-10 rounded-full border-4 border-white/20 border-t-primary animate-spin-fast"></div>
-            <div className="text-white/80 text-sm font-medium">Loading Ad...</div>
-          </div>
-        </div>
-      )}
-
       <ReviveAdModal
         isOpen={isReviveModalOpen}
         onAccept={handleWatchAd}
         onDecline={handleDeclineRevive}
+        adCountdown={adCountdown}
       />
     </div>
   )

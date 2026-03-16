@@ -100,7 +100,7 @@ export default function PlayPage() {
                 </style>
             </head>
             <body>
-                <script type="text/javascript">
+                <script data-cfasync="false" type="text/javascript">
                     window.atOptions = {
                         'key': '866f788a538c789345f3c99981b528db',
                         'format': 'iframe',
@@ -109,7 +109,7 @@ export default function PlayPage() {
                         'params': {}
                     };
                 </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/866f788a538c789345f3c99981b528db/invoke.js"></script>
+                <script data-cfasync="false" type="text/javascript" src="//www.highperformanceformat.com/866f788a538c789345f3c99981b528db/invoke.js"></script>
             </body>
             </html>
           `}
