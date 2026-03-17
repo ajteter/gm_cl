@@ -4,11 +4,16 @@
   "description": "Static H5 Games Portal for Cloudflare Pages",
   "private": true,
   "scripts": {
-    "dev": "cd static-site && npm run dev",
-    "build": "cd static-site && npm run build",
-    "preview": "cd static-site && npm run preview",
-    "test": "cd static-site && npm run test",
-    "lint": "cd static-site && npm run lint",
-    "deploy": "cd static-site && npm run deploy:production"
+    "dev": "cd static-site && pnpm run dev",
+    "build": "cd static-site && pnpm run build",
+    "preview": "cd static-site && pnpm run preview",
+    "test": "cd static-site && pnpm run test",
+    "lint": "cd static-site && pnpm run lint",
+    "deploy": "cd static-site && pnpm run deploy:production"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
