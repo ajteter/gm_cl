@@ -10,8 +10,5 @@
     "test": "cd static-site && npm run test",
     "lint": "cd static-site && npm run lint",
     "deploy": "cd static-site && npm run deploy:production"
-  },
-  "workspaces": [
-    "static-site"
-  ]
+  }
 }
