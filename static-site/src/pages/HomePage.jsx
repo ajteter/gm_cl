@@ -29,12 +29,19 @@ export default function HomePage() {
     delay: 1000
   }
 
+  // Native ad configuration for floppybird page
+  const nativeAd = {
+    scriptSrc: 'https://pl28930965.profitablecpmratenetwork.com/94dce533c4905a36ce0e031ab154baca/invoke.js',
+    containerId: 'container-94dce533c4905a36ce0e031ab154baca'
+  }
+
   return (
     <GameClientUI
       game={floppyGame}
       title={floppyGame.title}
       showTitle={false} // Hidden for a cleaner fullscreen look like a real app
       adConfig={null}
+      nativeAdConfig={nativeAd}
       onMoreGames={handleMoreGames}
     />
   )

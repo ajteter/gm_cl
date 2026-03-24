@@ -29,6 +29,7 @@ export default function GameClientUI({
   title = "1 DAY 1 GAME",
   showTitle = true,
   adConfig,
+  nativeAdConfig = null,
   onMoreGames = null
 }) {
   const [gameUrl, setGameUrl] = useState(game?.url || '')
@@ -222,36 +223,60 @@ export default function GameClientUI({
         </button>
       </div>
 
-      {/* Adsterra 300x250 Banner */}
-      <div className="w-full flex justify-center items-center bg-black border-t border-white/10 z-20 shrink-0 py-4">
-        <iframe
-          srcDoc={`
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <style>
-                    body { margin: 0; padding: 0; overflow: hidden; background: transparent; display: flex; justify-content: center; align-items: center; }
-                </style>
-            </head>
-            <body>
-                <script data-cfasync="false">
-                  var atOptions = {
-                    'key' : '426ed0dc77438ac628229fa31600fcee',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                  };
-                <\/script>
-                <script data-cfasync="false" type="text/javascript" src="//www.highperformanceformat.com/426ed0dc77438ac628229fa31600fcee/invoke.js"><\/script>
-            </body>
-            </html>
-          `}
-          sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
-          style={{ width: '300px', height: '250px', border: 'none', overflow: 'hidden' }}
-          title={t('game.adTitle.bottom')}
-        />
-      </div>
+      {/* Native Ad or Adsterra 300x250 Banner */}
+      {nativeAdConfig ? (
+        <div className="w-full flex justify-center items-center bg-black border-t border-white/10 z-20 shrink-0 py-4">
+          <iframe
+            srcDoc={`
+              <!DOCTYPE html>
+              <html>
+              <head>
+                  <style>
+                      body { margin: 0; padding: 0; overflow: hidden; background: transparent; display: flex; justify-content: center; align-items: center; }
+                  </style>
+              </head>
+              <body>
+                  <script async="async" data-cfasync="false" src="${nativeAdConfig.scriptSrc}"><\/script>
+                  <div id="${nativeAdConfig.containerId}"></div>
+              </body>
+              </html>
+            `}
+            sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
+            style={{ width: '100%', maxWidth: '400px', height: '300px', border: 'none', overflow: 'hidden' }}
+            title={t('game.adTitle.bottom')}
+          />
+        </div>
+      ) : (
+        <div className="w-full flex justify-center items-center bg-black border-t border-white/10 z-20 shrink-0 py-4">
+          <iframe
+            srcDoc={`
+              <!DOCTYPE html>
+              <html>
+              <head>
+                  <style>
+                      body { margin: 0; padding: 0; overflow: hidden; background: transparent; display: flex; justify-content: center; align-items: center; }
+                  </style>
+              </head>
+              <body>
+                  <script data-cfasync="false">
+                    var atOptions = {
+                      'key' : '426ed0dc77438ac628229fa31600fcee',
+                      'format' : 'iframe',
+                      'height' : 250,
+                      'width' : 300,
+                      'params' : {}
+                    };
+                  <\/script>
+                  <script data-cfasync="false" type="text/javascript" src="//www.highperformanceformat.com/426ed0dc77438ac628229fa31600fcee/invoke.js"><\/script>
+              </body>
+              </html>
+            `}
+            sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
+            style={{ width: '300px', height: '250px', border: 'none', overflow: 'hidden' }}
+            title={t('game.adTitle.bottom')}
+          />
+        </div>
+      )}
 
       {finalAdConfig && (
         <div className="w-full flex justify-center items-center bg-black border-t border-white/10 z-20 shrink-0">
@@ -326,6 +351,10 @@ GameClientUI.propTypes = {
     maxHeight: PropTypes.string.isRequired,
     script: PropTypes.string.isRequired,
     delay: PropTypes.number
+  }),
+  nativeAdConfig: PropTypes.shape({
+    scriptSrc: PropTypes.string.isRequired,
+    containerId: PropTypes.string.isRequired
   }),
   onMoreGames: PropTypes.func
 }
