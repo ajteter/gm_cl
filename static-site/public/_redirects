@@ -11,6 +11,6 @@
 # Static assets with splat
 /assets/*  /assets/:splat  200
 
-# SPA fallback - exclude index.html to prevent infinite loop
+# SPA fallback - exclude API routes and index.html
 /index.html  /index.html  200
-/*  /index.html  200
+/*  /index.html  200!  
