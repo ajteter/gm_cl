@@ -181,13 +181,13 @@ export default function LeaderboardSystem({
                 {isSubmitting ? '...' : 'Save'}
               </button>
             </div>
-            <div className="flex items-center justify-between mt-2">
+            <div className="flex items-center justify-between mt-3">
               <span className="text-white/30 text-xs">
                 {playerName.length}/10
               </span>
               <button
                 onClick={handleSkipName}
-                className="text-white/40 text-xs hover:text-white/60 transition-colors cursor-pointer"
+                className="px-4 py-1.5 rounded-lg border border-white/20 text-white/60 text-sm font-medium hover:bg-white/10 hover:text-white/80 transition-colors cursor-pointer"
               >
                 Skip
               </button>
