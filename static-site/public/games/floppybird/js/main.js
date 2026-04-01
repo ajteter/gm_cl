@@ -56,7 +56,15 @@ $(document).ready(function() {
          currentstate = states.ReviveScreen;
          $("#splash").transition({ opacity: 1 }, 200, 'ease');
       } else if (e.data.type === 'SKIP_REVIVE') {
-         showScore();
+         if (score > 0) {
+            window.parent.postMessage({ type: 'GAME_OVER_LEADERBOARD', score: score }, '*');
+         } else {
+            showScore();
+         }
+      } else if (e.data.type === 'RESTART_GAME') {
+         replayclickable = false;
+         $("#scoreboard").css("display", "none");
+         showSplash();
       }
    });
 
@@ -405,6 +413,12 @@ function playerDead()
       // Ask React to show the ad prompt
       window.parent.postMessage({ type: 'PLAYER_DEAD_ASK_REVIVE', score: score }, '*');
       return; // Stop execution to prevent showing the scoreboard yet
+   }
+
+   // Second death (after revive) — route to leaderboard if score > 0
+   if (score > 0) {
+      window.parent.postMessage({ type: 'GAME_OVER_LEADERBOARD', score: score }, '*');
+      return;
    }
 
    showScore();

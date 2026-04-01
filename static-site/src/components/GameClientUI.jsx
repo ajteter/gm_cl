@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ReviveAdModal from './ReviveAdModal'
+import LeaderboardSystem from './LeaderboardSystem'
 import { AdService } from '../services/AdService'
 import { useI18n } from '../i18n'
 
@@ -29,13 +30,14 @@ export default function GameClientUI({
   title = "1 DAY 1 GAME",
   showTitle = true,
   adConfig,
-  nativeAdConfig = null,
   onMoreGames = null
 }) {
   const [gameUrl, setGameUrl] = useState(game?.url || '')
   const [isIframeLoading, setIsIframeLoading] = useState(true)
   const [isReviveModalOpen, setIsReviveModalOpen] = useState(false)
   const [adCountdown, setAdCountdown] = useState(null) // null = not watching, >0 = countdown, 0 = done
+  const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false)
+  const [leaderboardScore, setLeaderboardScore] = useState(0)
   const iframeRef = useRef(null)
   const navigate = useNavigate()
   const { t } = useI18n()
@@ -101,6 +103,10 @@ export default function GameClientUI({
     const handleMessage = (e) => {
       if (e.data && e.data.type === 'PLAYER_DEAD_ASK_REVIVE') {
         setIsReviveModalOpen(true);
+      } else if (e.data && e.data.type === 'GAME_OVER_LEADERBOARD') {
+        setIsReviveModalOpen(false);
+        setLeaderboardScore(e.data.score);
+        setIsLeaderboardOpen(true);
       }
     };
     window.addEventListener('message', handleMessage);
@@ -223,60 +229,35 @@ export default function GameClientUI({
         </button>
       </div>
 
-      {/* Native Ad or Adsterra 300x250 Banner */}
-      {nativeAdConfig ? (
-        <div className="w-full flex justify-center items-center bg-black border-t border-white/10 z-20 shrink-0 py-4">
-          <iframe
-            srcDoc={`
-              <!DOCTYPE html>
-              <html>
-              <head>
-                  <style>
-                      body { margin: 0; padding: 0; overflow: hidden; background: transparent; display: flex; justify-content: center; align-items: center; }
-                  </style>
-              </head>
-              <body>
-                  <script async="async" data-cfasync="false" src="${nativeAdConfig.scriptSrc}"><\/script>
-                  <div id="${nativeAdConfig.containerId}"></div>
-              </body>
-              </html>
-            `}
-            sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
-            style={{ width: '100%', maxWidth: '400px', height: '300px', border: 'none', overflow: 'hidden' }}
-            title={t('game.adTitle.bottom')}
-          />
-        </div>
-      ) : (
-        <div className="w-full flex justify-center items-center bg-black border-t border-white/10 z-20 shrink-0 py-4">
-          <iframe
-            srcDoc={`
-              <!DOCTYPE html>
-              <html>
-              <head>
-                  <style>
-                      body { margin: 0; padding: 0; overflow: hidden; background: transparent; display: flex; justify-content: center; align-items: center; }
-                  </style>
-              </head>
-              <body>
-                  <script data-cfasync="false">
-                    var atOptions = {
-                      'key' : '426ed0dc77438ac628229fa31600fcee',
-                      'format' : 'iframe',
-                      'height' : 250,
-                      'width' : 300,
-                      'params' : {}
-                    };
-                  <\/script>
-                  <script data-cfasync="false" type="text/javascript" src="//www.highperformanceformat.com/426ed0dc77438ac628229fa31600fcee/invoke.js"><\/script>
-              </body>
-              </html>
-            `}
-            sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
-            style={{ width: '300px', height: '250px', border: 'none', overflow: 'hidden' }}
-            title={t('game.adTitle.bottom')}
-          />
-        </div>
-      )}
+      <div className="w-full flex justify-center items-center bg-black border-t border-white/10 z-20 shrink-0 py-4">
+        <iframe
+          srcDoc={`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body { margin: 0; padding: 0; overflow: hidden; background: transparent; display: flex; justify-content: center; align-items: center; }
+                </style>
+            </head>
+            <body>
+                <script data-cfasync="false">
+                  var atOptions = {
+                    'key' : '426ed0dc77438ac628229fa31600fcee',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                <\/script>
+                <script data-cfasync="false" type="text/javascript" src="//www.highperformanceformat.com/426ed0dc77438ac628229fa31600fcee/invoke.js"><\/script>
+            </body>
+            </html>
+          `}
+          sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
+          style={{ width: '300px', height: '250px', border: 'none', overflow: 'hidden' }}
+          title={t('game.adTitle.bottom')}
+        />
+      </div>
 
       {finalAdConfig && (
         <div className="w-full flex justify-center items-center bg-black border-t border-white/10 z-20 shrink-0">
@@ -332,6 +313,14 @@ export default function GameClientUI({
         onDecline={handleDeclineRevive}
         adCountdown={adCountdown}
       />
+
+      <LeaderboardSystem
+        isOpen={isLeaderboardOpen}
+        score={leaderboardScore}
+        onClose={() => { setIsLeaderboardOpen(false); setLeaderboardScore(0); }}
+        iframeRef={iframeRef}
+        gameUrl={gameUrl}
+      />
     </div>
   )
 }
@@ -351,10 +340,6 @@ GameClientUI.propTypes = {
     maxHeight: PropTypes.string.isRequired,
     script: PropTypes.string.isRequired,
     delay: PropTypes.number
-  }),
-  nativeAdConfig: PropTypes.shape({
-    scriptSrc: PropTypes.string.isRequired,
-    containerId: PropTypes.string.isRequired
   }),
   onMoreGames: PropTypes.func
 }

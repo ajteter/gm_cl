@@ -68,3 +68,9 @@ Content-Encoding = "gzip"
 for = "*.css"
 [headers.values]
 Content-Encoding = "gzip"
+
+# D1 Database binding for leaderboard
+[[d1_databases]]
+binding = "DB"
+database_name = "leaderboard"
+database_id = "a65cd865-69e6-4b8c-86d3-d9bd82fa0873"
