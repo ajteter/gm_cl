@@ -51,7 +51,10 @@ export async function onRequestGet(context) {
   const token = await hmacSign(secret, `${ip}:${ts}`)
 
   return new Response(JSON.stringify({ ts, token }), {
-    headers: CORS,
+    headers: {
+      ...CORS,
+      'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
+    },
   })
 }
 

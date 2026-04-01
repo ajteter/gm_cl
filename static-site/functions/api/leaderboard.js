@@ -19,8 +19,8 @@ const RATE_LIMIT_WINDOW_S = 60;
 const RATE_LIMIT_MAX = 5;
 const DISPLAY_TOP_N = 10;
 const STORAGE_KEEP_N = 50;
-const MIN_PLAY_TIME_MS = 3000;      // 3 seconds
-const MAX_TOKEN_AGE_MS = 600000;     // 10 minutes
+const MIN_PLAY_TIME_MS = 1000;       // 1 second (Flappy Bird allows instant death)
+const MAX_TOKEN_AGE_MS = 86400000;   // 24 hours (allow extended play sessions)
 
 const CORS = {
   'Content-Type': 'application/json',

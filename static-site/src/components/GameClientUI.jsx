@@ -64,7 +64,7 @@ export default function GameClientUI({
 
   // Fetch game session token on mount (for leaderboard anti-abuse)
   useEffect(() => {
-    fetch('/api/game-token')
+    fetch('/api/game-token', { cache: 'no-store' })
       .then(res => res.ok ? res.json() : null)
       .then(data => { if (data) setGameToken(data) })
       .catch(() => { /* token fetch failed, leaderboard will work without it */ })
