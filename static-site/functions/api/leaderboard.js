@@ -17,7 +17,7 @@ export async function onRequestGet(context) {
   if (cached) return cached;
 
   try {
-    const { results } = await env.DB.prepare(
+    const { results } = await env.flybird.prepare(
       'SELECT player_name, country, score FROM leaderboard ORDER BY score DESC LIMIT 10'
     ).all();
 
@@ -76,7 +76,7 @@ export async function onRequestPost(context) {
   const country = request.cf?.country || 'XX';
 
   try {
-    await env.DB.prepare(
+    await env.flybird.prepare(
       'INSERT INTO leaderboard (player_name, country, score) VALUES (?, ?, ?)'
     ).bind(playerName.trim().slice(0, 10), country, Math.floor(score)).run();
 
