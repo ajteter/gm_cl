@@ -52,6 +52,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: h5-games-static-staging
           directory: static-site/dist
+          functionsDirectory: static-site/functions
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Deploy to Cloudflare Pages (Production)
@@ -62,6 +63,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: h5-games-static
           directory: static-site/dist
+          functionsDirectory: static-site/functions
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Verify deployment (Staging)

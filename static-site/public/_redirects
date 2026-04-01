@@ -13,4 +13,4 @@
 
 # SPA fallback - exclude API routes and index.html
 /index.html  /index.html  200
-/*  /index.html  200!  
+/*  /index.html  200
