@@ -175,10 +175,10 @@ export default function GameClientUI({
                     const script = document.createElement('script');
                     script.setAttribute('data-cfasync', 'false');
                     script.type = 'text/javascript';
-                    script.src = 'https://www.highperformanceformat.com/a7d763a29934a2cb86e8b7b822a3f2f1/invoke.js';
+                    script.src = 'https://www.highperformanceformat.com/866f788a538c789345f3c99981b528db/invoke.js';
                     
                     window.atOptions = {
-                        'key': 'a7d763a29934a2cb86e8b7b822a3f2f1',
+                        'key': '866f788a538c789345f3c99981b528db',
                         'format': 'iframe',
                         'height': 50,
                         'width': 320,
@@ -249,8 +249,8 @@ export default function GameClientUI({
                 </style>
             </head>
             <body>
-                <script async="async" data-cfasync="false" src="https://pl29033213.profitablecpmratenetwork.com/7a4788a2d486b00440f50590ef77b936/invoke.js"><\/script>
-                <div id="container-7a4788a2d486b00440f50590ef77b936"></div>
+                <script async="async" data-cfasync="false" src="https://pl28930965.profitablecpmratenetwork.com/94dce533c4905a36ce0e031ab154baca/invoke.js"><\/script>
+                <div id="container-94dce533c4905a36ce0e031ab154baca"></div>
             </body>
             </html>
           `}
