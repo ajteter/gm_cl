@@ -54,5 +54,20 @@
   "error.connectionProblem": "সংযোগ সমস্যা",
   "error.offlineMessage": "অনুগ্রহ করে আপনার ইন্টারনেট সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
   "error.serverMessage": "আমাদের সার্ভারের সাথে সংযোগ করতে সমস্যা হচ্ছে।",
-  "error.autoRetry": "আপনি আবার অনলাইনে আসলে এই পেজটি স্বয়ংক্রিয়ভাবে পুনরায় চেষ্টা করবে।"
+  "error.autoRetry": "আপনি আবার অনলাইনে আসলে এই পেজটি স্বয়ংক্রিয়ভাবে পুনরায় চেষ্টা করবে।",
+  "leaderboard.title": "🏆 গ্লোবাল টপ 10",
+  "leaderboard.yourScore": "আপনার স্কোর: {score}",
+  "leaderboard.qualified": "🎉 আপনি সেরা দশে জায়গা করে নিয়েছেন! আপনার নাম লিখুন:",
+  "leaderboard.namePlaceholder": "তোমার নাম",
+  "leaderboard.save": "সংরক্ষণ করুন",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "এড়িয়ে যান",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "লোড হচ্ছে...",
+  "leaderboard.error": "লিডারবোর্ড লোড করা যায়নি",
+  "leaderboard.submitError": "স্কোর জমা দিতে ব্যর্থ হয়েছে",
+  "leaderboard.rateLimited": "অনেক চেষ্টা. পরে আবার চেষ্টা করুন.",
+  "leaderboard.sessionError": "গেম সেশনের মেয়াদ শেষ হয়েছে। খেলা পুনরায় আরম্ভ করুন.",
+  "leaderboard.empty": "এখনো কোনো স্কোর নেই। প্রথম হতে!",
+  "leaderboard.playAgain": "🔄 আবার খেলুন"
 }

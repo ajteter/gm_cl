@@ -54,5 +54,20 @@
   "error.connectionProblem": "Ulanish muammosi",
   "error.offlineMessage": "Internet ulanishingizni tekshiring va qayta urinib ko'ring.",
   "error.serverMessage": "Serverlarimizga ulanishda muammo yuz bermoqda.",
-  "error.autoRetry": "Internet aloqasi tiklanganida bu sahifa avtomatik ravishda qayta urinib ko'radi."
+  "error.autoRetry": "Internet aloqasi tiklanganida bu sahifa avtomatik ravishda qayta urinib ko'radi.",
+  "leaderboard.title": "🏆 Global Top 10",
+  "leaderboard.yourScore": "Sizning ballingiz: {score}",
+  "leaderboard.qualified": "🎉 Siz Top 10 talikka kirdingiz! Ismingizni kiriting:",
+  "leaderboard.namePlaceholder": "Sizning ismingiz",
+  "leaderboard.save": "Saqlash",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Oʻtkazib yuborish",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Yuklanmoqda...",
+  "leaderboard.error": "Peshqadamlar jadvalini yuklab bo‘lmadi",
+  "leaderboard.submitError": "Balni topshirib bo‘lmadi",
+  "leaderboard.rateLimited": "Juda koʻp urinishlar. Keyinroq qayta urinib ko‘ring.",
+  "leaderboard.sessionError": "Oʻyin seansi tugadi. Iltimos, oʻyinni qayta ishga tushiring.",
+  "leaderboard.empty": "Hozircha ochko yo'q. Birinchi bo'ling!",
+  "leaderboard.playAgain": "🔄 Qayta o'ynang"
 }

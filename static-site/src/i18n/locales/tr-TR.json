@@ -54,5 +54,20 @@
   "error.connectionProblem": "Bağlantı sorunu",
   "error.offlineMessage": "Lütfen internet bağlantınızı kontrol edip tekrar deneyin.",
   "error.serverMessage": "Sunucularımıza bağlanmakta sorun yaşıyoruz.",
-  "error.autoRetry": "Tekrar çevrimiçi olduğunuzda bu sayfa otomatik olarak yeniden denenecek."
+  "error.autoRetry": "Tekrar çevrimiçi olduğunuzda bu sayfa otomatik olarak yeniden denenecek.",
+  "leaderboard.title": "🏆 Küresel İlk 10",
+  "leaderboard.yourScore": "Puanınız: {score}",
+  "leaderboard.qualified": "🎉 İlk 10'a girdiniz! Adınızı girin:",
+  "leaderboard.namePlaceholder": "Adınız",
+  "leaderboard.save": "Kaydetmek",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Atlamak",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Yükleniyor...",
+  "leaderboard.error": "Skor tablosu yüklenemedi",
+  "leaderboard.submitError": "Puan gönderilemedi",
+  "leaderboard.rateLimited": "Çok fazla deneme. Lütfen daha sonra tekrar deneyin.",
+  "leaderboard.sessionError": "Oyun oturumu sona erdi. Lütfen oyunu yeniden başlatın.",
+  "leaderboard.empty": "Henüz puan yok. İlk siz olun!",
+  "leaderboard.playAgain": "🔄 Tekrar Oyna"
 }

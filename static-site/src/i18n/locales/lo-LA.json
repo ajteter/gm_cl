@@ -54,5 +54,20 @@
   "error.connectionProblem": "ບັນຫາການເຊື່ອມຕໍ່",
   "error.offlineMessage": "ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ອິນເຕີເນັດຂອງທ່ານ ແລະ ລອງໃໝ່ອີກຄັ້ງ.",
   "error.serverMessage": "ພວກເຮົາມີບັນຫາໃນການເຊື່ອມຕໍ່ກັບເຊີບເວີຂອງພວກເຮົາ.",
-  "error.autoRetry": "ໜ້ານີ້ຈະລອງໃໝ່ອັດຕະໂນມັດເມື່ອທ່ານກັບມາອອນລາຍ."
+  "error.autoRetry": "ໜ້ານີ້ຈະລອງໃໝ່ອັດຕະໂນມັດເມື່ອທ່ານກັບມາອອນລາຍ.",
+  "leaderboard.title": "🏆 ອັນດັບ 10 ຂອງໂລກ",
+  "leaderboard.yourScore": "ຄະແນນຂອງທ່ານ: {score}",
+  "leaderboard.qualified": "🎉 ເຈົ້າສ້າງ 10 ອັນດັບ! ໃສ່ຊື່ຂອງເຈົ້າ:",
+  "leaderboard.namePlaceholder": "ຊື່ຂອງເຈົ້າ",
+  "leaderboard.save": "ບັນທຶກ",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "ຂ້າມ",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "ກຳລັງໂຫລດ...",
+  "leaderboard.error": "ບໍ່ສາມາດໂຫຼດກະດານຈັດອັນດັບໄດ້",
+  "leaderboard.submitError": "ສົ່ງຄະແນນບໍ່ສຳເລັດ",
+  "leaderboard.rateLimited": "ພະຍາຍາມຫຼາຍເກີນໄປ. ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ.",
+  "leaderboard.sessionError": "ຊ່ວງເວລາເກມໝົດອາຍຸແລ້ວ. ກະລຸນາຣີສະຕາດເກມ.",
+  "leaderboard.empty": "ຍັງບໍ່ມີຄະແນນເທື່ອ. ເປັນຄົນທຳອິດ!",
+  "leaderboard.playAgain": "🔄 ຫຼິ້ນອີກ"
 }

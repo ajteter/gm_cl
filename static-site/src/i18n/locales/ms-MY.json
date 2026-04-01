@@ -54,5 +54,20 @@
   "error.connectionProblem": "Masalah sambungan",
   "error.offlineMessage": "Sila semak sambungan internet anda dan cuba lagi.",
   "error.serverMessage": "Kami menghadapi masalah untuk menyambung ke pelayan kami.",
-  "error.autoRetry": "Halaman ini akan cuba semula secara automatik apabila anda kembali dalam talian."
+  "error.autoRetry": "Halaman ini akan cuba semula secara automatik apabila anda kembali dalam talian.",
+  "leaderboard.title": "🏆 10 Teratas Global",
+  "leaderboard.yourScore": "Markah Anda: {score}",
+  "leaderboard.qualified": "🎉 Anda mendapat 10 Terbaik! Masukkan nama anda:",
+  "leaderboard.namePlaceholder": "nama awak",
+  "leaderboard.save": "Jimat",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Langkau",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Memuatkan...",
+  "leaderboard.error": "Tidak dapat memuatkan papan pendahulu",
+  "leaderboard.submitError": "Gagal menyerahkan markah",
+  "leaderboard.rateLimited": "Terlalu banyak percubaan. Sila cuba lagi kemudian.",
+  "leaderboard.sessionError": "Sesi permainan tamat tempoh. Sila mulakan semula permainan.",
+  "leaderboard.empty": "Tiada markah lagi. Jadilah yang pertama!",
+  "leaderboard.playAgain": "🔄 Main Lagi"
 }

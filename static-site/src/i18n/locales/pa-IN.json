@@ -54,5 +54,20 @@
   "error.connectionProblem": "ਕੁਨੈਕਸ਼ਨ ਸਮੱਸਿਆ",
   "error.offlineMessage": "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
   "error.serverMessage": "ਸਾਨੂੰ ਸਾਡੇ ਸਰਵਰਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰਨ ਵਿੱਚ ਮੁਸ਼ਕਲ ਆ ਰਹੀ ਹੈ।",
-  "error.autoRetry": "ਜਦੋਂ ਤੁਸੀਂ ਵਾਪਸ ਔਨਲਾਈਨ ਆਓਗੇ ਤਾਂ ਇਹ ਪੇਜ ਆਪਣੇ ਆਪ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੇਗਾ।"
+  "error.autoRetry": "ਜਦੋਂ ਤੁਸੀਂ ਵਾਪਸ ਔਨਲਾਈਨ ਆਓਗੇ ਤਾਂ ਇਹ ਪੇਜ ਆਪਣੇ ਆਪ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੇਗਾ।",
+  "leaderboard.title": "🏆 ਗਲੋਬਲ ਟਾਪ 10",
+  "leaderboard.yourScore": "ਤੁਹਾਡਾ ਸਕੋਰ: {score}",
+  "leaderboard.qualified": "🎉 ਤੁਸੀਂ ਸਿਖਰਲੇ 10 ਵਿੱਚ ਥਾਂ ਬਣਾਈ ਹੈ! ਆਪਣਾ ਨਾਮ ਦਰਜ ਕਰੋ:",
+  "leaderboard.namePlaceholder": "ਤੁਹਾਡਾ ਨਾਮ",
+  "leaderboard.save": "ਸੇਵ ਕਰੋ",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "ਛੱਡੋ",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
+  "leaderboard.error": "ਲੀਡਰਬੋਰਡ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ",
+  "leaderboard.submitError": "ਸਕੋਰ ਸਪੁਰਦ ਕਰਨ ਵਿੱਚ ਅਸਫਲ",
+  "leaderboard.rateLimited": "ਬਹੁਤ ਸਾਰੀਆਂ ਕੋਸ਼ਿਸ਼ਾਂ। ਕਿਰਪਾ ਕਰਕੇ ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+  "leaderboard.sessionError": "ਗੇਮ ਸੈਸ਼ਨ ਦੀ ਮਿਆਦ ਸਮਾਪਤ ਹੋਈ। ਕਿਰਪਾ ਕਰਕੇ ਗੇਮ ਨੂੰ ਮੁੜ ਚਾਲੂ ਕਰੋ।",
+  "leaderboard.empty": "ਅਜੇ ਤੱਕ ਕੋਈ ਸਕੋਰ ਨਹੀਂ ਹੈ। ਪਹਿਲੇ ਬਣੋ!",
+  "leaderboard.playAgain": "🔄 ਦੁਬਾਰਾ ਖੇਡੋ"
 }

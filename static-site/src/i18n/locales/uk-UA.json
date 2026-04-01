@@ -54,5 +54,20 @@
   "error.connectionProblem": "Проблема з підключенням",
   "error.offlineMessage": "Будь ласка, перевірте підключення до інтернету та спробуйте знову.",
   "error.serverMessage": "У нас виникли проблеми з підключенням до наших серверів.",
-  "error.autoRetry": "Ця сторінка автоматично повторить спробу, коли ви знову будете онлайн."
+  "error.autoRetry": "Ця сторінка автоматично повторить спробу, коли ви знову будете онлайн.",
+  "leaderboard.title": "🏆 Топ-10 у світі",
+  "leaderboard.yourScore": "Ваш рахунок: {score}",
+  "leaderboard.qualified": "🎉 Ви потрапили до Топ-10! Введіть своє ім'я:",
+  "leaderboard.namePlaceholder": "Ваше ім'я",
+  "leaderboard.save": "зберегти",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Пропустити",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Завантаження...",
+  "leaderboard.error": "Не вдалося завантажити таблицю лідерів",
+  "leaderboard.submitError": "Не вдалося надіслати оцінку",
+  "leaderboard.rateLimited": "Забагато спроб. Спробуйте пізніше.",
+  "leaderboard.sessionError": "Ігровий сеанс закінчився. Перезапустіть гру.",
+  "leaderboard.empty": "Ще немає балів. Будь першим!",
+  "leaderboard.playAgain": "🔄 Грати знову"
 }

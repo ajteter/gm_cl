@@ -54,5 +54,20 @@
   "error.connectionProblem": "Problem z połączeniem",
   "error.offlineMessage": "Sprawdź połączenie z internetem i spróbuj ponownie.",
   "error.serverMessage": "Mamy problem z połączeniem z naszymi serwerami.",
-  "error.autoRetry": "Ta strona automatycznie ponowi próbę, gdy będziesz z powrotem online."
+  "error.autoRetry": "Ta strona automatycznie ponowi próbę, gdy będziesz z powrotem online.",
+  "leaderboard.title": "🏆 Globalna 10 najlepszych",
+  "leaderboard.yourScore": "Twój wynik: {score}",
+  "leaderboard.qualified": "🎉 Znalazłeś się w pierwszej dziesiątce! Wpisz swoje imię:",
+  "leaderboard.namePlaceholder": "Twoje imię",
+  "leaderboard.save": "Ratować",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Pominąć",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Załadunek...",
+  "leaderboard.error": "Nie udało się załadować tabeli liderów",
+  "leaderboard.submitError": "Nie udało się przesłać wyniku",
+  "leaderboard.rateLimited": "Zbyt wiele prób. Spróbuj ponownie później.",
+  "leaderboard.sessionError": "Sesja gry wygasła. Proszę ponownie uruchomić grę.",
+  "leaderboard.empty": "Nie ma jeszcze żadnych wyników. Bądź pierwszy!",
+  "leaderboard.playAgain": "🔄 Zagraj ponownie"
 }

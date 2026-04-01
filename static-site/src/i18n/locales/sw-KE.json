@@ -54,5 +54,20 @@
   "error.connectionProblem": "Tatizo la muunganisho",
   "error.offlineMessage": "Tafadhali angalia muunganisho wako wa intaneti na ujaribu tena.",
   "error.serverMessage": "Tunatatizo la kuunganika na seva zetu.",
-  "error.autoRetry": "Ukurasa huu utajaribu tena kiotomatiki unapokuwa mtandaoni."
+  "error.autoRetry": "Ukurasa huu utajaribu tena kiotomatiki unapokuwa mtandaoni.",
+  "leaderboard.title": "🏆 Top 10 Bora Ulimwenguni",
+  "leaderboard.yourScore": "Alama yako: {score}",
+  "leaderboard.qualified": "🎉 Umeingia 10 Bora! Ingiza jina lako:",
+  "leaderboard.namePlaceholder": "Jina lako",
+  "leaderboard.save": "Hifadhi",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Ruka",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Inapakia...",
+  "leaderboard.error": "Haikuweza kupakia ubao wa wanaoongoza",
+  "leaderboard.submitError": "Imeshindwa kuwasilisha alama",
+  "leaderboard.rateLimited": "Majaribio mengi sana. Tafadhali jaribu tena baadaye.",
+  "leaderboard.sessionError": "Kipindi cha mchezo kimekwisha. Tafadhali anzisha mchezo upya.",
+  "leaderboard.empty": "Bado hakuna alama. Kuwa wa kwanza!",
+  "leaderboard.playAgain": "🔄 Cheza Tena"
 }

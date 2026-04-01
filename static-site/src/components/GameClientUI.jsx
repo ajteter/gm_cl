@@ -38,6 +38,7 @@ export default function GameClientUI({
   const [adCountdown, setAdCountdown] = useState(null) // null = not watching, >0 = countdown, 0 = done
   const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false)
   const [leaderboardScore, setLeaderboardScore] = useState(0)
+  const [gameToken, setGameToken] = useState(null)
   const iframeRef = useRef(null)
   const navigate = useNavigate()
   const { t } = useI18n()
@@ -60,6 +61,14 @@ export default function GameClientUI({
       setGameUrl(newUrl.toString())
     }
   }, [game.url])
+
+  // Fetch game session token on mount (for leaderboard anti-abuse)
+  useEffect(() => {
+    fetch('/api/game-token')
+      .then(res => res.ok ? res.json() : null)
+      .then(data => { if (data) setGameToken(data) })
+      .catch(() => { /* token fetch failed, leaderboard will work without it */ })
+  }, [])
 
   const handleMoreGames = () => {
     if (onMoreGames) {
@@ -166,10 +175,10 @@ export default function GameClientUI({
                     const script = document.createElement('script');
                     script.setAttribute('data-cfasync', 'false');
                     script.type = 'text/javascript';
-                    script.src = 'https://www.highperformanceformat.com/866f788a538c789345f3c99981b528db/invoke.js';
+                    script.src = 'https://www.highperformanceformat.com/a7d763a29934a2cb86e8b7b822a3f2f1/invoke.js';
                     
                     window.atOptions = {
-                        'key': '866f788a538c789345f3c99981b528db',
+                        'key': 'a7d763a29934a2cb86e8b7b822a3f2f1',
                         'format': 'iframe',
                         'height': 50,
                         'width': 320,
@@ -240,21 +249,13 @@ export default function GameClientUI({
                 </style>
             </head>
             <body>
-                <script data-cfasync="false">
-                  var atOptions = {
-                    'key' : '426ed0dc77438ac628229fa31600fcee',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                  };
-                <\/script>
-                <script data-cfasync="false" type="text/javascript" src="//www.highperformanceformat.com/426ed0dc77438ac628229fa31600fcee/invoke.js"><\/script>
+                <script async="async" data-cfasync="false" src="https://pl29033213.profitablecpmratenetwork.com/7a4788a2d486b00440f50590ef77b936/invoke.js"><\/script>
+                <div id="container-7a4788a2d486b00440f50590ef77b936"></div>
             </body>
             </html>
           `}
           sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
-          style={{ width: '300px', height: '250px', border: 'none', overflow: 'hidden' }}
+          style={{ width: '100%', maxWidth: '400px', height: '250px', border: 'none', overflow: 'hidden' }}
           title={t('game.adTitle.bottom')}
         />
       </div>
@@ -320,6 +321,7 @@ export default function GameClientUI({
         onClose={() => { setIsLeaderboardOpen(false); setLeaderboardScore(0); }}
         iframeRef={iframeRef}
         gameUrl={gameUrl}
+        gameToken={gameToken}
       />
     </div>
   )

@@ -54,5 +54,20 @@
   "error.connectionProblem": "সংযোগৰ সমস্যা",
   "error.offlineMessage": "অনুগ্ৰহ কৰি আপোনাৰ ইণ্টাৰনেট সংযোগ পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক।",
   "error.serverMessage": "আমাৰ চাৰ্ভাৰৰ সৈতে সংযোগ স্থাপন কৰাত সমস্যা হৈছে।",
-  "error.autoRetry": "আপুনি পুনৰ অনলাইন হ'লে এই পৃষ্ঠাই স্বয়ংক্ৰিয়ভাৱে পুনৰ চেষ্টা কৰিব।"
+  "error.autoRetry": "আপুনি পুনৰ অনলাইন হ'লে এই পৃষ্ঠাই স্বয়ংক্ৰিয়ভাৱে পুনৰ চেষ্টা কৰিব।",
+  "leaderboard.title": "🏆 গ্ল'বেল টপ ১০",
+  "leaderboard.yourScore": "আপোনাৰ স্ক'ৰ: {score}",
+  "leaderboard.qualified": "🎉 আপুনি Top 10 ত স্থান লাভ কৰিলে! আপোনাৰ নাম লিখক:",
+  "leaderboard.namePlaceholder": "তোমাৰ নাম",
+  "leaderboard.save": "সঞ্চয় কৰা",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "বাদ দিয়া",
+  "leaderboard.charCount": "{count}/১০",
+  "leaderboard.loading": "লোড হচ্ছে...",
+  "leaderboard.error": "লিডাৰবৰ্ড লোড কৰিব পৰা নগ'ল",
+  "leaderboard.submitError": "নম্বৰ জমা দিব নোৱাৰিলে",
+  "leaderboard.rateLimited": "অত্যধিক চেষ্টা। অনুগ্ৰহ কৰি পিছত পুনৰ চেষ্টা কৰক।",
+  "leaderboard.sessionError": "গেমৰ অধিবেশনৰ ম্যাদ উকলি গ’ল। অনুগ্ৰহ কৰি খেল পুনৰ আৰম্ভ কৰক।",
+  "leaderboard.empty": "এতিয়াও কোনো স্ক’ৰ নাই। প্ৰথম হওক!",
+  "leaderboard.playAgain": "🔄 আকৌ খেলক"
 }

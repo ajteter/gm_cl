@@ -54,5 +54,20 @@
   "error.connectionProblem": "Problema de conexión",
   "error.offlineMessage": "Por favor, comprueba tu conexión a internet e inténtalo de nuevo.",
   "error.serverMessage": "Tenemos problemas para conectarnos a nuestros servidores.",
-  "error.autoRetry": "Esta página volverá a intentarlo automáticamente cuando vuelvas a estar en línea."
+  "error.autoRetry": "Esta página volverá a intentarlo automáticamente cuando vuelvas a estar en línea.",
+  "leaderboard.title": "🏆 Top 10 mundial",
+  "leaderboard.yourScore": "Tu puntuación: {score}",
+  "leaderboard.qualified": "🎉 You made the Top 10! Introduce tu nombre:",
+  "leaderboard.namePlaceholder": "Su nombre",
+  "leaderboard.save": "Ahorrar",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Saltar",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Cargando...",
+  "leaderboard.error": "Could not load leaderboard",
+  "leaderboard.submitError": "No se pudo enviar la puntuación",
+  "leaderboard.rateLimited": "Demasiados intentos. Inténtelo de nuevo más tarde.",
+  "leaderboard.sessionError": "La sesión de juego expiró. Por favor reinicia el juego.",
+  "leaderboard.empty": "Aún no hay puntuaciones. ¡Sé el primero!",
+  "leaderboard.playAgain": "🔄 Play Again"
 }

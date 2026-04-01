@@ -54,5 +54,20 @@
   "error.connectionProblem": "जडान समस्या",
   "error.offlineMessage": "कृपया आफ्नो इन्टरनेट जडान जाँच गर्नुहोस् र पुनः प्रयास गर्नुहोस्।",
   "error.serverMessage": "हामीलाई हाम्रो सर्भरहरूमा जडान गर्न समस्या भइरहेको छ।",
-  "error.autoRetry": "तपाईं पुनः अनलाइन हुँदा यो पृष्ठ स्वतः पुनः प्रयास गर्नेछ।"
+  "error.autoRetry": "तपाईं पुनः अनलाइन हुँदा यो पृष्ठ स्वतः पुनः प्रयास गर्नेछ।",
+  "leaderboard.title": "🏆 विश्वव्यापी शीर्ष १०",
+  "leaderboard.yourScore": "तपाईको स्कोर: {score}",
+  "leaderboard.qualified": "🎉 तपाईंले शीर्ष 10 बनाउनुभयो! आफ्नो नाम प्रविष्ट गर्नुहोस्:",
+  "leaderboard.namePlaceholder": "तिम्रो नाम",
+  "leaderboard.save": "बचत गर्नुहोस्",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "छोड्नुहोस्",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "लोड गर्दै...",
+  "leaderboard.error": "लिडरबोर्ड लोड गर्न सकिएन",
+  "leaderboard.submitError": "स्कोर पेस गर्न असफल भयो",
+  "leaderboard.rateLimited": "धेरै प्रयासहरू। कृपया पछि पुन: प्रयास गर्नुहोस्।",
+  "leaderboard.sessionError": "खेल सत्र समाप्त भयो। कृपया खेल पुन: सुरु गर्नुहोस्।",
+  "leaderboard.empty": "अहिलेसम्म कुनै स्कोर छैन। पहिलो हुनुहोस्!",
+  "leaderboard.playAgain": "🔄 फेरि खेल्नुहोस्"
 }

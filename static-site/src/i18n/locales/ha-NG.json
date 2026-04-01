@@ -54,5 +54,20 @@
   "error.connectionProblem": "Matsalar haɗi",
   "error.offlineMessage": "Da fatan za a duba haɗin intanet ɗinka ka sake gwadawa.",
   "error.serverMessage": "Muna da matsala wajen haɗawa da sabobin mu.",
-  "error.autoRetry": "Wannan shafin zai sake gwadawa ta atomatik idan ka dawo kan layi."
+  "error.autoRetry": "Wannan shafin zai sake gwadawa ta atomatik idan ka dawo kan layi.",
+  "leaderboard.title": "🏆 Top 10 na Duniya",
+  "leaderboard.yourScore": "Makin ku: {score}",
+  "leaderboard.qualified": "🎉 Kun yi Top 10! Shigar da sunan ku:",
+  "leaderboard.namePlaceholder": "Sunan ku",
+  "leaderboard.save": "Ajiye",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Tsallake",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Ana lodawa...",
+  "leaderboard.error": "An kasa loda allon jagora",
+  "leaderboard.submitError": "An kasa ƙaddamar da maki",
+  "leaderboard.rateLimited": "Yunkurin da yawa. Da fatan za a sake gwadawa daga baya.",
+  "leaderboard.sessionError": "Zaman wasan ya kare. Da fatan za a sake kunna wasan.",
+  "leaderboard.empty": "Babu maki tukuna. Zama na farko!",
+  "leaderboard.playAgain": "🔄 Sake kunnawa"
 }

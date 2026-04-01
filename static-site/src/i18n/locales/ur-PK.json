@@ -54,5 +54,20 @@
   "error.connectionProblem": "کنکشن کا مسئلہ",
   "error.offlineMessage": "براہ کرم اپنا انٹرنیٹ کنیکشن چیک کریں اور دوبارہ کوشش کریں۔",
   "error.serverMessage": "ہمیں اپنے سرورز سے کنیکٹ کرنے میں مشکل ہو رہی ہے۔",
-  "error.autoRetry": "جب آپ دوبارہ آن لائن ہوں گے تو یہ صفحہ خود بخود دوبارہ کوشش کرے گا۔"
+  "error.autoRetry": "جب آپ دوبارہ آن لائن ہوں گے تو یہ صفحہ خود بخود دوبارہ کوشش کرے گا۔",
+  "leaderboard.title": "🏆 عالمی ٹاپ 10",
+  "leaderboard.yourScore": "آپ کا اسکور: {score}",
+  "leaderboard.qualified": "🎉 آپ نے ٹاپ 10 میں جگہ بنائی! اپنا نام درج کریں:",
+  "leaderboard.namePlaceholder": "آپ کا نام",
+  "leaderboard.save": "محفوظ کریں۔",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "چھوڑیں۔",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "لوڈ ہو رہا ہے...",
+  "leaderboard.error": "لیڈر بورڈ لوڈ نہیں ہو سکا",
+  "leaderboard.submitError": "سکور جمع کرانے میں ناکام",
+  "leaderboard.rateLimited": "بہت زیادہ کوششیں براہ کرم بعد میں دوبارہ کوشش کریں۔",
+  "leaderboard.sessionError": "گیم سیشن ختم ہو گیا۔ براہ کرم گیم دوبارہ شروع کریں۔",
+  "leaderboard.empty": "ابھی تک کوئی سکور نہیں۔ پہلے بنیں!",
+  "leaderboard.playAgain": "🔄 دوبارہ کھیلیں"
 }

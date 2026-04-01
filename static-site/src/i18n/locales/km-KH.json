@@ -54,5 +54,20 @@
   "error.connectionProblem": "បញ្ហាការតភ្ជាប់",
   "error.offlineMessage": "សូមពិនិត្យការតភ្ជាប់អ៊ីនធឺណិតរបស់អ្នក ហើយព្យាយាមម្តងទៀត។",
   "error.serverMessage": "យើងមានបញ្ហាក្នុងការភ្ជាប់ទៅម៉ាស៊ីនមេរបស់យើង។",
-  "error.autoRetry": "ទំព័រនេះនឹងព្យាយាមម្តងទៀតដោយស្វ័យប្រវត្តិនៅពេលអ្នកភ្ជាប់អ៊ីនធឺណិតវិញ។"
+  "error.autoRetry": "ទំព័រនេះនឹងព្យាយាមម្តងទៀតដោយស្វ័យប្រវត្តិនៅពេលអ្នកភ្ជាប់អ៊ីនធឺណិតវិញ។",
+  "leaderboard.title": "🏆 កំពូលទាំង 10 សកល",
+  "leaderboard.yourScore": "ពិន្ទុរបស់អ្នក៖ {score}",
+  "leaderboard.qualified": "🎉អ្នកជាប់ Top 10! បញ្ចូលឈ្មោះរបស់អ្នក៖",
+  "leaderboard.namePlaceholder": "ឈ្មោះរបស់អ្នក។",
+  "leaderboard.save": "រក្សាទុក",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "រំលង",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "កំពុង​ផ្ទុក...",
+  "leaderboard.error": "មិនអាចផ្ទុកតារាងពិន្ទុបានទេ។",
+  "leaderboard.submitError": "បរាជ័យក្នុងការដាក់ពិន្ទុ",
+  "leaderboard.rateLimited": "ការព្យាយាមច្រើនពេក។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។",
+  "leaderboard.sessionError": "Game session expired. Please restart the game.",
+  "leaderboard.empty": "No scores yet. Be the first!",
+  "leaderboard.playAgain": "🔄 លេងម្តងទៀត"
 }

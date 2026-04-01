@@ -54,5 +54,20 @@
   "error.connectionProblem": "연결 문제",
   "error.offlineMessage": "인터넷 연결을 확인하고 다시 시도해 주세요.",
   "error.serverMessage": "서버에 연결하는 데 문제가 발생했습니다.",
-  "error.autoRetry": "온라인 상태로 돌아오면 이 페이지가 자동으로 다시 시도됩니다."
+  "error.autoRetry": "온라인 상태로 돌아오면 이 페이지가 자동으로 다시 시도됩니다.",
+  "leaderboard.title": "🏆 Global Top 10",
+  "leaderboard.yourScore": "당신의 점수: {score}",
+  "leaderboard.qualified": "🎉 톱 10에 들었습니다! 이름을 입력하세요:",
+  "leaderboard.namePlaceholder": "당신의 이름",
+  "leaderboard.save": "구하다",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "건너뛰다",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "로드 중...",
+  "leaderboard.error": "리더보드를 로드할 수 없습니다.",
+  "leaderboard.submitError": "점수 제출 실패",
+  "leaderboard.rateLimited": "시도 횟수가 너무 많습니다. 나중에 다시 시도해 주세요.",
+  "leaderboard.sessionError": "게임 세션이 만료되었습니다. 게임을 다시 시작해주세요.",
+  "leaderboard.empty": "아직 점수가 없습니다. 첫 번째가 되세요!",
+  "leaderboard.playAgain": "🔄 다시 플레이"
 }

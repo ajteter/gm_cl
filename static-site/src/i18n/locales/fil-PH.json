@@ -54,5 +54,20 @@
   "error.connectionProblem": "Problema sa koneksyon",
   "error.offlineMessage": "Pakisuri ang iyong koneksyon sa internet at subukang muli.",
   "error.serverMessage": "Nagkakaroon kami ng problema sa pagkonekta sa aming mga server.",
-  "error.autoRetry": "Awtomatikong susubukan muli ang pahinang ito kapag naka-online ka na."
+  "error.autoRetry": "Awtomatikong susubukan muli ang pahinang ito kapag naka-online ka na.",
+  "leaderboard.title": "🏆 Global Top 10",
+  "leaderboard.yourScore": "Iyong Iskor: {score}",
+  "leaderboard.qualified": "🎉 Nakapasok ka sa Top 10! Ilagay ang iyong pangalan:",
+  "leaderboard.namePlaceholder": "pangalan mo",
+  "leaderboard.save": "I-save",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Laktawan",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Naglo-load...",
+  "leaderboard.error": "Hindi ma-load ang leaderboard",
+  "leaderboard.submitError": "Nabigong magsumite ng marka",
+  "leaderboard.rateLimited": "Masyadong maraming pagtatangka. Pakisubukang muli mamaya.",
+  "leaderboard.sessionError": "Nag-expire ang session ng laro. Mangyaring i-restart ang laro.",
+  "leaderboard.empty": "Wala pang score. Maging una!",
+  "leaderboard.playAgain": "🔄 Maglaro Muli"
 }

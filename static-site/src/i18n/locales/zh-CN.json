@@ -54,5 +54,20 @@
   "error.connectionProblem": "连接问题",
   "error.offlineMessage": "请检查您的网络连接后重试。",
   "error.serverMessage": "我们在连接服务器时遇到了问题。",
-  "error.autoRetry": "当您重新联网后，此页面将自动重试。"
+  "error.autoRetry": "当您重新联网后，此页面将自动重试。",
+  "leaderboard.title": "🏆 全球前 10",
+  "leaderboard.yourScore": "您的分数：{score}",
+  "leaderboard.qualified": "🎉 您进入了前十名！输入您的姓名：",
+  "leaderboard.namePlaceholder": "你的名字",
+  "leaderboard.save": "节省",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "跳过",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "加载中...",
+  "leaderboard.error": "无法加载排行榜",
+  "leaderboard.submitError": "提交成绩失败",
+  "leaderboard.rateLimited": "尝试次数太多。请稍后重试。",
+  "leaderboard.sessionError": "游戏会话已过期。请重新启动游戏。",
+  "leaderboard.empty": "还没有分数。成为第一！",
+  "leaderboard.playAgain": "🔄 再玩一次"
 }

@@ -54,5 +54,20 @@
   "error.connectionProblem": "සම්බන්ධතා ගැටළුව",
   "error.offlineMessage": "කරුණාකර ඔබගේ අන්තර්ජාල සම්බන්ධතාව පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
   "error.serverMessage": "අපගේ සේවාදායකයන් සමඟ සම්බන්ධ වීමේ ගැටලුවක් ඇත.",
-  "error.autoRetry": "ඔබ නැවත අන්තර්ජාලයට සම්බන්ධ වූ විට මෙම පිටුව ස්වයංක්‍රීයව නැවත උත්සාහ කරනු ඇත."
+  "error.autoRetry": "ඔබ නැවත අන්තර්ජාලයට සම්බන්ධ වූ විට මෙම පිටුව ස්වයංක්‍රීයව නැවත උත්සාහ කරනු ඇත.",
+  "leaderboard.title": "🏆 Global Top 10",
+  "leaderboard.yourScore": "ඔබේ ලකුණු: {score}",
+  "leaderboard.qualified": "🎉 ඔබ හොඳම 10 තැනුවා! ඔබගේ නම ඇතුලත් කරන්න:",
+  "leaderboard.namePlaceholder": "ඔයාගේ නම",
+  "leaderboard.save": "සුරකින්න",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "මඟ හරින්න",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "පූරණය වෙමින්...",
+  "leaderboard.error": "ප්‍රමුඛ පුවරුව පූරණය කළ නොහැකි විය",
+  "leaderboard.submitError": "ලකුණු ඉදිරිපත් කිරීමට අසමත් විය",
+  "leaderboard.rateLimited": "බොහෝ උත්සාහයන්. කරුණාකර පසුව නැවත උත්සාහ කරන්න.",
+  "leaderboard.sessionError": "ක්‍රීඩා සැසිය කල් ඉකුත් විය. කරුණාකර ක්‍රීඩාව නැවත ආරම්භ කරන්න.",
+  "leaderboard.empty": "තවම ලකුණු නැත. පළමුවැන්නා වන්න!",
+  "leaderboard.playAgain": "🔄 නැවත ක්‍රීඩා කරන්න"
 }

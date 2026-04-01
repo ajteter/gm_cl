@@ -54,5 +54,20 @@
   "error.connectionProblem": "Verbindungsproblem",
   "error.offlineMessage": "Bitte überprüfe deine Internetverbindung und versuche es erneut.",
   "error.serverMessage": "Wir haben Probleme, eine Verbindung zu unseren Servern herzustellen.",
-  "error.autoRetry": "Diese Seite wird automatisch erneut versucht, wenn du wieder online bist."
+  "error.autoRetry": "Diese Seite wird automatisch erneut versucht, wenn du wieder online bist.",
+  "leaderboard.title": "🏆 Globale Top 10",
+  "leaderboard.yourScore": "Ihr Ergebnis: {score}",
+  "leaderboard.qualified": "🎉 Du hast es in die Top 10 geschafft! Geben Sie Ihren Namen ein:",
+  "leaderboard.namePlaceholder": "Ihr Name",
+  "leaderboard.save": "Speichern",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Überspringen",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Laden...",
+  "leaderboard.error": "Die Bestenliste konnte nicht geladen werden",
+  "leaderboard.submitError": "Die Punktzahl konnte nicht übermittelt werden",
+  "leaderboard.rateLimited": "Zu viele Versuche. Bitte versuchen Sie es später noch einmal.",
+  "leaderboard.sessionError": "Spielsitzung abgelaufen. Bitte starten Sie das Spiel neu.",
+  "leaderboard.empty": "Noch keine Punkte. Seien Sie der Erste!",
+  "leaderboard.playAgain": "🔄 Noch einmal spielen"
 }

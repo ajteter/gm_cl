@@ -54,5 +54,20 @@
   "error.connectionProblem": "مشکل اتصال",
   "error.offlineMessage": "لطفاً اتصال اینترنت خود را بررسی کرده و دوباره امتحان کنید.",
   "error.serverMessage": "در اتصال به سرورهای ما مشکلی پیش آمده است.",
-  "error.autoRetry": "این صفحه به‌طور خودکار دوباره تلاش می‌کند وقتی به اینترنت متصل شدید."
+  "error.autoRetry": "این صفحه به‌طور خودکار دوباره تلاش می‌کند وقتی به اینترنت متصل شدید.",
+  "leaderboard.title": "🏆 10 تاپ برتر جهانی",
+  "leaderboard.yourScore": "امتیاز شما: {score}",
+  "leaderboard.qualified": "🎉 شما به 10 تای برتر رسیدید! نام خود را وارد کنید:",
+  "leaderboard.namePlaceholder": "نام شما",
+  "leaderboard.save": "ذخیره کنید",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "پرش کنید",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "در حال بارگیری...",
+  "leaderboard.error": "تابلوی امتیازات بارگیری نشد",
+  "leaderboard.submitError": "نمره ارسال نشد",
+  "leaderboard.rateLimited": "تلاش های بسیار زیاد لطفاً بعداً دوباره امتحان کنید.",
+  "leaderboard.sessionError": "جلسه بازی منقضی شد لطفا بازی را دوباره راه اندازی کنید.",
+  "leaderboard.empty": "هنوز امتیازی وجود ندارد. اولین باشید!",
+  "leaderboard.playAgain": "🔄 بازی دوباره"
 }

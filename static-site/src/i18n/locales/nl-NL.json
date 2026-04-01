@@ -54,5 +54,20 @@
   "error.connectionProblem": "Verbindingsprobleem",
   "error.offlineMessage": "Controleer je internetverbinding en probeer het opnieuw.",
   "error.serverMessage": "We hebben problemen met verbinding maken met onze servers.",
-  "error.autoRetry": "Deze pagina wordt automatisch opnieuw geprobeerd wanneer je weer online bent."
+  "error.autoRetry": "Deze pagina wordt automatisch opnieuw geprobeerd wanneer je weer online bent.",
+  "leaderboard.title": "🏆 Mondiale top 10",
+  "leaderboard.yourScore": "Jouw score: {score}",
+  "leaderboard.qualified": "🎉Je hebt de Top 10 gehaald! Voer uw naam in:",
+  "leaderboard.namePlaceholder": "Jouw naam",
+  "leaderboard.save": "Redden",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Overslaan",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Laden...",
+  "leaderboard.error": "Kan scorebord niet laden",
+  "leaderboard.submitError": "Het is niet gelukt om de score in te dienen",
+  "leaderboard.rateLimited": "Te veel pogingen. Probeer het later opnieuw.",
+  "leaderboard.sessionError": "Spelsessie verlopen. Start het spel opnieuw.",
+  "leaderboard.empty": "Nog geen scores. Wees de eerste!",
+  "leaderboard.playAgain": "🔄 Speel opnieuw"
 }

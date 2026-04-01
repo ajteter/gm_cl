@@ -54,5 +54,20 @@
   "error.connectionProblem": "కనెక్షన్ సమస్య",
   "error.offlineMessage": "దయచేసి మీ ఇంటర్నెట్ కనెక్షన్ తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి.",
   "error.serverMessage": "మా సర్వర్‌లకు కనెక్ట్ అవడంలో మాకు సమస్య వస్తోంది.",
-  "error.autoRetry": "మీరు తిరిగి ఆన్‌లైన్‌లోకి వచ్చినప్పుడు ఈ పేజీ స్వయంచాలకంగా మళ్ళీ ప్రయత్నిస్తుంది."
+  "error.autoRetry": "మీరు తిరిగి ఆన్‌లైన్‌లోకి వచ్చినప్పుడు ఈ పేజీ స్వయంచాలకంగా మళ్ళీ ప్రయత్నిస్తుంది.",
+  "leaderboard.title": "🏆 గ్లోబల్ టాప్ 10",
+  "leaderboard.yourScore": "మీ స్కోర్: {score}",
+  "leaderboard.qualified": "🎉 మీరు టాప్ 10లో నిలిచారు! మీ పేరును నమోదు చేయండి:",
+  "leaderboard.namePlaceholder": "మీ పేరు",
+  "leaderboard.save": "సేవ్ చేయండి",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "దాటవేయి",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "లోడ్ అవుతోంది...",
+  "leaderboard.error": "లీడర్‌బోర్డ్‌ను లోడ్ చేయడం సాధ్యపడలేదు",
+  "leaderboard.submitError": "స్కోర్‌ను సమర్పించడంలో విఫలమైంది",
+  "leaderboard.rateLimited": "చాలా ప్రయత్నాలు. దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి.",
+  "leaderboard.sessionError": "గేమ్ సెషన్ గడువు ముగిసింది. దయచేసి ఆటను పునఃప్రారంభించండి.",
+  "leaderboard.empty": "ఇంకా స్కోర్లు లేవు. మొదటి వ్యక్తి అవ్వండి!",
+  "leaderboard.playAgain": "🔄 మళ్లీ ఆడండి"
 }

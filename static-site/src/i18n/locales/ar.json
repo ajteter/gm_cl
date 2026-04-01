@@ -54,5 +54,20 @@
   "error.connectionProblem": "مشكلة في الاتصال",
   "error.offlineMessage": "يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.",
   "error.serverMessage": "نواجه مشكلة في الاتصال بخوادمنا.",
-  "error.autoRetry": "ستعيد هذه الصفحة المحاولة تلقائيًا عند عودتك إلى الإنترنت."
+  "error.autoRetry": "ستعيد هذه الصفحة المحاولة تلقائيًا عند عودتك إلى الإنترنت.",
+  "leaderboard.title": "🏆 المراكز العشرة الأولى عالميًا",
+  "leaderboard.yourScore": "درجاتك: {score}",
+  "leaderboard.qualified": "🎉 لقد وصلت إلى المراكز العشرة الأولى! أدخل اسمك:",
+  "leaderboard.namePlaceholder": "اسمك",
+  "leaderboard.save": "يحفظ",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "يتخطى",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "تحميل...",
+  "leaderboard.error": "تعذر تحميل لوحة الصدارة",
+  "leaderboard.submitError": "فشل في تقديم النتيجة",
+  "leaderboard.rateLimited": "محاولات كثيرة جدًا. يرجى المحاولة مرة أخرى في وقت لاحق.",
+  "leaderboard.sessionError": "انتهت جلسة اللعبة. يرجى إعادة تشغيل اللعبة.",
+  "leaderboard.empty": "لا توجد نتائج حتى الآن. كن الأول!",
+  "leaderboard.playAgain": "🔄 العب مرة أخرى"
 }

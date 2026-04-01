@@ -54,5 +54,20 @@
   "error.connectionProblem": "Connection problem",
   "error.offlineMessage": "Please check your internet connection and try again.",
   "error.serverMessage": "We're having trouble connecting to our servers.",
-  "error.autoRetry": "This page will automatically retry when you're back online."
+  "error.autoRetry": "This page will automatically retry when you're back online.",
+  "leaderboard.title": "🏆 Global Top 10",
+  "leaderboard.yourScore": "Your Score: {score}",
+  "leaderboard.qualified": "🎉 You made the Top 10! Enter your name:",
+  "leaderboard.namePlaceholder": "Your name",
+  "leaderboard.save": "Save",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Skip",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Loading...",
+  "leaderboard.error": "Could not load leaderboard",
+  "leaderboard.submitError": "Failed to submit score",
+  "leaderboard.rateLimited": "Too many attempts. Please try again later.",
+  "leaderboard.sessionError": "Game session expired. Please restart the game.",
+  "leaderboard.empty": "No scores yet. Be the first!",
+  "leaderboard.playAgain": "🔄 Play Again"
 }

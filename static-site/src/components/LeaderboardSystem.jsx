@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
+import { useI18n } from '../i18n'
 
 /**
  * Convert a 2-letter ISO country code to an Emoji flag.
@@ -23,6 +24,7 @@ function countryToFlag(code) {
  *   onClose     – callback to close the modal (parent resets state)
  *   iframeRef   – ref to the game iframe (for postMessage)
  *   gameUrl     – game URL used for targetOrigin
+ *   gameToken   – { ts, token } from /api/game-token for score submission auth
  */
 export default function LeaderboardSystem({
   isOpen,
@@ -30,7 +32,9 @@ export default function LeaderboardSystem({
   onClose,
   iframeRef,
   gameUrl,
+  gameToken,
 }) {
+  const { t } = useI18n()
   const [leaderboard, setLeaderboard] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [needsName, setNeedsName] = useState(false)
@@ -52,7 +56,7 @@ export default function LeaderboardSystem({
       setLeaderboard(data)
       return data
     } catch {
-      setError('Could not load leaderboard')
+      setError(t('leaderboard.error'))
       return []
     } finally {
       setIsLoading(false)
@@ -83,18 +87,49 @@ export default function LeaderboardSystem({
     const trimmed = playerName.trim()
     if (!trimmed || isSubmitting) return
     setIsSubmitting(true)
+    setError(null)
     try {
+      const payload = {
+        playerName: trimmed.slice(0, 10),
+        score,
+      }
+
+      // Include game token if available
+      if (gameToken?.ts && gameToken?.token) {
+        payload.ts = gameToken.ts
+        payload.token = gameToken.token
+      }
+
       const res = await fetch('/api/leaderboard', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ playerName: trimmed.slice(0, 10), score }),
+        body: JSON.stringify(payload),
       })
+
+      if (res.status === 429) {
+        setError(t('leaderboard.rateLimited'))
+        return
+      }
+
+      if (res.status === 403) {
+        setError(t('leaderboard.sessionError'))
+        return
+      }
+
       if (!res.ok) throw new Error('Submit failed')
-      setHasSubmitted(true)
-      setNeedsName(false)
-      await fetchLeaderboard()
+
+      const result = await res.json()
+
+      if (result.qualified === false) {
+        // Score didn't qualify — just show leaderboard
+        setNeedsName(false)
+      } else {
+        setHasSubmitted(true)
+        setNeedsName(false)
+        await fetchLeaderboard()
+      }
     } catch {
-      setError('Failed to submit score')
+      setError(t('leaderboard.submitError'))
     } finally {
       setIsSubmitting(false)
     }
@@ -149,10 +184,10 @@ export default function LeaderboardSystem({
         {/* ---- Header ---- */}
         <div className="px-6 pt-6 pb-4 text-center border-b border-white/10">
           <h2 className="text-xl font-bold text-white flex items-center justify-center gap-2">
-            🏆 Global Top 10
+            {t('leaderboard.title')}
           </h2>
           <div className="mt-3 text-3xl font-black text-amber-400 tabular-nums">
-            Your Score: {score}
+            {t('leaderboard.yourScore', { score })}
           </div>
         </div>
 
@@ -160,14 +195,14 @@ export default function LeaderboardSystem({
         {needsName && !hasSubmitted && (
           <div className="px-6 py-4 border-b border-white/10 bg-amber-500/10">
             <p className="text-amber-300 text-sm font-semibold mb-3 text-center">
-              🎉 You made the Top 10! Enter your name:
+              {t('leaderboard.qualified')}
             </p>
             <div className="flex gap-2">
               <input
                 type="text"
                 value={playerName}
                 onChange={(e) => setPlayerName(e.target.value.slice(0, 10))}
-                placeholder="Your name"
+                placeholder={t('leaderboard.namePlaceholder')}
                 maxLength={10}
                 autoFocus
                 className="flex-1 px-4 py-2.5 rounded-xl bg-black/50 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-amber-400/60 text-sm"
@@ -178,20 +213,27 @@ export default function LeaderboardSystem({
                 disabled={!playerName.trim() || isSubmitting}
                 className="px-4 py-2.5 rounded-xl bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
-                {isSubmitting ? '...' : 'Save'}
+                {isSubmitting ? t('leaderboard.saving') : t('leaderboard.save')}
               </button>
             </div>
             <div className="flex items-center justify-between mt-3">
               <span className="text-white/30 text-xs">
-                {playerName.length}/10
+                {t('leaderboard.charCount', { count: playerName.length })}
               </span>
               <button
                 onClick={handleSkipName}
                 className="px-4 py-1.5 rounded-lg border border-white/20 text-white/60 text-sm font-medium hover:bg-white/10 hover:text-white/80 transition-colors cursor-pointer"
               >
-                Skip
+                {t('leaderboard.skip')}
               </button>
             </div>
+          </div>
+        )}
+
+        {/* ---- Error message ---- */}
+        {error && (
+          <div className="px-6 py-3 bg-red-500/10 border-b border-red-500/20">
+            <p className="text-red-400 text-center text-sm">{error}</p>
           </div>
         )}
 
@@ -201,11 +243,9 @@ export default function LeaderboardSystem({
             <div className="flex justify-center py-8">
               <div className="w-8 h-8 rounded-full border-4 border-white/20 border-t-amber-400 animate-spin" />
             </div>
-          ) : error ? (
-            <p className="text-red-400 text-center py-6 text-sm">{error}</p>
-          ) : leaderboard.length === 0 ? (
+          ) : leaderboard.length === 0 && !error ? (
             <p className="text-white/50 text-center py-6 text-sm">
-              No scores yet. Be the first!
+              {t('leaderboard.empty')}
             </p>
           ) : (
             <div className="space-y-1">
@@ -214,6 +254,7 @@ export default function LeaderboardSystem({
                   hasSubmitted &&
                   entry.player_name === playerName.trim() &&
                   entry.score === score
+                const rank = entry.rank || i + 1
                 return (
                   <div
                     key={`${entry.player_name}-${entry.score}-${i}`}
@@ -225,16 +266,16 @@ export default function LeaderboardSystem({
                   >
                     <span
                       className={`w-7 text-center font-black text-sm ${
-                        i === 0
+                        rank === 1
                           ? 'text-amber-400'
-                          : i === 1
+                          : rank === 2
                             ? 'text-gray-300'
-                            : i === 2
+                            : rank === 3
                               ? 'text-orange-400'
                               : 'text-white/50'
                       }`}
                     >
-                      {i === 0 ? '👑' : `#${i + 1}`}
+                      {rank === 1 ? '👑' : `#${rank}`}
                     </span>
                     <span className="text-lg leading-none">
                       {countryToFlag(entry.country)}
@@ -258,7 +299,7 @@ export default function LeaderboardSystem({
             onClick={handlePlayAgain}
             className="w-full py-3 rounded-xl bg-white text-black font-bold text-base hover:bg-gray-200 transition-colors active:scale-95 transform cursor-pointer"
           >
-            🔄 Play Again
+            {t('leaderboard.playAgain')}
           </button>
         </div>
       </div>
@@ -273,7 +314,8 @@ export default function LeaderboardSystem({
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
-      `}</style>
+      `}
+      </style>
     </div>
   )
 }
@@ -284,4 +326,8 @@ LeaderboardSystem.propTypes = {
   onClose: PropTypes.func.isRequired,
   iframeRef: PropTypes.object,
   gameUrl: PropTypes.string,
+  gameToken: PropTypes.shape({
+    ts: PropTypes.number,
+    token: PropTypes.string,
+  }),
 }

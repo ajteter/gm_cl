@@ -54,5 +54,20 @@
   "error.connectionProblem": "Проблема с подключением",
   "error.offlineMessage": "Пожалуйста, проверьте подключение к интернету и попробуйте снова.",
   "error.serverMessage": "У нас возникли проблемы с подключением к серверам.",
-  "error.autoRetry": "Эта страница автоматически повторит попытку, когда вы снова подключитесь к сети."
+  "error.autoRetry": "Эта страница автоматически повторит попытку, когда вы снова подключитесь к сети.",
+  "leaderboard.title": "🏆 Мировой топ-10",
+  "leaderboard.yourScore": "Ваш результат: {score}",
+  "leaderboard.qualified": "🎉 Вы вошли в Топ-10! Введите свое имя:",
+  "leaderboard.namePlaceholder": "Ваше имя",
+  "leaderboard.save": "Сохранять",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Пропускать",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Загрузка...",
+  "leaderboard.error": "Не удалось загрузить таблицу лидеров.",
+  "leaderboard.submitError": "Не удалось отправить оценку",
+  "leaderboard.rateLimited": "Слишком много попыток. Пожалуйста, повторите попытку позже.",
+  "leaderboard.sessionError": "Игровая сессия истекла. Пожалуйста, перезапустите игру.",
+  "leaderboard.empty": "Оценок пока нет. Будь первым!",
+  "leaderboard.playAgain": "🔄 Играй снова"
 }

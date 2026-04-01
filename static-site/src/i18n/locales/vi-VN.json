@@ -54,5 +54,20 @@
   "error.connectionProblem": "Sự cố kết nối",
   "error.offlineMessage": "Vui lòng kiểm tra kết nối internet của bạn và thử lại.",
   "error.serverMessage": "Chúng tôi đang gặp sự cố khi kết nối với máy chủ.",
-  "error.autoRetry": "Trang này sẽ tự động thử lại khi bạn kết nối trở lại."
+  "error.autoRetry": "Trang này sẽ tự động thử lại khi bạn kết nối trở lại.",
+  "leaderboard.title": "🏆 Top 10 toàn cầu",
+  "leaderboard.yourScore": "Điểm của bạn: {score}",
+  "leaderboard.qualified": "🎉 Bạn đã lọt vào Top 10! Nhập tên của bạn:",
+  "leaderboard.namePlaceholder": "Tên của bạn",
+  "leaderboard.save": "Cứu",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Nhảy",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Đang tải...",
+  "leaderboard.error": "Không thể tải bảng xếp hạng",
+  "leaderboard.submitError": "Không thể gửi điểm",
+  "leaderboard.rateLimited": "Quá nhiều nỗ lực. Vui lòng thử lại sau.",
+  "leaderboard.sessionError": "Phiên trò chơi đã hết hạn. Vui lòng khởi động lại trò chơi.",
+  "leaderboard.empty": "Chưa có điểm số. Hãy là người đầu tiên!",
+  "leaderboard.playAgain": "🔄 Chơi lại"
 }

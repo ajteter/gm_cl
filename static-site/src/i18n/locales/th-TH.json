@@ -54,5 +54,20 @@
   "error.connectionProblem": "ปัญหาการเชื่อมต่อ",
   "error.offlineMessage": "กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณแล้วลองอีกครั้ง",
   "error.serverMessage": "เรากำลังมีปัญหาในการเชื่อมต่อกับเซิร์ฟเวอร์ของเรา",
-  "error.autoRetry": "หน้านี้จะลองใหม่โดยอัตโนมัติเมื่อคุณกลับมาออนไลน์"
+  "error.autoRetry": "หน้านี้จะลองใหม่โดยอัตโนมัติเมื่อคุณกลับมาออนไลน์",
+  "leaderboard.title": "🏆 10 อันดับแรกของโลก",
+  "leaderboard.yourScore": "คะแนนของคุณ: {score}",
+  "leaderboard.qualified": "🎉 คุณติด 10 อันดับแรก! ใส่ชื่อของคุณ:",
+  "leaderboard.namePlaceholder": "ชื่อของคุณ",
+  "leaderboard.save": "บันทึก",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "ข้าม",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "กำลังโหลด...",
+  "leaderboard.error": "ไม่สามารถโหลดลีดเดอร์บอร์ดได้",
+  "leaderboard.submitError": "ไม่สามารถส่งคะแนนได้",
+  "leaderboard.rateLimited": "มีความพยายามมากเกินไป โปรดลองอีกครั้งในภายหลัง",
+  "leaderboard.sessionError": "เซสชั่นเกมหมดอายุแล้ว กรุณารีสตาร์ทเกม",
+  "leaderboard.empty": "ยังไม่มีคะแนน เป็นคนแรก!",
+  "leaderboard.playAgain": "🔄 เล่นอีกครั้ง"
 }

@@ -54,5 +54,20 @@
   "error.connectionProblem": "કનેક્શન સમસ્યા",
   "error.offlineMessage": "કૃપા કરીને તમારું ઇન્ટરનેટ કનેક્શન તપાસો અને ફરી પ્રયાસ કરો.",
   "error.serverMessage": "અમને અમારા સર્વર સાથે કનેક્ટ કરવામાં સમસ્યા આવી રही છે.",
-  "error.autoRetry": "જ્યારે તમે ફરીથી ઑનલાઇન હશો ત્યારે આ પૃષ્ઠ આપોઆપ ફરી પ્રયાસ કરશે."
+  "error.autoRetry": "જ્યારે તમે ફરીથી ઑનલાઇન હશો ત્યારે આ પૃષ્ઠ આપોઆપ ફરી પ્રયાસ કરશે.",
+  "leaderboard.title": "🏆 વૈશ્વિક ટોપ 10",
+  "leaderboard.yourScore": "તમારો સ્કોર: {score}",
+  "leaderboard.qualified": "🎉 તમે ટોપ 10માં સ્થાન મેળવ્યું છે! તમારું નામ દાખલ કરો:",
+  "leaderboard.namePlaceholder": "તમારું નામ",
+  "leaderboard.save": "સાચવો",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "છોડો",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "લોડ કરી રહ્યું છે...",
+  "leaderboard.error": "લીડરબોર્ડ લોડ કરી શકાયું નથી",
+  "leaderboard.submitError": "સ્કોર સબમિટ કરવામાં નિષ્ફળ",
+  "leaderboard.rateLimited": "ઘણા બધા પ્રયત્નો. કૃપા કરીને પછીથી ફરી પ્રયાસ કરો.",
+  "leaderboard.sessionError": "રમત સત્ર સમાપ્ત થયું. કૃપા કરીને રમત ફરી શરૂ કરો.",
+  "leaderboard.empty": "હજુ સુધી કોઈ સ્કોર નથી. પ્રથમ બનો!",
+  "leaderboard.playAgain": "🔄 ફરી રમો"
 }

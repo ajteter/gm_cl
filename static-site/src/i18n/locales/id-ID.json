@@ -54,5 +54,20 @@
   "error.connectionProblem": "Masalah koneksi",
   "error.offlineMessage": "Periksa koneksi internet kamu dan coba lagi.",
   "error.serverMessage": "Kami mengalami masalah dalam menghubungkan ke server kami.",
-  "error.autoRetry": "Halaman ini akan otomatis mencoba lagi ketika kamu kembali online."
+  "error.autoRetry": "Halaman ini akan otomatis mencoba lagi ketika kamu kembali online.",
+  "leaderboard.title": "🏆 10 Besar Dunia",
+  "leaderboard.yourScore": "Skor Anda: {score}",
+  "leaderboard.qualified": "🎉 Anda masuk 10 Besar! Masukkan nama Anda:",
+  "leaderboard.namePlaceholder": "Namamu",
+  "leaderboard.save": "Menyimpan",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Melewati",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Memuat...",
+  "leaderboard.error": "Tidak dapat memuat papan peringkat",
+  "leaderboard.submitError": "Gagal mengirimkan skor",
+  "leaderboard.rateLimited": "Terlalu banyak upaya. Silakan coba lagi nanti.",
+  "leaderboard.sessionError": "Sesi permainan berakhir. Silakan mulai ulang permainannya.",
+  "leaderboard.empty": "Belum ada skor. Jadilah yang pertama!",
+  "leaderboard.playAgain": "🔄 Mainkan Lagi"
 }

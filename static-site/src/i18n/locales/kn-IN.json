@@ -54,5 +54,20 @@
   "error.connectionProblem": "ಸಂಪರ್ಕ ಸಮಸ್ಯೆ",
   "error.offlineMessage": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
   "error.serverMessage": "ನಮ್ಮ ಸರ್ವರ್‌ಗಳಿಗೆ ಸಂಪರ್ಕಿಸಲು ನಮಗೆ ತೊಂದರೆಯಾಗುತ್ತಿದೆ.",
-  "error.autoRetry": "ನೀವು ಮತ್ತೆ ಆನ್‌ಲೈನ್‌ಗೆ ಬಂದಾಗ ಈ ಪುಟವು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಮರುಪ್ರಯತ್ನಿಸುತ್ತದೆ."
+  "error.autoRetry": "ನೀವು ಮತ್ತೆ ಆನ್‌ಲೈನ್‌ಗೆ ಬಂದಾಗ ಈ ಪುಟವು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಮರುಪ್ರಯತ್ನಿಸುತ್ತದೆ.",
+  "leaderboard.title": "🏆 ಜಾಗತಿಕ ಟಾಪ್ 10",
+  "leaderboard.yourScore": "ನಿಮ್ಮ ಸ್ಕೋರ್: {score}",
+  "leaderboard.qualified": "🎉 ನೀವು ಟಾಪ್ 10 ಅನ್ನು ಮಾಡಿದ್ದೀರಿ! ನಿಮ್ಮ ಹೆಸರನ್ನು ನಮೂದಿಸಿ:",
+  "leaderboard.namePlaceholder": "ನಿಮ್ಮ ಹೆಸರು",
+  "leaderboard.save": "ಉಳಿಸಿ",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "ಬಿಟ್ಟುಬಿಡಿ",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+  "leaderboard.error": "ಲೀಡರ್‌ಬೋರ್ಡ್ ಅನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ",
+  "leaderboard.submitError": "ಸ್ಕೋರ್ ಸಲ್ಲಿಸಲು ವಿಫಲವಾಗಿದೆ",
+  "leaderboard.rateLimited": "ಹಲವಾರು ಪ್ರಯತ್ನಗಳು. ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "leaderboard.sessionError": "ಆಟದ ಅವಧಿ ಮುಗಿದಿದೆ. ದಯವಿಟ್ಟು ಆಟವನ್ನು ಮರುಪ್ರಾರಂಭಿಸಿ.",
+  "leaderboard.empty": "ಇನ್ನೂ ಯಾವುದೇ ಅಂಕಗಳಿಲ್ಲ. ಮೊದಲಿಗರಾಗಿರಿ!",
+  "leaderboard.playAgain": "🔄 ಮತ್ತೆ ಪ್ಲೇ ಮಾಡಿ"
 }

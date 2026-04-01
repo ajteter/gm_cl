@@ -54,5 +54,20 @@
   "error.connectionProblem": "Қосылым мәселесі",
   "error.offlineMessage": "Интернет байланысын тексеріп, қайталап көріңіз.",
   "error.serverMessage": "Серверлерімізге қосылуда қиындық туындады.",
-  "error.autoRetry": "Интернетке қосылғаннан кейін бұл бет автоматты түрде қайталап көреді."
+  "error.autoRetry": "Интернетке қосылғаннан кейін бұл бет автоматты түрде қайталап көреді.",
+  "leaderboard.title": "🏆 Жаһандық 10 топ",
+  "leaderboard.yourScore": "Сіздің ұпайыңыз: {score}",
+  "leaderboard.qualified": "🎉 Сіз үздік 10-ға кірдіңіз! Атыңызды енгізіңіз:",
+  "leaderboard.namePlaceholder": "Сіздің атыңыз",
+  "leaderboard.save": "Сақтау",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Өткізіп жіберу",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Жүктелуде...",
+  "leaderboard.error": "Көшбасшылар тақтасын жүктеу мүмкін болмады",
+  "leaderboard.submitError": "Ұпайды жіберу мүмкін болмады",
+  "leaderboard.rateLimited": "Тым көп әрекет. Тағы жасауды сәл кейінірек көріңізді өтінеміз.",
+  "leaderboard.sessionError": "Ойын сеансы аяқталды. Ойынды қайта бастаңыз.",
+  "leaderboard.empty": "Әлі ұпайлар жоқ. Бірінші болыңыз!",
+  "leaderboard.playAgain": "🔄 Қайта ойнау"
 }

@@ -54,5 +54,20 @@
   "error.connectionProblem": "Problema de ligação",
   "error.offlineMessage": "Por favor, verifique a sua ligação à internet e tente novamente.",
   "error.serverMessage": "Estamos com dificuldades em ligar aos nossos servidores.",
-  "error.autoRetry": "Esta página irá tentar novamente automaticamente quando estiveres online."
+  "error.autoRetry": "Esta página irá tentar novamente automaticamente quando estiveres online.",
+  "leaderboard.title": "🏆 Top 10 globais",
+  "leaderboard.yourScore": "Sua pontuação: {score}",
+  "leaderboard.qualified": "🎉 Você chegou ao Top 10! Digite seu nome:",
+  "leaderboard.namePlaceholder": "Seu nome",
+  "leaderboard.save": "Salvar",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Pular",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Carregando...",
+  "leaderboard.error": "Não foi possível carregar o placar",
+  "leaderboard.submitError": "Falha ao enviar pontuação",
+  "leaderboard.rateLimited": "Muitas tentativas. Por favor, tente novamente mais tarde.",
+  "leaderboard.sessionError": "A sessão do jogo expirou. Por favor, reinicie o jogo.",
+  "leaderboard.empty": "Ainda não há pontuações. Seja o primeiro!",
+  "leaderboard.playAgain": "🔄 Jogue novamente"
 }

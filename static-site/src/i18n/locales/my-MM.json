@@ -54,5 +54,20 @@
   "error.connectionProblem": "ချိတ်ဆက်မှုပြဿနာ",
   "error.offlineMessage": "သင်၏အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။",
   "error.serverMessage": "ကျွန်ုပ်တို့၏ဆာဗာများနှင့် ချိတ်ဆက်ရာတွင် အခက်အခဲရှိနေသည်။",
-  "error.autoRetry": "သင်အွန်လိုင်းပြန်ဝင်သောအခါ ဤစာမျက်နှာသည် အလိုအလျောက် ပြန်လည်ကြိုးစားမည်။"
+  "error.autoRetry": "သင်အွန်လိုင်းပြန်ဝင်သောအခါ ဤစာမျက်နှာသည် အလိုအလျောက် ပြန်လည်ကြိုးစားမည်။",
+  "leaderboard.title": "🏆 ကမ္ဘာ့ထိပ်တန်း ၁၀",
+  "leaderboard.yourScore": "သင့်ရမှတ်- {score}",
+  "leaderboard.qualified": "🎉 သင် Top 10 ကို ရခဲ့ပါတယ် ။ သင့်အမည်ကို ထည့်ပါ-",
+  "leaderboard.namePlaceholder": "သင့်နာမည်",
+  "leaderboard.save": "သိမ်းဆည်းပါ။",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "ကျော်သွားပါ။",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "ဖွင့်နေသည်...",
+  "leaderboard.error": "ဦးဆောင်သူစာရင်းကို မတင်နိုင်ခဲ့ပါ။",
+  "leaderboard.submitError": "ရမှတ်တင်ပြရန် မအောင်မြင်ပါ။",
+  "leaderboard.rateLimited": "ကြိုးစားမှု များလွန်းတယ်။ နောက်မှ ထပ်စမ်းကြည့်ပါ။",
+  "leaderboard.sessionError": "ဂိမ်းစက်ရှင် သက်တမ်းကုန်သွားပါပြီ။ ကျေးဇူးပြု၍ ဂိမ်းကို ပြန်လည်စတင်ပါ။",
+  "leaderboard.empty": "အမှတ်များ မရှိသေးပါ။ ပထမဆုံးဖြစ်ပါစေ။",
+  "leaderboard.playAgain": "🔄 ပြန်ကစားပါ။"
 }

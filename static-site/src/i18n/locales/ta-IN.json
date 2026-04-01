@@ -54,5 +54,20 @@
   "error.connectionProblem": "இணைப்பு சிக்கல்",
   "error.offlineMessage": "உங்கள் இணைய இணைப்பை சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
   "error.serverMessage": "எங்கள் சேவையகங்களுடன் இணைப்பதில் சிக்கல் ஏற்படுகிறது.",
-  "error.autoRetry": "நீங்கள் மீண்டும் இணையத்தில் இருக்கும்போது இந்தப் பக்கம் தானாகவே மீண்டும் முயற்சிக்கும்."
+  "error.autoRetry": "நீங்கள் மீண்டும் இணையத்தில் இருக்கும்போது இந்தப் பக்கம் தானாகவே மீண்டும் முயற்சிக்கும்.",
+  "leaderboard.title": "🏆 உலகளாவிய முதல் 10",
+  "leaderboard.yourScore": "உங்கள் மதிப்பெண்: {score}",
+  "leaderboard.qualified": "🎉 You made the Top 10! Enter your name:",
+  "leaderboard.namePlaceholder": "உங்கள் பெயர்",
+  "leaderboard.save": "சேமிக்கவும்",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "தவிர்க்கவும்",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "ஏற்றுகிறது...",
+  "leaderboard.error": "லீடர்போர்டை ஏற்ற முடியவில்லை",
+  "leaderboard.submitError": "மதிப்பெண்ணைச் சமர்ப்பிக்க முடியவில்லை",
+  "leaderboard.rateLimited": "பல முயற்சிகள். பிறகு முயற்சிக்கவும்.",
+  "leaderboard.sessionError": "விளையாட்டு அமர்வு காலாவதியானது. விளையாட்டை மீண்டும் தொடங்கவும்.",
+  "leaderboard.empty": "இன்னும் மதிப்பெண்கள் இல்லை. முதல்வராக இருங்கள்!",
+  "leaderboard.playAgain": "🔄 மீண்டும் விளையாடு"
 }

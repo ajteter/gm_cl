@@ -54,5 +54,20 @@
   "error.connectionProblem": "കണക്ഷൻ പ്രശ്നം",
   "error.offlineMessage": "നിങ്ങളുടെ ഇന്റർനെറ്റ് കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.",
   "error.serverMessage": "ഞങ്ങളുടെ സെർവറുകളിലേക്ക് കണക്‌റ്റ് ചെയ്യുന്നതിൽ ഞങ്ങൾക്ക് പ്രശ്‌നമുണ്ട്.",
-  "error.autoRetry": "നിങ്ങൾ വീണ്ടും ഓൺലൈനിൽ ആകുമ്പോൾ ഈ പേജ് സ്വയം വീണ്ടും ശ്രമിക്കും."
+  "error.autoRetry": "നിങ്ങൾ വീണ്ടും ഓൺലൈനിൽ ആകുമ്പോൾ ഈ പേജ് സ്വയം വീണ്ടും ശ്രമിക്കും.",
+  "leaderboard.title": "🏆 ഗ്ലോബൽ ടോപ്പ് 10",
+  "leaderboard.yourScore": "നിങ്ങളുടെ സ്കോർ: {score}",
+  "leaderboard.qualified": "🎉 നിങ്ങൾ മികച്ച 10-ൽ ഇടം നേടി! നിങ്ങളുടെ പേര് നൽകുക:",
+  "leaderboard.namePlaceholder": "നിങ്ങളുടെ പേര്",
+  "leaderboard.save": "സംരക്ഷിക്കുക",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "ഒഴിവാക്കുക",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "ലോഡ് ചെയ്യുന്നു...",
+  "leaderboard.error": "ലീഡർബോർഡ് ലോഡ് ചെയ്യാനായില്ല",
+  "leaderboard.submitError": "സ്കോർ സമർപ്പിക്കുന്നതിൽ പരാജയപ്പെട്ടു",
+  "leaderboard.rateLimited": "വളരെയധികം ശ്രമങ്ങൾ. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.",
+  "leaderboard.sessionError": "ഗെയിം സെഷൻ കാലഹരണപ്പെട്ടു. ദയവായി ഗെയിം പുനരാരംഭിക്കുക.",
+  "leaderboard.empty": "ഇതുവരെ സ്‌കോറുകളൊന്നുമില്ല. ഒന്നാമനാകൂ!",
+  "leaderboard.playAgain": "🔄 വീണ്ടും കളിക്കുക"
 }

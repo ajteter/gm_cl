@@ -54,5 +54,20 @@
   "error.connectionProblem": "कनेक्शन समस्या",
   "error.offlineMessage": "कृपया तुमचे इंटरनेट कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.",
   "error.serverMessage": "आम्हाला आमच्या सर्व्हरशी कनेक्ट करण्यात अडचण येत आहे.",
-  "error.autoRetry": "तुम्ही पुन्हा ऑनलाइन आल्यावर हे पेज आपोआप पुन्हा प्रयत्न करेल."
+  "error.autoRetry": "तुम्ही पुन्हा ऑनलाइन आल्यावर हे पेज आपोआप पुन्हा प्रयत्न करेल.",
+  "leaderboard.title": "🏆 जागतिक टॉप १०",
+  "leaderboard.yourScore": "तुमचा स्कोअर: {score}",
+  "leaderboard.qualified": "🎉 तुम्ही टॉप १० मध्ये स्थान मिळवले आहे! तुमचे नाव प्रविष्ट करा:",
+  "leaderboard.namePlaceholder": "तुमचे नाव",
+  "leaderboard.save": "जतन करा",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "वगळा",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "लोड करत आहे...",
+  "leaderboard.error": "लीडरबोर्ड लोड करू शकलो नाही",
+  "leaderboard.submitError": "स्कोअर सबमिट करण्यात अयशस्वी",
+  "leaderboard.rateLimited": "बरेच प्रयत्न. कृपया नंतर पुन्हा प्रयत्न करा.",
+  "leaderboard.sessionError": "गेम सत्र कालबाह्य झाले. कृपया गेम रीस्टार्ट करा.",
+  "leaderboard.empty": "अद्याप कोणतेही स्कोअर नाहीत. प्रथम व्हा!",
+  "leaderboard.playAgain": "🔄 पुन्हा खेळा"
 }

@@ -54,5 +54,20 @@
   "error.connectionProblem": "Problema di connessione",
   "error.offlineMessage": "Controlla la tua connessione internet e riprova.",
   "error.serverMessage": "Stiamo riscontrando problemi di connessione ai nostri server.",
-  "error.autoRetry": "Questa pagina riproverà automaticamente quando sarai di nuovo online."
+  "error.autoRetry": "Questa pagina riproverà automaticamente quando sarai di nuovo online.",
+  "leaderboard.title": "🏆 Top 10 globale",
+  "leaderboard.yourScore": "Il tuo punteggio: {score}",
+  "leaderboard.qualified": "🎉 Sei entrato nella Top 10! Inserisci il tuo nome:",
+  "leaderboard.namePlaceholder": "Il tuo nome",
+  "leaderboard.save": "Salva",
+  "leaderboard.saving": "...",
+  "leaderboard.skip": "Saltare",
+  "leaderboard.charCount": "{count}/10",
+  "leaderboard.loading": "Caricamento...",
+  "leaderboard.error": "Impossibile caricare la classifica",
+  "leaderboard.submitError": "Impossibile inviare il punteggio",
+  "leaderboard.rateLimited": "Too many attempts. Per favore riprova più tardi.",
+  "leaderboard.sessionError": "Sessione di gioco scaduta. Per favore riavvia il gioco.",
+  "leaderboard.empty": "Nessun punteggio ancora. Sii il primo!",
+  "leaderboard.playAgain": "🔄 Gioca di nuovo"
 }
