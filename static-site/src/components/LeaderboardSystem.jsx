@@ -98,6 +98,7 @@ export default function LeaderboardSystem({
       if (gameToken?.ts && gameToken?.token) {
         payload.ts = gameToken.ts
         payload.token = gameToken.token
+        if (gameToken.nonce) payload.nonce = gameToken.nonce
       }
 
       const res = await fetch('/api/leaderboard', {

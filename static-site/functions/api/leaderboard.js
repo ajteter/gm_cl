@@ -154,7 +154,7 @@ export async function onRequestPost(context) {
 
   // --- 1. HMAC token verification ---
   if (secret) {
-    if (!ts || !token) {
+    if (!ts || !token || !body.nonce) {
       return new Response(JSON.stringify({ error: 'Missing game session token' }), {
         status: 403, headers: CORS,
       });
@@ -172,7 +172,7 @@ export async function onRequestPost(context) {
       });
     }
 
-    const expected = await hmacSign(secret, `${ip}:${ts}`);
+    const expected = await hmacSign(secret, `${body.nonce}:${ts}`);
     if (token !== expected) {
       return new Response(JSON.stringify({ error: 'Invalid game session token' }), {
         status: 403, headers: CORS,
