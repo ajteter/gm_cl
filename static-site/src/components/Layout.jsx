@@ -8,25 +8,25 @@ function Layout({ children }) {
 
   // Update document title and meta tags based on route
   useEffect(() => {
-    let title = 'H5 Games - Free Mobile Games'
+    let title = 'flybird.site - Free Online Games'
     let description = 'Play free HTML5 games on mobile. Fast loading games optimized for mobile webview.'
 
     switch (location.pathname) {
       case '/game':
-        title = 'All Games | H5 Games'
+        title = 'All Games | flybird.site'
         description = 'Browse our collection of free HTML5 games for mobile.'
         break
       case '/game/random':
-        title = 'Daily Game | H5 Games'
+        title = 'Daily Game | flybird.site'
         description = "Play today's featured HTML5 game on mobile."
         break
       case '/game/play':
-        title = 'Play Game | H5 Games'
+        title = 'Play Game | flybird.site'
         description = 'Playing HTML5 game on mobile.'
         break
       case '/privacy-policy':
-        title = 'Privacy Policy | H5 Games'
-        description = 'Privacy policy for H5 Games website.'
+        title = 'Privacy Policy | flybird.site'
+        description = 'Privacy policy for flybird.site.'
         break
     }
 
@@ -64,7 +64,7 @@ function Layout({ children }) {
       const structuredData = {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "H5 Games",
+        "name": "flybird.site",
         "description": "Free HTML5 games for mobile",
         "url": SITE_URL,
         "potentialAction": {

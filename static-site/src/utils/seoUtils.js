@@ -4,14 +4,14 @@
 
 // Default SEO configuration
 const DEFAULT_SEO = {
-  title: 'H5 Games - Free Mobile Games',
+  title: 'flybird.site - Free Online Games',
   description: 'Play free HTML5 games on mobile. Fast loading games optimized for mobile webview.',
   keywords: 'HTML5 games, mobile games, free games, browser games, webview games',
-  author: 'H5 Games',
+  author: 'flybird.site',
   type: 'website',
   locale: 'en_US',
-  siteName: 'H5 Games',
-  baseUrl: typeof window !== 'undefined' ? window.location.origin : 'https://h5games.com'
+  siteName: 'flybird.site',
+  baseUrl: typeof window !== 'undefined' ? window.location.origin : 'https://flybird.site'
 };
 
 /**
@@ -140,7 +140,7 @@ export const updateCanonicalLink = (url) => {
 export const generateGameSEO = (game) => {
   if (!game) return DEFAULT_SEO;
 
-  const title = `${game.title} - Play Free HTML5 Game | H5 Games`;
+  const title = `${game.title} - Play Free Game | flybird.site`;
   const description = game.description || `Play ${game.title}, a fun ${game.category} game. Free HTML5 game optimized for mobile.`;
   const keywords = `${game.title}, ${game.category} games, HTML5 games, mobile games, free games`;
   const canonical = `${DEFAULT_SEO.baseUrl}/game/${game.namespace}`;
@@ -162,7 +162,7 @@ export const generateGameSEO = (game) => {
  * @returns {Object} SEO configuration for random game page
  */
 export const generateRandomGameSEO = (game) => {
-  const baseTitle = 'Random Game - Daily Free HTML5 Game | H5 Games';
+  const baseTitle = 'Random Game - Daily Free Game | flybird.site';
   const baseDescription = 'Play a new random HTML5 game every day. Discover exciting games selected daily from our collection.';
   
   if (!game) {
@@ -175,7 +175,7 @@ export const generateRandomGameSEO = (game) => {
     };
   }
 
-  const title = `${game.title} - Today's Random Game | H5 Games`;
+  const title = `${game.title} - Today's Random Game | flybird.site`;
   const description = `Today's random game: ${game.title}. ${game.description || baseDescription}`;
   const keywords = `random games, ${game.title}, ${game.category} games, daily games, HTML5 games`;
   const canonical = `${DEFAULT_SEO.baseUrl}/game/random`;
@@ -199,7 +199,7 @@ export const generateRandomGameSEO = (game) => {
  */
 export const generateCategorySEO = (category, gameCount = 0) => {
   const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
-  const title = `${formattedCategory} Games - Free HTML5 Games | H5 Games`;
+  const title = `${formattedCategory} Games - Free Games | flybird.site`;
   const description = `Play ${gameCount} free ${formattedCategory.toLowerCase()} HTML5 games. Mobile-optimized games that load fast and play smooth.`;
   const keywords = `${formattedCategory.toLowerCase()} games, HTML5 games, mobile games, free games, browser games`;
   const canonical = `${DEFAULT_SEO.baseUrl}/source/${category}`;
@@ -233,7 +233,7 @@ export const generateGameStructuredData = (game) => {
     dateModified: game.date_modified,
     publisher: {
       '@type': 'Organization',
-      name: 'H5 Games',
+      name: 'flybird.site',
       url: DEFAULT_SEO.baseUrl
     },
     offers: {
@@ -256,7 +256,7 @@ export const generateWebsiteStructuredData = () => {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'H5 Games',
+    name: 'flybird.site',
     description: DEFAULT_SEO.description,
     url: DEFAULT_SEO.baseUrl,
     potentialAction: {
@@ -266,7 +266,7 @@ export const generateWebsiteStructuredData = () => {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'H5 Games',
+      name: 'flybird.site',
       url: DEFAULT_SEO.baseUrl
     }
   };

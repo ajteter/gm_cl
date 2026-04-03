@@ -78,8 +78,8 @@ export function useCategorySEO(category, gameCount = 0) {
  */
 export function useHomeSEO(totalGames = 0, currentPage = 1) {
   const title = currentPage > 1 
-    ? `H5 Games - Page ${currentPage} | Free Mobile Games`
-    : 'H5 Games - Free Mobile Games'
+    ? `Page ${currentPage} | flybird.site - Free Online Games`
+    : 'flybird.site - Free Online Games'
   
   const description = currentPage > 1
     ? `Browse page ${currentPage} of ${totalGames} free HTML5 games. Mobile-optimized games that load fast and play smooth.`
@@ -101,7 +101,7 @@ export function useHomeSEO(totalGames = 0, currentPage = 1) {
  */
 export function usePlaySEO(gameUrl) {
   const seoConfig = {
-    title: 'Play Game - H5 Games',
+    title: 'Play Game | flybird.site',
     description: 'Play free HTML5 game. Mobile-optimized gaming experience.',
     keywords: 'play game, HTML5 games, mobile games, free games',
     type: 'website'
@@ -115,8 +115,8 @@ export function usePlaySEO(gameUrl) {
  */
 export function usePrivacySEO() {
   const seoConfig = {
-    title: 'Privacy Policy & Disclaimer - H5 Games',
-    description: 'Privacy policy and disclaimer for H5 Games. Information about data collection and third-party content.',
+    title: 'Privacy Policy & Disclaimer | flybird.site',
+    description: 'Privacy policy and disclaimer for flybird.site. Information about data collection and third-party content.',
     keywords: 'privacy policy, disclaimer, terms of service',
     type: 'website'
   }
@@ -129,7 +129,7 @@ export function usePrivacySEO() {
  */
 export function useNotFoundSEO() {
   const seoConfig = {
-    title: 'Page Not Found - H5 Games',
+    title: 'Page Not Found | flybird.site',
     description: 'The page you are looking for could not be found. Browse our collection of free HTML5 games.',
     keywords: 'page not found, 404, HTML5 games, mobile games',
     type: 'website'
