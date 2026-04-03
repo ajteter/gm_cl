@@ -2,9 +2,11 @@
  * Cloudflare Pages Function: GET /api/game-token
  *
  * Returns a signed HMAC token for game session verification.
- * The token binds to the client IP and a timestamp, so it cannot be forged
- * or transferred between IPs. Used by POST /api/leaderboard to verify
- * that the score submission comes from an actual game session.
+ * The token binds to a random nonce and a timestamp, preventing forgery.
+ * Does NOT bind to IP — WiFi/mobile network switches cause IP changes
+ * between GET and POST, which would break HMAC verification.
+ *
+ * Anti-abuse is handled by IP rate limiting + IP dedup in leaderboard.js.
  */
 
 // ---------------------------------------------------------------------------
@@ -23,10 +25,6 @@ async function hmacSign(secret, data) {
   return btoa(String.fromCharCode(...new Uint8Array(sig)))
 }
 
-function getClientIP(request) {
-  return request.headers.get('CF-Connecting-IP') || 'unknown'
-}
-
 const CORS = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': '*',
@@ -36,7 +34,7 @@ const CORS = {
 // GET /api/game-token
 // ---------------------------------------------------------------------------
 export async function onRequestGet(context) {
-  const { env, request } = context
+  const { env } = context
   const secret = env.LEADERBOARD_SECRET
 
   if (!secret) {
@@ -46,11 +44,11 @@ export async function onRequestGet(context) {
     })
   }
 
-  const ip = getClientIP(request)
+  const nonce = crypto.randomUUID()
   const ts = Date.now()
-  const token = await hmacSign(secret, `${ip}:${ts}`)
+  const token = await hmacSign(secret, `${nonce}:${ts}`)
 
-  return new Response(JSON.stringify({ ts, token }), {
+  return new Response(JSON.stringify({ nonce, ts, token }), {
     headers: {
       ...CORS,
       'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
