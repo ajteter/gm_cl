@@ -21,11 +21,11 @@ export default function HomePage() {
 
   // Use the same ad configuration as RandomGamePage
   const homeAdConfig = {
-    key: '866f788a538c789345f3c99981b528db',
+    key: 'a7d763a29934a2cb86e8b7b822a3f2f1',
     height: 50,
     width: 320,
     maxHeight: '50px',
-    script: '//www.highperformanceformat.com/866f788a538c789345f3c99981b528db/invoke.js',
+    script: '//www.highperformanceformat.com/a7d763a29934a2cb86e8b7b822a3f2f1/invoke.js',
     delay: 1000
   }
 

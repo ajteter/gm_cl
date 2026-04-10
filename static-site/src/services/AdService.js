@@ -20,7 +20,7 @@ export const AdService = {
       console.log('[AdService] Injecting Adsterra Social Bar...');
 
       // Inject Adsterra Social Bar script (only once per page load)
-      const SCRIPT_SRC = 'https://pl28926955.profitablecpmratenetwork.com/43/fd/aa/43fdaa575cf88d81705f695c821fe4b7.js';
+      const SCRIPT_SRC = 'https://pl29033214.profitablecpmratenetwork.com/6b/5f/09/6b5f09e0f69ed84a35e1fdba4253cc0b.js';
       if (!document.querySelector(`script[src="${SCRIPT_SRC}"]`)) {
         const script = document.createElement('script');
         script.type = 'text/javascript';
