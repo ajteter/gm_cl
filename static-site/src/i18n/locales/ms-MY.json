@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "Terlalu banyak percubaan. Sila cuba lagi kemudian.",
   "leaderboard.sessionError": "Sesi permainan tamat tempoh. Sila mulakan semula permainan.",
   "leaderboard.empty": "Tiada markah lagi. Jadilah yang pertama!",
-  "leaderboard.playAgain": "🔄 Main Lagi"
+  "leaderboard.playAgain": "🔄 Main Lagi",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

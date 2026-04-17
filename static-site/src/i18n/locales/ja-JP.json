@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "試行回数が多すぎます。後でもう一度試してください。",
   "leaderboard.sessionError": "ゲームセッションの有効期限が切れました。ゲームを再起動してください。",
   "leaderboard.empty": "まだスコアはありません。最初になろう！",
-  "leaderboard.playAgain": "🔄 もう一度プレイする"
+  "leaderboard.playAgain": "🔄 もう一度プレイする",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

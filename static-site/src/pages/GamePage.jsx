@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import useGames from '../hooks/useGames'
-import { useGameSEO } from '../hooks/useSEO'
+import { useGameSEO, useCollectionSEO } from '../hooks/useSEO'
 import GameClientUI from '../components/GameClientUI'
 import GameList from '../components/GameList'
 import LoadingStateManager from '../components/LoadingStateManager'
@@ -53,8 +53,13 @@ export default function GamePage() {
     }
   }, [games, loading, gameId])
 
-  // Set up SEO for game page
-  useGameSEO(selectedGame || { title: 'Games List' })
+  // Set up SEO for game page or collection page
+  useGameSEO(selectedGame, {
+    enabled: Boolean(gameId),
+    gameId,
+    notFound: Boolean(gameId && !loading && gameError)
+  })
+  useCollectionSEO(currentGames, currentPage, { enabled: !gameId })
 
   const handleMoreGames = () => {
     navigate('/game')
@@ -128,16 +133,6 @@ export default function GamePage() {
           </div>
         </div>
       )
-    }
-
-    // Ad configuration for game page - use compact 50px banner to avoid bottom whitespace
-    const gamePageAdConfig = {
-      key: 'a7d763a29934a2cb86e8b7b822a3f2f1',
-      height: 50,
-      width: 320,
-      maxHeight: '50px',
-      script: '//www.highperformanceformat.com/a7d763a29934a2cb86e8b7b822a3f2f1/invoke.js',
-      delay: 0
     }
 
     return (

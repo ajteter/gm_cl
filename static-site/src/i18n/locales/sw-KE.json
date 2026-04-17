@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "Majaribio mengi sana. Tafadhali jaribu tena baadaye.",
   "leaderboard.sessionError": "Kipindi cha mchezo kimekwisha. Tafadhali anzisha mchezo upya.",
   "leaderboard.empty": "Bado hakuna alama. Kuwa wa kwanza!",
-  "leaderboard.playAgain": "🔄 Cheza Tena"
+  "leaderboard.playAgain": "🔄 Cheza Tena",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

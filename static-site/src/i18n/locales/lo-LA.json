@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "ພະຍາຍາມຫຼາຍເກີນໄປ. ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ.",
   "leaderboard.sessionError": "ຊ່ວງເວລາເກມໝົດອາຍຸແລ້ວ. ກະລຸນາຣີສະຕາດເກມ.",
   "leaderboard.empty": "ຍັງບໍ່ມີຄະແນນເທື່ອ. ເປັນຄົນທຳອິດ!",
-  "leaderboard.playAgain": "🔄 ຫຼິ້ນອີກ"
+  "leaderboard.playAgain": "🔄 ຫຼິ້ນອີກ",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

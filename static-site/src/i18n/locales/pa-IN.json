@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "ਬਹੁਤ ਸਾਰੀਆਂ ਕੋਸ਼ਿਸ਼ਾਂ। ਕਿਰਪਾ ਕਰਕੇ ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
   "leaderboard.sessionError": "ਗੇਮ ਸੈਸ਼ਨ ਦੀ ਮਿਆਦ ਸਮਾਪਤ ਹੋਈ। ਕਿਰਪਾ ਕਰਕੇ ਗੇਮ ਨੂੰ ਮੁੜ ਚਾਲੂ ਕਰੋ।",
   "leaderboard.empty": "ਅਜੇ ਤੱਕ ਕੋਈ ਸਕੋਰ ਨਹੀਂ ਹੈ। ਪਹਿਲੇ ਬਣੋ!",
-  "leaderboard.playAgain": "🔄 ਦੁਬਾਰਾ ਖੇਡੋ"
+  "leaderboard.playAgain": "🔄 ਦੁਬਾਰਾ ਖੇਡੋ",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

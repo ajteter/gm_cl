@@ -2,6 +2,32 @@ import { useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { useI18n } from '../i18n'
 
+function buildInviteMessage(t, score) {
+  return t('leaderboard.inviteMessage', { score })
+}
+
+async function copyTextToClipboard(text) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text)
+    return
+  }
+
+  const textarea = document.createElement('textarea')
+  textarea.value = text
+  textarea.setAttribute('readonly', '')
+  textarea.style.position = 'absolute'
+  textarea.style.left = '-9999px'
+  document.body.appendChild(textarea)
+  textarea.select()
+
+  try {
+    const success = document.execCommand('copy')
+    if (!success) throw new Error('execCommand copy returned false')
+  } finally {
+    document.body.removeChild(textarea)
+  }
+}
+
 /**
  * Convert a 2-letter ISO country code to an Emoji flag.
  * Falls back to 🌍 for unknown/missing codes.
@@ -42,6 +68,7 @@ export default function LeaderboardSystem({
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const [error, setError] = useState(null)
+  const [copyButtonText, setCopyButtonText] = useState(t('leaderboard.inviteButton'))
 
   // -----------------------------------------------------------------------
   // Fetch leaderboard
@@ -61,7 +88,7 @@ export default function LeaderboardSystem({
     } finally {
       setIsLoading(false)
     }
-  }, [])
+  }, [t])
 
   // -----------------------------------------------------------------------
   // On open: reset state & fetch
@@ -72,13 +99,14 @@ export default function LeaderboardSystem({
     setPlayerName('')
     setNeedsName(false)
     setError(null)
+    setCopyButtonText(t('leaderboard.inviteButton'))
 
     fetchLeaderboard().then((data) => {
       if (data.length < 10 || score >= data[data.length - 1].score) {
         setNeedsName(true)
       }
     })
-  }, [isOpen, score, fetchLeaderboard])
+  }, [isOpen, score, fetchLeaderboard, t])
 
   // -----------------------------------------------------------------------
   // Submit score
@@ -144,6 +172,20 @@ export default function LeaderboardSystem({
   }
 
   // -----------------------------------------------------------------------
+  // Copy invite message
+  // -----------------------------------------------------------------------
+  const handleCopyInvite = async () => {
+    try {
+      await copyTextToClipboard(buildInviteMessage(t, score))
+      setCopyButtonText(t('leaderboard.inviteCopied'))
+      setTimeout(() => setCopyButtonText(t('leaderboard.inviteButton')), 2000)
+    } catch {
+      setCopyButtonText(t('leaderboard.inviteCopyError'))
+      setTimeout(() => setCopyButtonText(t('leaderboard.inviteButton')), 2000)
+    }
+  }
+
+  // -----------------------------------------------------------------------
   // Play Again — restart the game via postMessage
   // -----------------------------------------------------------------------
   const handlePlayAgain = () => {
@@ -184,12 +226,12 @@ export default function LeaderboardSystem({
       >
         {/* ---- Header ---- */}
         <div className="px-6 pt-6 pb-4 text-center border-b border-white/10">
-          <h2 className="text-xl font-bold text-white flex items-center justify-center gap-2">
-            {t('leaderboard.title')}
-          </h2>
           <div className="mt-3 text-3xl font-black text-amber-400 tabular-nums">
             {t('leaderboard.yourScore', { score })}
           </div>
+          <h2 className="mt-3 text-xl font-bold text-white flex items-center justify-center gap-2">
+            {t('leaderboard.title')}
+          </h2>
         </div>
 
         {/* ---- Name Input (only when qualified & not yet submitted) ---- */}
@@ -296,6 +338,12 @@ export default function LeaderboardSystem({
 
         {/* ---- Play Again Button ---- */}
         <div className="px-6 py-4 border-t border-white/10">
+          <button
+            onClick={handleCopyInvite}
+            className="w-full py-3 mb-3 rounded-xl border border-amber-400/40 bg-amber-500/10 text-amber-300 font-bold text-base hover:bg-amber-500/20 transition-colors active:scale-95 transform cursor-pointer"
+          >
+            {copyButtonText}
+          </button>
           <button
             onClick={handlePlayAgain}
             className="w-full py-3 rounded-xl bg-white text-black font-bold text-base hover:bg-gray-200 transition-colors active:scale-95 transform cursor-pointer"

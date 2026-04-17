@@ -11,7 +11,14 @@ const DEFAULT_SEO = {
   type: 'website',
   locale: 'en_US',
   siteName: 'flybird.site',
-  baseUrl: typeof window !== 'undefined' ? window.location.origin : 'https://flybird.site'
+  baseUrl: 'https://flybird.site',
+  robots: 'index, follow'
+};
+
+const resolveAbsoluteUrl = (url) => {
+  if (!url) return null;
+  if (/^https?:\/\//i.test(url)) return url;
+  return `${DEFAULT_SEO.baseUrl}${url.startsWith('/') ? url : `/${url}`}`;
 };
 
 /**
@@ -45,6 +52,17 @@ export const updateMetaTag = (name, content, type = 'name') => {
   metaTag.setAttribute('content', content);
 };
 
+export const removeMetaTag = (name, type = 'name') => {
+  if (typeof document === 'undefined') return;
+
+  const selector = type === 'property' ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+  const metaTag = document.querySelector(selector);
+
+  if (metaTag) {
+    metaTag.remove();
+  }
+};
+
 /**
  * Updates multiple meta tags at once
  * @param {Object} metaTags - Object with meta tag names as keys and content as values
@@ -72,8 +90,10 @@ export const setPageSEO = (seoData = {}) => {
     keywords = DEFAULT_SEO.keywords,
     canonical,
     image,
-    type = DEFAULT_SEO.type
+    type = DEFAULT_SEO.type,
+    robots = DEFAULT_SEO.robots
   } = seoData;
+  const absoluteImage = resolveAbsoluteUrl(image);
 
   // Update document title
   updateTitle(title);
@@ -83,7 +103,7 @@ export const setPageSEO = (seoData = {}) => {
     description,
     keywords,
     author: DEFAULT_SEO.author,
-    robots: 'index, follow'
+    robots
   });
 
   // Update Open Graph meta tags
@@ -96,9 +116,12 @@ export const setPageSEO = (seoData = {}) => {
   }, 'property');
 
   // Add image if provided
-  if (image) {
-    updateMetaTag('og:image', image, 'property');
-    updateMetaTag('twitter:image', image);
+  if (absoluteImage) {
+    updateMetaTag('og:image', absoluteImage, 'property');
+    updateMetaTag('twitter:image', absoluteImage);
+  } else {
+    removeMetaTag('og:image', 'property');
+    removeMetaTag('twitter:image');
   }
 
   // Add canonical URL if provided
@@ -109,11 +132,35 @@ export const setPageSEO = (seoData = {}) => {
 
   // Twitter Card meta tags
   updateMetaTags({
-    'twitter:card': 'summary_large_image',
+    'twitter:card': absoluteImage ? 'summary_large_image' : 'summary',
     'twitter:title': title,
     'twitter:description': description
   });
-};/**
+};
+
+export const generateCollectionSEO = (currentPage = 1) => {
+  const title = currentPage > 1
+    ? `All Games - Page ${currentPage} | flybird.site`
+    : 'All Games | flybird.site';
+
+  const description = currentPage > 1
+    ? `Browse page ${currentPage} of our free HTML5 games collection on flybird.site.`
+    : 'Browse our collection of free HTML5 games for mobile on flybird.site.';
+
+  const canonical = currentPage > 1
+    ? `${DEFAULT_SEO.baseUrl}/game?page=${currentPage}`
+    : `${DEFAULT_SEO.baseUrl}/game`;
+
+  return {
+    title,
+    description,
+    keywords: 'free online games, HTML5 games, mobile games, browser games, game list',
+    canonical,
+    type: 'website'
+  };
+};
+
+/**
 
  * Updates or creates a canonical link tag
  * @param {string} url - The canonical URL
@@ -143,7 +190,9 @@ export const generateGameSEO = (game) => {
   const title = `${game.title} - Play Free Game | flybird.site`;
   const description = game.description || `Play ${game.title}, a fun ${game.category} game. Free HTML5 game optimized for mobile.`;
   const keywords = `${game.title}, ${game.category} games, HTML5 games, mobile games, free games`;
-  const canonical = `${DEFAULT_SEO.baseUrl}/game/${game.namespace}`;
+  const canonical = game.id
+    ? `${DEFAULT_SEO.baseUrl}/game?id=${encodeURIComponent(game.id)}`
+    : `${DEFAULT_SEO.baseUrl}/game`;
   const image = game.thumb || game.image;
 
   return {
@@ -218,8 +267,14 @@ export const generateCategorySEO = (category, gameCount = 0) => {
  * @param {Object} game - Game object
  * @returns {Object} JSON-LD structured data
  */
-export const generateGameStructuredData = (game) => {
+export const generateGameStructuredData = (game, options = {}) => {
   if (!game) return null;
+  const url = options.url || (
+    game.id
+      ? `${DEFAULT_SEO.baseUrl}/game?id=${encodeURIComponent(game.id)}`
+      : `${DEFAULT_SEO.baseUrl}/game`
+  );
+  const image = resolveAbsoluteUrl(options.image || game.thumb || game.image);
 
   return {
     '@context': 'https://schema.org',
@@ -227,8 +282,8 @@ export const generateGameStructuredData = (game) => {
     name: game.title,
     description: game.description,
     genre: game.category,
-    url: `${DEFAULT_SEO.baseUrl}/game/${game.namespace}`,
-    image: game.thumb || game.image,
+    url,
+    image,
     datePublished: game.date_published,
     dateModified: game.date_modified,
     publisher: {
@@ -244,7 +299,8 @@ export const generateGameStructuredData = (game) => {
     },
     applicationCategory: 'Game',
     operatingSystem: 'Web Browser',
-    gamePlatform: 'Web Browser'
+    gamePlatform: 'Web Browser',
+    isAccessibleForFree: true
   };
 };
 
@@ -259,11 +315,6 @@ export const generateWebsiteStructuredData = () => {
     name: 'flybird.site',
     description: DEFAULT_SEO.description,
     url: DEFAULT_SEO.baseUrl,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${DEFAULT_SEO.baseUrl}/search?q={search_term_string}`,
-      'query-input': 'required name=search_term_string'
-    },
     publisher: {
       '@type': 'Organization',
       name: 'flybird.site',
@@ -271,6 +322,69 @@ export const generateWebsiteStructuredData = () => {
     }
   };
 };
+
+export const generateWebPageStructuredData = ({
+  name,
+  description,
+  url
+}) => {
+  if (!name || !url) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name,
+    description,
+    url,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: DEFAULT_SEO.siteName,
+      url: DEFAULT_SEO.baseUrl
+    }
+  };
+};
+
+export const generateBreadcrumbStructuredData = (items = []) => {
+  if (!items.length) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url
+    }))
+  };
+};
+
+export const generateCollectionStructuredData = (items = [], collectionUrl = `${DEFAULT_SEO.baseUrl}/game`) => {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    url: collectionUrl,
+    name: 'All Games | flybird.site',
+    description: 'Browse free HTML5 games optimized for mobile on flybird.site.',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: DEFAULT_SEO.siteName,
+      url: DEFAULT_SEO.baseUrl
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: items.length,
+      itemListElement: items.map((game, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: game.id
+          ? `${DEFAULT_SEO.baseUrl}/game?id=${encodeURIComponent(game.id)}`
+          : collectionUrl,
+        name: game.title
+      }))
+    }
+  }
+}
 
 /**
  * Injects structured data into the page

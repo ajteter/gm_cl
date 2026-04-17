@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "Zbyt wiele prób. Spróbuj ponownie później.",
   "leaderboard.sessionError": "Sesja gry wygasła. Proszę ponownie uruchomić grę.",
   "leaderboard.empty": "Nie ma jeszcze żadnych wyników. Bądź pierwszy!",
-  "leaderboard.playAgain": "🔄 Zagraj ponownie"
+  "leaderboard.playAgain": "🔄 Zagraj ponownie",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

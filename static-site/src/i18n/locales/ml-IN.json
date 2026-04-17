@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "വളരെയധികം ശ്രമങ്ങൾ. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.",
   "leaderboard.sessionError": "ഗെയിം സെഷൻ കാലഹരണപ്പെട്ടു. ദയവായി ഗെയിം പുനരാരംഭിക്കുക.",
   "leaderboard.empty": "ഇതുവരെ സ്‌കോറുകളൊന്നുമില്ല. ഒന്നാമനാകൂ!",
-  "leaderboard.playAgain": "🔄 വീണ്ടും കളിക്കുക"
+  "leaderboard.playAgain": "🔄 വീണ്ടും കളിക്കുക",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

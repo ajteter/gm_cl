@@ -19,16 +19,6 @@ export default function HomePage() {
     navigate('/game/random')
   }
 
-  // Use the same ad configuration as RandomGamePage
-  const homeAdConfig = {
-    key: 'a7d763a29934a2cb86e8b7b822a3f2f1',
-    height: 50,
-    width: 320,
-    maxHeight: '50px',
-    script: '//www.highperformanceformat.com/a7d763a29934a2cb86e8b7b822a3f2f1/invoke.js',
-    delay: 1000
-  }
-
   return (
     <GameClientUI
       game={floppyGame}

@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "ကြိုးစားမှု များလွန်းတယ်။ နောက်မှ ထပ်စမ်းကြည့်ပါ။",
   "leaderboard.sessionError": "ဂိမ်းစက်ရှင် သက်တမ်းကုန်သွားပါပြီ။ ကျေးဇူးပြု၍ ဂိမ်းကို ပြန်လည်စတင်ပါ။",
   "leaderboard.empty": "အမှတ်များ မရှိသေးပါ။ ပထမဆုံးဖြစ်ပါစေ။",
-  "leaderboard.playAgain": "🔄 ပြန်ကစားပါ။"
+  "leaderboard.playAgain": "🔄 ပြန်ကစားပါ။",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

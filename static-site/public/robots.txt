@@ -4,5 +4,6 @@ Allow: /game
 Allow: /game/random
 Allow: /privacy-policy
 Disallow: /source/
+Disallow: /api/
 
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://flybird.site/sitemap.xml

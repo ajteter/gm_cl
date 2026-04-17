@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "محاولات كثيرة جدًا. يرجى المحاولة مرة أخرى في وقت لاحق.",
   "leaderboard.sessionError": "انتهت جلسة اللعبة. يرجى إعادة تشغيل اللعبة.",
   "leaderboard.empty": "لا توجد نتائج حتى الآن. كن الأول!",
-  "leaderboard.playAgain": "🔄 العب مرة أخرى"
+  "leaderboard.playAgain": "🔄 العب مرة أخرى",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

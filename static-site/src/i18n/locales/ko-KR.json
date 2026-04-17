@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "시도 횟수가 너무 많습니다. 나중에 다시 시도해 주세요.",
   "leaderboard.sessionError": "게임 세션이 만료되었습니다. 게임을 다시 시작해주세요.",
   "leaderboard.empty": "아직 점수가 없습니다. 첫 번째가 되세요!",
-  "leaderboard.playAgain": "🔄 다시 플레이"
+  "leaderboard.playAgain": "🔄 다시 플레이",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

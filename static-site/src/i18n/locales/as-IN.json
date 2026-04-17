@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "অত্যধিক চেষ্টা। অনুগ্ৰহ কৰি পিছত পুনৰ চেষ্টা কৰক।",
   "leaderboard.sessionError": "গেমৰ অধিবেশনৰ ম্যাদ উকলি গ’ল। অনুগ্ৰহ কৰি খেল পুনৰ আৰম্ভ কৰক।",
   "leaderboard.empty": "এতিয়াও কোনো স্ক’ৰ নাই। প্ৰথম হওক!",
-  "leaderboard.playAgain": "🔄 আকৌ খেলক"
+  "leaderboard.playAgain": "🔄 আকৌ খেলক",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "Забагато спроб. Спробуйте пізніше.",
   "leaderboard.sessionError": "Ігровий сеанс закінчився. Перезапустіть гру.",
   "leaderboard.empty": "Ще немає балів. Будь першим!",
-  "leaderboard.playAgain": "🔄 Грати знову"
+  "leaderboard.playAgain": "🔄 Грати знову",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

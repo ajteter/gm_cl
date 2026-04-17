@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "操作频繁，请稍后再试",
   "leaderboard.sessionError": "会话已过期，请重新进入游戏",
   "leaderboard.empty": "暂无记录，快来抢占沙发！",
-  "leaderboard.playAgain": "🔄 再玩一次"
+  "leaderboard.playAgain": "🔄 再玩一次",
+  "leaderboard.inviteButton": "分享并挑战全世界 🌍",
+  "leaderboard.inviteCopied": "已复制！",
+  "leaderboard.inviteCopyError": "复制失败",
+  "leaderboard.inviteMessage": "我在 Floppy Bird 中拿到了 {score} 分！🐦\n只有前 10 名才能进入全球排行榜。你能超过我吗？\n👉 flybird.site"
 }

@@ -69,5 +69,9 @@
   "leaderboard.rateLimited": "Juda koʻp urinishlar. Keyinroq qayta urinib ko‘ring.",
   "leaderboard.sessionError": "Oʻyin seansi tugadi. Iltimos, oʻyinni qayta ishga tushiring.",
   "leaderboard.empty": "Hozircha ochko yo'q. Birinchi bo'ling!",
-  "leaderboard.playAgain": "🔄 Qayta o'ynang"
+  "leaderboard.playAgain": "🔄 Qayta o'ynang",
+  "leaderboard.inviteButton": "Share & Challenge the World 🌍",
+  "leaderboard.inviteCopied": "Copied!",
+  "leaderboard.inviteCopyError": "Copy Failed",
+  "leaderboard.inviteMessage": "I scored {score} in Floppy Bird! 🐦\nOnly Top 10 make the global leaderboard. Can you beat me?\n👉 flybird.site"
 }

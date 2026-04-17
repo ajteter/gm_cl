@@ -19,6 +19,13 @@
    <meta property="og:url" content="https://nebezb.com/floppybird/" />
    <meta property="og:site_name" content="Floppy Bird" />
 
+   <!-- Preload first-screen and score UI images to reduce render delay -->
+   <link rel="preload" as="image" href="assets/sky.png" fetchpriority="high" />
+   <link rel="preload" as="image" href="assets/bird.png" fetchpriority="high" />
+   <link rel="preload" as="image" href="assets/splash.png" fetchpriority="high" />
+   <link rel="preload" as="image" href="assets/scoreboard.png" />
+   <link rel="preload" as="image" href="assets/font_big_0.png" />
+
    <!-- Style sheets -->
    <link href="css/reset.css" rel="stylesheet">
    <link href="css/main.css" rel="stylesheet">

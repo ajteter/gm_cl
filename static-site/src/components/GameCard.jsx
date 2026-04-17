@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useI18n } from '../i18n'
 
 export default function GameCard({ game }) {
@@ -62,7 +62,15 @@ export default function GameCard({ game }) {
         </span>
       </div>
       <div className="p-4 flex flex-col flex-1">
-        <h2 className="text-base font-bold text-text-main mb-2 line-clamp-1">{game.title}</h2>
+        <h2 className="text-base font-bold text-text-main mb-2 line-clamp-1">
+          <Link
+            to={`/game?id=${encodeURIComponent(game.id)}`}
+            className="hover:text-primary transition-colors"
+            aria-label={`View details for ${game.title}`}
+          >
+            {game.title}
+          </Link>
+        </h2>
         <p
           className={`text-sm text-text-muted mb-4 cursor-pointer hover:text-text-main transition-colors ${descExpanded ? '' : 'line-clamp-2'}`}
           onClick={onToggleDesc}
